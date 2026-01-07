@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Management System API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .status {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        .method {
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        .get { background: #28a745; color: white; }
+        .post { background: #007bff; color: white; }
+        .put { background: #ffc107; color: black; }
+        .delete { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🤝 Volunteer Management System</h1>
+    <p class="subtitle">RESTful API - SOA Project</p>
+
+    <div class="status">✅ API is running!</div>
+
+    <h3 style="margin-top: 30px;">API Endpoints:</h3>
+
+    <div class="endpoint">
+        <span class="method get">GET</span> /api/organizations
+    </div>
+    <div class="endpoint">
+        <span class="method get">GET</span> /api/organizations/{id}
+    </div>
+    <div class="endpoint">
+        <span class="method post">POST</span> /api/organizations
+    </div>
+    <div class="endpoint">
+        <span class="method put">PUT</span> /api/organizations/{id}
+    </div>
+    <div class="endpoint">
+        <span class="method delete">DELETE</span> /api/organizations/{id}
+    </div>
+
+    <p style="margin-top: 30px; color: #666;">
+        <strong>Base URL:</strong> http://localhost:8080/api<br>
+        <strong>Test with:</strong> Postman, curl, or browser
+    </p>
+</div>
+</body>
+</html>
