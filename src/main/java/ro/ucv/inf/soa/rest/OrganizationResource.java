@@ -80,14 +80,33 @@ public class OrganizationResource {
     @Path("/{id}")
     public Response updateOrganization(@PathParam("id") Long id, Organization organization) {
         try {
-            if (!organizationDAO.existsById(id)) {
+            Organization existing = organizationDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Organization not found with id: " + id))
                         .build();
             }
 
-            organization.setId(id);
-            Organization updated = organizationDAO.update(organization);
+            // Update only scalar fields
+            if (organization.getName() != null)
+                existing.setName(organization.getName());
+            if (organization.getDescription() != null)
+                existing.setDescription(organization.getDescription());
+            if (organization.getEmail() != null)
+                existing.setEmail(organization.getEmail());
+            if (organization.getPhone() != null)
+                existing.setPhone(organization.getPhone());
+            if (organization.getAddress() != null)
+                existing.setAddress(organization.getAddress());
+            if (organization.getWebsite() != null)
+                existing.setWebsite(organization.getWebsite());
+            if (organization.getRegistrationNumber() != null)
+                existing.setRegistrationNumber(organization.getRegistrationNumber());
+            if (organization.getStatus() != null)
+                existing.setStatus(organization.getStatus());
+
+            Organization updated = organizationDAO.update(existing);
             return Response.ok(ApiResponse.success("Organization updated successfully", updated))
                     .build();
         } catch (Exception e) {

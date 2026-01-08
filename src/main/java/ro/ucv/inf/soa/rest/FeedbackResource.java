@@ -17,11 +17,12 @@ import java.util.List;
 public class FeedbackResource {
 
     private final FeedbackDAO feedbackDAO = new FeedbackDAOImpl();
+    private final ro.ucv.inf.soa.dao.AssignmentDAO assignmentDAO = new ro.ucv.inf.soa.dao.AssignmentDAOImpl();
 
     @GET
     public Response getAllFeedback(@QueryParam("assignmentId") Long assignmentId,
-                                   @QueryParam("type") String type,
-                                   @QueryParam("minRating") Integer minRating) {
+            @QueryParam("type") String type,
+            @QueryParam("minRating") Integer minRating) {
         try {
             List<Feedback> feedbacks;
             if (assignmentId != null) {
@@ -71,11 +72,25 @@ public class FeedbackResource {
                         .build();
             }
 
+            ro.ucv.inf.soa.model.Assignment assignment = assignmentDAO.findById(feedback.getAssignment().getId())
+                    .orElse(null);
+            if (assignment == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Assignment not found with id: " + feedback.getAssignment().getId()))
+                        .build();
+            }
+            feedback.setAssignment(assignment);
+
             Feedback saved = feedbackDAO.save(feedback);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Feedback fullFeedback = feedbackDAO.findById(saved.getId()).orElse(saved);
+
             return Response.status(Response.Status.CREATED)
-                    .entity(ApiResponse.success("Feedback created successfully", saved))
+                    .entity(ApiResponse.success("Feedback submitted successfully", fullFeedback))
                     .build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiResponse.error("Error creating feedback: " + e.getMessage()))
                     .build();
@@ -86,14 +101,27 @@ public class FeedbackResource {
     @Path("/{id}")
     public Response updateFeedback(@PathParam("id") Long id, Feedback feedback) {
         try {
-            if (!feedbackDAO.existsById(id)) {
+            Feedback existing = feedbackDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Feedback not found with id: " + id))
                         .build();
             }
 
-            feedback.setId(id);
-            Feedback updated = feedbackDAO.update(feedback);
+            // Update scalar fields
+            if (feedback.getRating() != null)
+                existing.setRating(feedback.getRating());
+            if (feedback.getComment() != null)
+                existing.setComment(feedback.getComment());
+            if (feedback.getFeedbackDate() != null)
+                existing.setFeedbackDate(feedback.getFeedbackDate());
+            if (feedback.getGivenBy() != null)
+                existing.setGivenBy(feedback.getGivenBy());
+            if (feedback.getFeedbackType() != null)
+                existing.setFeedbackType(feedback.getFeedbackType());
+
+            Feedback updated = feedbackDAO.update(existing);
             return Response.ok(ApiResponse.success("Feedback updated successfully", updated))
                     .build();
         } catch (Exception e) {

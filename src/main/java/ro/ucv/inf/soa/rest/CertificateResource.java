@@ -16,10 +16,12 @@ import java.util.List;
 public class CertificateResource {
 
     private final CertificateDAO certificateDAO = new CertificateDAOImpl();
+    private final ro.ucv.inf.soa.dao.VolunteerDAO volunteerDAO = new ro.ucv.inf.soa.dao.VolunteerDAOImpl();
+    private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
 
     @GET
     public Response getAllCertificates(@QueryParam("volunteerId") Long volunteerId,
-                                       @QueryParam("projectId") Long projectId) {
+            @QueryParam("projectId") Long projectId) {
         try {
             List<Certificate> certificates;
             if (volunteerId != null) {
@@ -78,11 +80,36 @@ public class CertificateResource {
                         .build();
             }
 
+            ro.ucv.inf.soa.model.Volunteer volunteer = volunteerDAO.findById(certificate.getVolunteer().getId())
+                    .orElse(null);
+            if (volunteer == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Volunteer not found with id: " + certificate.getVolunteer().getId()))
+                        .build();
+            }
+            certificate.setVolunteer(volunteer);
+
+            if (certificate.getProject() != null && certificate.getProject().getId() != null) {
+                ro.ucv.inf.soa.model.Project project = projectDAO.findById(certificate.getProject().getId())
+                        .orElse(null);
+                if (project == null) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Project not found with id: " + certificate.getProject().getId()))
+                            .build();
+                }
+                certificate.setProject(project);
+            }
+
             Certificate saved = certificateDAO.save(certificate);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Certificate fullCert = certificateDAO.findById(saved.getId()).orElse(saved);
+
             return Response.status(Response.Status.CREATED)
-                    .entity(ApiResponse.success("Certificate created successfully", saved))
+                    .entity(ApiResponse.success("Certificate created successfully", fullCert))
                     .build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiResponse.error("Error creating certificate: " + e.getMessage()))
                     .build();
@@ -93,14 +120,29 @@ public class CertificateResource {
     @Path("/{id}")
     public Response updateCertificate(@PathParam("id") Long id, Certificate certificate) {
         try {
-            if (!certificateDAO.existsById(id)) {
+            Certificate existing = certificateDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Certificate not found with id: " + id))
                         .build();
             }
 
-            certificate.setId(id);
-            Certificate updated = certificateDAO.update(certificate);
+            // Update scalar fields
+            if (certificate.getCertificateNumber() != null)
+                existing.setCertificateNumber(certificate.getCertificateNumber());
+            if (certificate.getIssueDate() != null)
+                existing.setIssueDate(certificate.getIssueDate());
+            if (certificate.getTotalHours() != null)
+                existing.setTotalHours(certificate.getTotalHours());
+            if (certificate.getDescription() != null)
+                existing.setDescription(certificate.getDescription());
+            if (certificate.getSignedBy() != null)
+                existing.setSignedBy(certificate.getSignedBy());
+            if (certificate.getFileUrl() != null)
+                existing.setFileUrl(certificate.getFileUrl());
+
+            Certificate updated = certificateDAO.update(existing);
             return Response.ok(ApiResponse.success("Certificate updated successfully", updated))
                     .build();
         } catch (Exception e) {

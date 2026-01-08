@@ -57,7 +57,6 @@ public class Project {
     // Relații
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organization_id", nullable = false)
-    @JsonIgnore
     private Organization organization;
 
     @JsonIgnore

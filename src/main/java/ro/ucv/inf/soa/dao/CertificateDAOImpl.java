@@ -15,6 +15,34 @@ public class CertificateDAOImpl extends GenericDAOImpl<Certificate, Long> implem
     }
 
     @Override
+    public java.util.Optional<Certificate> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Certificate> query = em.createQuery(
+                    "SELECT c FROM Certificate c JOIN FETCH c.volunteer LEFT JOIN FETCH c.project LEFT JOIN FETCH c.project.organization WHERE c.id = :id",
+                    Certificate.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Certificate> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT c FROM Certificate c JOIN FETCH c.volunteer LEFT JOIN FETCH c.project LEFT JOIN FETCH c.project.organization",
+                    Certificate.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Certificate> findByVolunteerId(Long volunteerId) {
         EntityManager em = getEntityManager();
         try {

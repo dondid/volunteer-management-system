@@ -85,14 +85,45 @@ public class VolunteerResource {
     @Path("/{id}")
     public Response updateVolunteer(@PathParam("id") Long id, Volunteer volunteer) {
         try {
-            if (!volunteerDAO.existsById(id)) {
+            Volunteer existing = volunteerDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Volunteer not found with id: " + id))
                         .build();
             }
 
+            // Assign ID to the object for update
             volunteer.setId(id);
-            Volunteer updated = volunteerDAO.update(volunteer);
+
+            // Fill in missing fields from existing if null (so we don't null them out in
+            // JPQL)
+            if (volunteer.getFirstName() == null)
+                volunteer.setFirstName(existing.getFirstName());
+            if (volunteer.getLastName() == null)
+                volunteer.setLastName(existing.getLastName());
+            if (volunteer.getEmail() == null)
+                volunteer.setEmail(existing.getEmail());
+            if (volunteer.getPhone() == null)
+                volunteer.setPhone(existing.getPhone());
+            if (volunteer.getDateOfBirth() == null)
+                volunteer.setDateOfBirth(existing.getDateOfBirth());
+            if (volunteer.getAddress() == null)
+                volunteer.setAddress(existing.getAddress());
+            if (volunteer.getCity() == null)
+                volunteer.setCity(existing.getCity());
+            if (volunteer.getCounty() == null)
+                volunteer.setCounty(existing.getCounty());
+            if (volunteer.getBio() == null)
+                volunteer.setBio(existing.getBio());
+            if (volunteer.getStatus() == null)
+                volunteer.setStatus(existing.getStatus());
+
+            // Use the safe JPQL update method
+            volunteerDAO.updateDetails(volunteer);
+
+            // Fetch fresh record to return
+            Volunteer updated = volunteerDAO.findById(id).orElse(null);
             return Response.ok(ApiResponse.success("Volunteer updated successfully", updated))
                     .build();
         } catch (Exception e) {

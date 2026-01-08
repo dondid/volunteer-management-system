@@ -14,6 +14,31 @@ public class ProjectDAOImpl extends GenericDAOImpl<Project, Long> implements Pro
     }
 
     @Override
+    public java.util.Optional<Project> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Project> query = em.createQuery(
+                    "SELECT p FROM Project p JOIN FETCH p.organization WHERE p.id = :id", Project.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Project> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery("SELECT p FROM Project p JOIN FETCH p.organization", Project.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Project> findByOrganizationId(Long organizationId) {
         EntityManager em = getEntityManager();
         try {
@@ -31,7 +56,7 @@ public class ProjectDAOImpl extends GenericDAOImpl<Project, Long> implements Pro
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Project> query = em.createQuery(
-                    "SELECT p FROM Project p WHERE p.status = :status", Project.class);
+                    "SELECT p FROM Project p JOIN FETCH p.organization WHERE p.status = :status", Project.class);
             query.setParameter("status", status);
             return query.getResultList();
         } finally {
@@ -49,8 +74,9 @@ public class ProjectDAOImpl extends GenericDAOImpl<Project, Long> implements Pro
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Project> query = em.createQuery(
-                    "SELECT p FROM Project p WHERE p.currentVolunteers < p.maxVolunteers " +
-                            "AND p.status = :status", Project.class);
+                    "SELECT p FROM Project p JOIN FETCH p.organization WHERE p.currentVolunteers < p.maxVolunteers " +
+                            "AND p.status = :status",
+                    Project.class);
             query.setParameter("status", ProjectStatus.ACTIVE);
             return query.getResultList();
         } finally {

@@ -14,6 +14,34 @@ public class AttendanceDAOImpl extends GenericDAOImpl<Attendance, Long> implemen
     }
 
     @Override
+    public java.util.Optional<Attendance> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Attendance> query = em.createQuery(
+                    "SELECT a FROM Attendance a JOIN FETCH a.assignment JOIN FETCH a.assignment.project JOIN FETCH a.assignment.project.organization JOIN FETCH a.assignment.volunteer WHERE a.id = :id",
+                    Attendance.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Attendance> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT a FROM Attendance a JOIN FETCH a.assignment JOIN FETCH a.assignment.project JOIN FETCH a.assignment.project.organization JOIN FETCH a.assignment.volunteer",
+                    Attendance.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Attendance> findByAssignmentId(Long assignmentId) {
         EntityManager em = getEntityManager();
         try {

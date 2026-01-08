@@ -14,6 +14,34 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
     }
 
     @Override
+    public java.util.Optional<Assignment> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Assignment> query = em.createQuery(
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization WHERE a.id = :id",
+                    Assignment.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Assignment> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization",
+                    Assignment.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Assignment> findByVolunteerId(Long volunteerId) {
         EntityManager em = getEntityManager();
         try {
@@ -57,7 +85,8 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Assignment> query = em.createQuery(
-                    "SELECT a FROM Assignment a WHERE a.volunteer.id = :volunteerId AND a.project.id = :projectId", Assignment.class);
+                    "SELECT a FROM Assignment a WHERE a.volunteer.id = :volunteerId AND a.project.id = :projectId",
+                    Assignment.class);
             query.setParameter("volunteerId", volunteerId);
             query.setParameter("projectId", projectId);
             return query.getResultList();

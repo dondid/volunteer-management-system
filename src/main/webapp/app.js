@@ -613,7 +613,7 @@ function showEventForm(id = null) {
         const formData = {
             title: document.getElementById('event-title').value,
             project: { id: parseInt(document.getElementById('event-project-id').value) },
-            eventDate: document.getElementById('event-date').value,
+            eventDate: document.getElementById('event-date').value + ':00', // Append seconds
             maxParticipants: parseInt(document.getElementById('event-max-participants').value) || 50
         };
         

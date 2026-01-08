@@ -77,7 +77,8 @@ public class VolunteerDAOImpl extends GenericDAOImpl<Volunteer, Long> implements
         try {
             TypedQuery<Volunteer> query = em.createQuery(
                     "SELECT v FROM Volunteer v WHERE " +
-                            "LOWER(CONCAT(v.firstName, ' ', v.lastName)) LIKE LOWER(:name)", Volunteer.class);
+                            "LOWER(CONCAT(v.firstName, ' ', v.lastName)) LIKE LOWER(:name)",
+                    Volunteer.class);
             query.setParameter("name", "%" + name + "%");
             return query.getResultList();
         } finally {
@@ -98,6 +99,48 @@ public class VolunteerDAOImpl extends GenericDAOImpl<Volunteer, Long> implements
                     "SELECT COUNT(v) FROM Volunteer v WHERE v.status = :status", Long.class);
             query.setParameter("status", status);
             return query.getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void updateDetails(Volunteer volunteer) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            // Direct JPQL Update to avoid Hibernate Merge/Proxy issues
+            em.createQuery("UPDATE Volunteer v SET " +
+                    "v.firstName = :firstName, " +
+                    "v.lastName = :lastName, " +
+                    "v.email = :email, " +
+                    "v.phone = :phone, " +
+                    "v.dateOfBirth = :dateOfBirth, " +
+                    "v.address = :address, " +
+                    "v.city = :city, " +
+                    "v.county = :county, " +
+                    "v.bio = :bio, " +
+                    "v.status = :status, " +
+                    "v.updatedAt = CURRENT_TIMESTAMP " +
+                    "WHERE v.id = :id")
+                    .setParameter("firstName", volunteer.getFirstName())
+                    .setParameter("lastName", volunteer.getLastName())
+                    .setParameter("email", volunteer.getEmail())
+                    .setParameter("phone", volunteer.getPhone())
+                    .setParameter("dateOfBirth", volunteer.getDateOfBirth())
+                    .setParameter("address", volunteer.getAddress())
+                    .setParameter("city", volunteer.getCity())
+                    .setParameter("county", volunteer.getCounty())
+                    .setParameter("bio", volunteer.getBio())
+                    .setParameter("status", volunteer.getStatus())
+                    .setParameter("id", volunteer.getId())
+                    .executeUpdate();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Error updating volunteer details: " + e.getMessage(), e);
         } finally {
             em.close();
         }

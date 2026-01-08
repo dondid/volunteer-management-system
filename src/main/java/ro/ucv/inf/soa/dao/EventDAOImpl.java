@@ -15,11 +15,39 @@ public class EventDAOImpl extends GenericDAOImpl<Event, Long> implements EventDA
     }
 
     @Override
+    public java.util.Optional<Event> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Event> query = em.createQuery(
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE e.id = :id",
+                    Event.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Event> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery("SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization", Event.class)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Event> findByProjectId(Long projectId) {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Event> query = em.createQuery(
-                    "SELECT e FROM Event e WHERE e.project.id = :projectId", Event.class);
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE e.project.id = :projectId",
+                    Event.class);
             query.setParameter("projectId", projectId);
             return query.getResultList();
         } finally {
@@ -32,7 +60,8 @@ public class EventDAOImpl extends GenericDAOImpl<Event, Long> implements EventDA
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Event> query = em.createQuery(
-                    "SELECT e FROM Event e WHERE e.status = :status", Event.class);
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE e.status = :status",
+                    Event.class);
             query.setParameter("status", status);
             return query.getResultList();
         } finally {
@@ -45,7 +74,8 @@ public class EventDAOImpl extends GenericDAOImpl<Event, Long> implements EventDA
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Event> query = em.createQuery(
-                    "SELECT e FROM Event e WHERE e.eventDate BETWEEN :startDate AND :endDate", Event.class);
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE e.eventDate BETWEEN :startDate AND :endDate",
+                    Event.class);
             query.setParameter("startDate", startDate);
             query.setParameter("endDate", endDate);
             return query.getResultList();
@@ -59,7 +89,8 @@ public class EventDAOImpl extends GenericDAOImpl<Event, Long> implements EventDA
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Event> query = em.createQuery(
-                    "SELECT e FROM Event e WHERE e.eventDate >= :now AND e.status = :status ORDER BY e.eventDate ASC", Event.class);
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE e.eventDate >= :now AND e.status = :status ORDER BY e.eventDate ASC",
+                    Event.class);
             query.setParameter("now", LocalDateTime.now());
             query.setParameter("status", EventStatus.SCHEDULED);
             return query.getResultList();
@@ -73,8 +104,10 @@ public class EventDAOImpl extends GenericDAOImpl<Event, Long> implements EventDA
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Event> query = em.createQuery(
-                    "SELECT e FROM Event e WHERE (e.currentParticipants IS NULL OR e.currentParticipants < e.maxParticipants) " +
-                            "AND e.status = :status", Event.class);
+                    "SELECT e FROM Event e JOIN FETCH e.project p JOIN FETCH p.organization WHERE (e.currentParticipants IS NULL OR e.currentParticipants < e.maxParticipants) "
+                            +
+                            "AND e.status = :status",
+                    Event.class);
             query.setParameter("status", EventStatus.SCHEDULED);
             return query.getResultList();
         } finally {

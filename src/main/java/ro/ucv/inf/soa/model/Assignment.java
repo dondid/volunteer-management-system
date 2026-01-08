@@ -36,12 +36,10 @@ public class Assignment {
     // Relații
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "volunteer_id", nullable = false)
-    @JsonIgnore
     private Volunteer volunteer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
-    @JsonIgnore
     private Project project;
 
     @JsonIgnore

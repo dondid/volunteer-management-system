@@ -14,6 +14,34 @@ public class FeedbackDAOImpl extends GenericDAOImpl<Feedback, Long> implements F
     }
 
     @Override
+    public java.util.Optional<Feedback> findById(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Feedback> query = em.createQuery(
+                    "SELECT f FROM Feedback f JOIN FETCH f.assignment JOIN FETCH f.assignment.project JOIN FETCH f.assignment.project.organization JOIN FETCH f.assignment.volunteer WHERE f.id = :id",
+                    Feedback.class);
+            query.setParameter("id", id);
+            return java.util.Optional.ofNullable(query.getSingleResult());
+        } catch (jakarta.persistence.NoResultException e) {
+            return java.util.Optional.empty();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Feedback> findAll() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT f FROM Feedback f JOIN FETCH f.assignment JOIN FETCH f.assignment.project JOIN FETCH f.assignment.project.organization JOIN FETCH f.assignment.volunteer",
+                    Feedback.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Feedback> findByAssignmentId(Long assignmentId) {
         EntityManager em = getEntityManager();
         try {

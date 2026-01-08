@@ -17,11 +17,12 @@ import java.util.List;
 public class ProjectResource {
 
     private final ProjectDAO projectDAO = new ProjectDAOImpl();
+    private final ro.ucv.inf.soa.dao.OrganizationDAO organizationDAO = new ro.ucv.inf.soa.dao.OrganizationDAOImpl();
 
     @GET
     public Response getAllProjects(@QueryParam("status") String status,
-                                   @QueryParam("organizationId") Long organizationId,
-                                   @QueryParam("available") Boolean available) {
+            @QueryParam("organizationId") Long organizationId,
+            @QueryParam("available") Boolean available) {
         try {
             List<Project> projects;
             if (available != null && available) {
@@ -76,11 +77,28 @@ public class ProjectResource {
                         .build();
             }
 
+            ro.ucv.inf.soa.model.Organization org = organizationDAO.findById(project.getOrganization().getId())
+                    .orElse(null);
+            if (org == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse
+                                .error("Organization not found with id: " + project.getOrganization().getId()))
+                        .build();
+            }
+            project.setOrganization(org);
+
             Project saved = projectDAO.save(project);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Project fullProject = projectDAO.findById(saved.getId())
+                    .orElseThrow(() -> new RuntimeException(
+                            "CRITICAL: Could not find project after save! ID: " + saved.getId()));
+
             return Response.status(Response.Status.CREATED)
-                    .entity(ApiResponse.success("Project created successfully", saved))
+                    .entity(ApiResponse.success("Project created successfully", fullProject))
                     .build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiResponse.error("Error creating project: " + e.getMessage()))
                     .build();
@@ -91,14 +109,38 @@ public class ProjectResource {
     @Path("/{id}")
     public Response updateProject(@PathParam("id") Long id, Project project) {
         try {
-            if (!projectDAO.existsById(id)) {
+            Project existing = projectDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Project not found with id: " + id))
                         .build();
             }
 
-            project.setId(id);
-            Project updated = projectDAO.update(project);
+            // Update scalar fields
+            if (project.getTitle() != null)
+                existing.setTitle(project.getTitle());
+            if (project.getDescription() != null)
+                existing.setDescription(project.getDescription());
+            if (project.getStartDate() != null)
+                existing.setStartDate(project.getStartDate());
+            if (project.getEndDate() != null)
+                existing.setEndDate(project.getEndDate());
+            if (project.getLocation() != null)
+                existing.setLocation(project.getLocation());
+            if (project.getStatus() != null)
+                existing.setStatus(project.getStatus());
+            if (project.getMaxVolunteers() != null)
+                existing.setMaxVolunteers(project.getMaxVolunteers());
+            if (project.getCurrentVolunteers() != null)
+                existing.setCurrentVolunteers(project.getCurrentVolunteers());
+
+            // Handle logical updates (e.g. changing organization) if necessary, but careful
+            // with full object replacement
+            // For now assuming organization change is not primary use case of simple Edit
+            // or handled carefully
+
+            Project updated = projectDAO.update(existing);
             return Response.ok(ApiResponse.success("Project updated successfully", updated))
                     .build();
         } catch (Exception e) {

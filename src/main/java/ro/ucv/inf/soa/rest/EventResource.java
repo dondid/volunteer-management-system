@@ -17,12 +17,13 @@ import java.util.List;
 public class EventResource {
 
     private final EventDAO eventDAO = new EventDAOImpl();
+    private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
 
     @GET
     public Response getAllEvents(@QueryParam("projectId") Long projectId,
-                                 @QueryParam("status") String status,
-                                 @QueryParam("upcoming") Boolean upcoming,
-                                 @QueryParam("available") Boolean available) {
+            @QueryParam("status") String status,
+            @QueryParam("upcoming") Boolean upcoming,
+            @QueryParam("available") Boolean available) {
         try {
             List<Event> events;
             if (upcoming != null && upcoming) {
@@ -79,11 +80,25 @@ public class EventResource {
                         .build();
             }
 
+            // Explicit load match
+            ro.ucv.inf.soa.model.Project project = projectDAO.findById(event.getProject().getId()).orElse(null);
+            if (project == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Project not found with id: " + event.getProject().getId()))
+                        .build();
+            }
+            event.setProject(project);
+
             Event saved = eventDAO.save(event);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Event fullEvent = eventDAO.findById(saved.getId()).orElse(saved);
+
             return Response.status(Response.Status.CREATED)
-                    .entity(ApiResponse.success("Event created successfully", saved))
+                    .entity(ApiResponse.success("Event created successfully", fullEvent))
                     .build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiResponse.error("Error creating event: " + e.getMessage()))
                     .build();
@@ -94,14 +109,33 @@ public class EventResource {
     @Path("/{id}")
     public Response updateEvent(@PathParam("id") Long id, Event event) {
         try {
-            if (!eventDAO.existsById(id)) {
+            Event existing = eventDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Event not found with id: " + id))
                         .build();
             }
 
-            event.setId(id);
-            Event updated = eventDAO.update(event);
+            // Update scalar fields
+            if (event.getTitle() != null)
+                existing.setTitle(event.getTitle());
+            if (event.getDescription() != null)
+                existing.setDescription(event.getDescription());
+            if (event.getEventDate() != null)
+                existing.setEventDate(event.getEventDate());
+            if (event.getLocation() != null)
+                existing.setLocation(event.getLocation());
+            if (event.getMaxParticipants() != null)
+                existing.setMaxParticipants(event.getMaxParticipants());
+            if (event.getCurrentParticipants() != null)
+                existing.setCurrentParticipants(event.getCurrentParticipants());
+            if (event.getStatus() != null)
+                existing.setStatus(event.getStatus());
+
+            // Note: Project association change is not handled here to avoid complexity
+
+            Event updated = eventDAO.update(existing);
             return Response.ok(ApiResponse.success("Event updated successfully", updated))
                     .build();
         } catch (Exception e) {

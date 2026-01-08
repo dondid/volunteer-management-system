@@ -17,11 +17,13 @@ import java.util.List;
 public class AssignmentResource {
 
     private final AssignmentDAO assignmentDAO = new AssignmentDAOImpl();
+    private final ro.ucv.inf.soa.dao.VolunteerDAO volunteerDAO = new ro.ucv.inf.soa.dao.VolunteerDAOImpl();
+    private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
 
     @GET
     public Response getAllAssignments(@QueryParam("volunteerId") Long volunteerId,
-                                      @QueryParam("projectId") Long projectId,
-                                      @QueryParam("status") String status) {
+            @QueryParam("projectId") Long projectId,
+            @QueryParam("status") String status) {
         try {
             List<Assignment> assignments;
             if (volunteerId != null && projectId != null) {
@@ -78,11 +80,35 @@ public class AssignmentResource {
                         .build();
             }
 
+            // Explicitly load related entities to ensure they exist and are attached
+            ro.ucv.inf.soa.model.Volunteer volunteer = volunteerDAO.findById(assignment.getVolunteer().getId())
+                    .orElse(null);
+            if (volunteer == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Volunteer not found with id: " + assignment.getVolunteer().getId()))
+                        .build();
+            }
+
+            ro.ucv.inf.soa.model.Project project = projectDAO.findById(assignment.getProject().getId()).orElse(null);
+            if (project == null) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Project not found with id: " + assignment.getProject().getId()))
+                        .build();
+            }
+
+            assignment.setVolunteer(volunteer);
+            assignment.setProject(project);
+
             Assignment saved = assignmentDAO.save(assignment);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Assignment fullAssignment = assignmentDAO.findById(saved.getId()).orElse(saved);
+
             return Response.status(Response.Status.CREATED)
-                    .entity(ApiResponse.success("Assignment created successfully", saved))
+                    .entity(ApiResponse.success("Assignment created successfully", fullAssignment))
                     .build();
         } catch (Exception e) {
+            e.printStackTrace(); // Log detailed error
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiResponse.error("Error creating assignment: " + e.getMessage()))
                     .build();
@@ -93,14 +119,25 @@ public class AssignmentResource {
     @Path("/{id}")
     public Response updateAssignment(@PathParam("id") Long id, Assignment assignment) {
         try {
-            if (!assignmentDAO.existsById(id)) {
+            Assignment existing = assignmentDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Assignment not found with id: " + id))
                         .build();
             }
 
-            assignment.setId(id);
-            Assignment updated = assignmentDAO.update(assignment);
+            // Update scalar fields
+            if (assignment.getAssignmentDate() != null)
+                existing.setAssignmentDate(assignment.getAssignmentDate());
+            if (assignment.getRole() != null)
+                existing.setRole(assignment.getRole());
+            if (assignment.getNotes() != null)
+                existing.setNotes(assignment.getNotes());
+            if (assignment.getStatus() != null)
+                existing.setStatus(assignment.getStatus());
+
+            Assignment updated = assignmentDAO.update(existing);
             return Response.ok(ApiResponse.success("Assignment updated successfully", updated))
                     .build();
         } catch (Exception e) {

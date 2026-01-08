@@ -20,7 +20,7 @@ public class SkillResource {
 
     @GET
     public Response getAllSkills(@QueryParam("category") String category,
-                                 @QueryParam("name") String name) {
+            @QueryParam("name") String name) {
         try {
             List<Skill> skills;
             if (category != null) {
@@ -84,14 +84,23 @@ public class SkillResource {
     @Path("/{id}")
     public Response updateSkill(@PathParam("id") Long id, Skill skill) {
         try {
-            if (!skillDAO.existsById(id)) {
+            Skill existing = skillDAO.findById(id).orElse(null);
+
+            if (existing == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity(ApiResponse.error("Skill not found with id: " + id))
                         .build();
             }
 
-            skill.setId(id);
-            Skill updated = skillDAO.update(skill);
+            // Update scalar fields
+            if (skill.getName() != null)
+                existing.setName(skill.getName());
+            if (skill.getDescription() != null)
+                existing.setDescription(skill.getDescription());
+            if (skill.getCategory() != null)
+                existing.setCategory(skill.getCategory());
+
+            Skill updated = skillDAO.update(existing);
             return Response.ok(ApiResponse.success("Skill updated successfully", updated))
                     .build();
         } catch (Exception e) {

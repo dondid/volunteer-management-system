@@ -44,7 +44,6 @@ public class Event {
     // Relații
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
-    @JsonIgnore
     private Project project;
 
     @JsonIgnore
