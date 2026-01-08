@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer Management System - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">
+          <i class="bi bi-people-fill"></i> Volunteer Management System
+        </span>
+        <span class="text-white">REST API Dashboard</span>
+      </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+      <!-- Tabs Navigation -->
+      <ul
+        class="nav nav-tabs"
+        id="mainTabs"
+        role="tablist"
+        aria-label="Navigare secțiuni"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="organizations-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#organizations"
+            type="button"
+            role="tab"
+            aria-controls="organizations"
+            aria-selected="true"
+          >
+            <i class="bi bi-building"></i> Organizații
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="volunteers-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#volunteers"
+            type="button"
+            role="tab"
+            aria-controls="volunteers"
+            aria-selected="false"
+          >
+            <i class="bi bi-person-badge"></i> Voluntari
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="projects-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#projects"
+            type="button"
+            role="tab"
+            aria-controls="projects"
+            aria-selected="false"
+          >
+            <i class="bi bi-folder"></i> Proiecte
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="skills-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#skills"
+            type="button"
+            role="tab"
+            aria-controls="skills"
+            aria-selected="false"
+          >
+            <i class="bi bi-star"></i> Competențe
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="events-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#events"
+            type="button"
+            role="tab"
+            aria-controls="events"
+            aria-selected="false"
+          >
+            <i class="bi bi-calendar-event"></i> Evenimente
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="assignments-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#assignments"
+            type="button"
+            role="tab"
+            aria-controls="assignments"
+            aria-selected="false"
+          >
+            <i class="bi bi-link-45deg"></i> Asignări
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="attendance-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#attendance"
+            type="button"
+            role="tab"
+            aria-controls="attendance"
+            aria-selected="false"
+          >
+            <i class="bi bi-clock-history"></i> Prezență
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="certificates-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#certificates"
+            type="button"
+            role="tab"
+            aria-controls="certificates"
+            aria-selected="false"
+          >
+            <i class="bi bi-award"></i> Certificate
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="feedback-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#feedback"
+            type="button"
+            role="tab"
+            aria-controls="feedback"
+            aria-selected="false"
+          >
+            <i class="bi bi-chat-left-text"></i> Feedback
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="statistics-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#statistics"
+            type="button"
+            role="tab"
+            aria-controls="statistics"
+            aria-selected="false"
+          >
+            <i class="bi bi-graph-up"></i> Statistici
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-3" id="mainTabContent">
+        <!-- Organizations Tab -->
+        <div
+          class="tab-pane fade show active"
+          id="organizations"
+          role="tabpanel"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Organizații</h3>
+            <button class="btn btn-primary" onclick="showOrganizationForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Organizație
+            </button>
+          </div>
+          <div id="organizations-list"></div>
+        </div>
+
+        <!-- Volunteers Tab -->
+        <div class="tab-pane fade" id="volunteers" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Voluntari</h3>
+            <button class="btn btn-primary" onclick="showVolunteerForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Voluntar
+            </button>
+          </div>
+          <div id="volunteers-list"></div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div class="tab-pane fade" id="projects" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Proiecte</h3>
+            <button class="btn btn-primary" onclick="showProjectForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Proiect
+            </button>
+          </div>
+          <div class="mb-3">
+            <label for="project-filter" class="form-label visually-hidden"
+              >Filtrare proiecte</label
+            >
+            <select
+              class="form-select filter-select"
+              id="project-filter"
+              onchange="loadProjects()"
+              aria-label="Filtrare proiecte"
+            >
+              <option value="">Toate proiectele</option>
+              <option value="available">Disponibile</option>
+              <option value="ACTIVE">Active</option>
+              <option value="COMPLETED">Finalizate</option>
+            </select>
+          </div>
+          <div id="projects-list"></div>
+        </div>
+
+        <!-- Skills Tab -->
+        <div class="tab-pane fade" id="skills" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Competențe</h3>
+            <button class="btn btn-primary" onclick="showSkillForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Competență
+            </button>
+          </div>
+          <div id="skills-list"></div>
+        </div>
+
+        <!-- Events Tab -->
+        <div class="tab-pane fade" id="events" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Evenimente</h3>
+            <button class="btn btn-primary" onclick="showEventForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Eveniment
+            </button>
+          </div>
+          <div class="mb-3">
+            <label for="event-filter" class="form-label visually-hidden"
+              >Filtrare evenimente</label
+            >
+            <select
+              class="form-select filter-select"
+              id="event-filter"
+              onchange="loadEvents()"
+              aria-label="Filtrare evenimente"
+            >
+              <option value="">Toate evenimentele</option>
+              <option value="upcoming">Viitoare</option>
+              <option value="available">Disponibile</option>
+            </select>
+          </div>
+          <div id="events-list"></div>
+        </div>
+
+        <!-- Assignments Tab -->
+        <div class="tab-pane fade" id="assignments" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Asignări</h3>
+            <button class="btn btn-primary" onclick="showAssignmentForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Asignare
+            </button>
+          </div>
+          <div id="assignments-list"></div>
+        </div>
+
+        <!-- Attendance Tab -->
+        <div class="tab-pane fade" id="attendance" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Prezență</h3>
+            <button class="btn btn-primary" onclick="showAttendanceForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Prezență
+            </button>
+          </div>
+          <div id="attendance-list"></div>
+        </div>
+
+        <!-- Certificates Tab -->
+        <div class="tab-pane fade" id="certificates" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Certificate</h3>
+            <button class="btn btn-primary" onclick="showCertificateForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Certificat
+            </button>
+          </div>
+          <div id="certificates-list"></div>
+        </div>
+
+        <!-- Feedback Tab -->
+        <div class="tab-pane fade" id="feedback" role="tabpanel">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Feedback</h3>
+            <button class="btn btn-primary" onclick="showFeedbackForm()">
+              <i class="bi bi-plus-circle"></i> Adaugă Feedback
+            </button>
+          </div>
+          <div id="feedback-list"></div>
+        </div>
+
+        <!-- Statistics Tab -->
+        <div class="tab-pane fade" id="statistics" role="tabpanel">
+          <h3>Statistici</h3>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <button
+                class="btn btn-info w-100"
+                onclick="loadStatistics('overview')"
+              >
+                <i class="bi bi-bar-chart"></i> Statistici Generale
+              </button>
+            </div>
+            <div class="col-md-6">
+              <button
+                class="btn btn-info w-100"
+                onclick="loadStatistics('hours-per-volunteer')"
+              >
+                <i class="bi bi-clock"></i> Ore per Voluntar
+              </button>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <button
+                class="btn btn-info w-100"
+                onclick="loadStatistics('volunteers-per-organization')"
+              >
+                <i class="bi bi-people"></i> Voluntari per Organizație
+              </button>
+            </div>
+            <div class="col-md-6">
+              <button
+                class="btn btn-info w-100"
+                onclick="loadStatistics('most-requested-skills')"
+              >
+                <i class="bi bi-star"></i> Competențe Cerute
+              </button>
+            </div>
+          </div>
+          <div id="statistics-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modals will be inserted here by JavaScript -->
+    <div id="modals-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
