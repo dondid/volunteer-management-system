@@ -34,6 +34,13 @@
             <version>${jersey.version}</version>
         </dependency>
 
+        <!-- JAX-RS Client -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+
         <!-- JSON Support -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
