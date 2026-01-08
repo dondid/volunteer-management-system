@@ -1,9 +1,9 @@
 package ro.ucv.inf.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,18 +41,18 @@ public class Volunteer {
     @Column(length = 100)
     private String county;
 
-    @Column(name = "registration_date", nullable = false)
-    private LocalDate registrationDate;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private VolunteerStatus status = VolunteerStatus.ACTIVE;
+    @Column(columnDefinition = "TEXT")
+    private String bio;
 
     @Column(name = "avatar_url", length = 500)
     private String avatarUrl;
 
-    @Column(columnDefinition = "TEXT")
-    private String bio;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private VolunteerStatus status = VolunteerStatus.ACTIVE;
+
+    @Column(name = "registration_date", nullable = false)
+    private LocalDate registrationDate;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -60,27 +60,22 @@ public class Volunteer {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VolunteerSkill> volunteerSkills = new ArrayList<>();
+    // Relații - cu @JsonIgnore
+    @JsonIgnore
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Assignment> assignments;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Assignment> assignments = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<VolunteerSkill> skills;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Certificate> certificates = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EventParticipant> eventParticipations;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EventParticipant> eventParticipations = new ArrayList<>();
-
-    public Volunteer() {
-    }
-
-    public Volunteer(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.registrationDate = LocalDate.now();
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "volunteer", fetch = FetchType.LAZY)
+    private List<Certificate> certificates;
 
     @PrePersist
     protected void onCreate() {
@@ -94,6 +89,16 @@ public class Volunteer {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    // Constructors
+    public Volunteer() {
+    }
+
+    public Volunteer(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     // Getters and Setters
@@ -177,20 +182,12 @@ public class Volunteer {
         this.county = county;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    public String getBio() {
+        return bio;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public VolunteerStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(VolunteerStatus status) {
-        this.status = status;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public String getAvatarUrl() {
@@ -201,28 +198,36 @@ public class Volunteer {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getBio() {
-        return bio;
+    public VolunteerStatus getStatus() {
+        return status;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setStatus(VolunteerStatus status) {
+        this.status = status;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public List<VolunteerSkill> getVolunteerSkills() {
-        return volunteerSkills;
-    }
-
-    public void setVolunteerSkills(List<VolunteerSkill> volunteerSkills) {
-        this.volunteerSkills = volunteerSkills;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public List<Assignment> getAssignments() {
@@ -233,12 +238,12 @@ public class Volunteer {
         this.assignments = assignments;
     }
 
-    public List<Certificate> getCertificates() {
-        return certificates;
+    public List<VolunteerSkill> getSkills() {
+        return skills;
     }
 
-    public void setCertificates(List<Certificate> certificates) {
-        this.certificates = certificates;
+    public void setSkills(List<VolunteerSkill> skills) {
+        this.skills = skills;
     }
 
     public List<EventParticipant> getEventParticipations() {
@@ -249,6 +254,14 @@ public class Volunteer {
         this.eventParticipations = eventParticipations;
     }
 
+    public List<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
+    }
+
     public String getFullName() {
         return firstName + " " + lastName;
     }
@@ -257,7 +270,8 @@ public class Volunteer {
     public String toString() {
         return "Volunteer{" +
                 "id=" + id +
-                ", name='" + getFullName() + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", status=" + status +
                 '}';

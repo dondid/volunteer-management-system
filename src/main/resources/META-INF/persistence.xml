@@ -10,32 +10,46 @@
 
         <!-- Entități -->
         <class>ro.ucv.inf.soa.model.Organization</class>
+        <class>ro.ucv.inf.soa.model.OrganizationStatus</class>
         <class>ro.ucv.inf.soa.model.Volunteer</class>
-        <class>ro.ucv.inf.soa.model.Skill</class>
-        <class>ro.ucv.inf.soa.model.VolunteerSkill</class>
+        <class>ro.ucv.inf.soa.model.VolunteerStatus</class>
         <class>ro.ucv.inf.soa.model.Project</class>
-        <class>ro.ucv.inf.soa.model.ProjectSkill</class>
-        <class>ro.ucv.inf.soa.model.Assignment</class>
-        <class>ro.ucv.inf.soa.model.Attendance</class>
-        <class>ro.ucv.inf.soa.model.Certificate</class>
+        <class>ro.ucv.inf.soa.model.ProjectStatus</class>
         <class>ro.ucv.inf.soa.model.Event</class>
+        <class>ro.ucv.inf.soa.model.EventStatus</class>
         <class>ro.ucv.inf.soa.model.EventParticipant</class>
+        <class>ro.ucv.inf.soa.model.Assignment</class>
+        <class>ro.ucv.inf.soa.model.AssignmentStatus</class>
+        <class>ro.ucv.inf.soa.model.Attendance</class>
+        <class>ro.ucv.inf.soa.model.AttendanceStatus</class>
+        <class>ro.ucv.inf.soa.model.Certificate</class>
+        <class>ro.ucv.inf.soa.model.Skill</class>
+        <class>ro.ucv.inf.soa.model.SkillCategory</class>
+        <class>ro.ucv.inf.soa.model.VolunteerSkill</class>
+        <class>ro.ucv.inf.soa.model.ProjectSkill</class>
+        <class>ro.ucv.inf.soa.model.ProficiencyLevel</class>
         <class>ro.ucv.inf.soa.model.Feedback</class>
+        <class>ro.ucv.inf.soa.model.FeedbackType</class>
 
         <properties>
             <!-- Database Connection -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/volunteer_db?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/volunteer_db?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;useUnicode=true"/>
             <property name="jakarta.persistence.jdbc.user" value="volunteer_user"/>
             <property name="jakarta.persistence.jdbc.password" value="volunteer_pass"/>
 
             <!-- Hibernate Settings -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!-- Connection Pool -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
         </properties>
     </persistence-unit>
 </persistence>

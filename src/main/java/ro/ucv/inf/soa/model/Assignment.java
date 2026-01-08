@@ -1,9 +1,9 @@
 package ro.ucv.inf.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,14 +14,6 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "volunteer_id", nullable = false)
-    private Volunteer volunteer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", nullable = false)
-    private Project project;
-
     @Column(name = "assignment_date", nullable = false)
     private LocalDate assignmentDate;
 
@@ -29,7 +21,7 @@ public class Assignment {
     private String role;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private AssignmentStatus status = AssignmentStatus.PENDING;
 
     @Column(columnDefinition = "TEXT")
@@ -41,12 +33,37 @@ public class Assignment {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attendance> attendances = new ArrayList<>();
+    // Relații
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "volunteer_id", nullable = false)
+    @JsonIgnore
+    private Volunteer volunteer;
 
-    @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Feedback> feedbacks = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id", nullable = false)
+    @JsonIgnore
+    private Project project;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Attendance> attendances;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Feedback> feedbacks;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
+    // Constructors
     public Assignment() {
     }
 
@@ -56,20 +73,6 @@ public class Assignment {
         this.assignmentDate = assignmentDate;
     }
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-        if (assignmentDate == null) {
-            assignmentDate = LocalDate.now();
-        }
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
-
     // Getters and Setters
     public Long getId() {
         return id;
@@ -77,22 +80,6 @@ public class Assignment {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Volunteer getVolunteer() {
-        return volunteer;
-    }
-
-    public void setVolunteer(Volunteer volunteer) {
-        this.volunteer = volunteer;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public LocalDate getAssignmentDate() {
@@ -131,8 +118,32 @@ public class Assignment {
         return createdAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public List<Attendance> getAttendances() {
@@ -151,22 +162,12 @@ public class Assignment {
         this.feedbacks = feedbacks;
     }
 
-    public void addAttendance(Attendance attendance) {
-        attendances.add(attendance);
-        attendance.setAssignment(this);
-    }
-
-    public void removeAttendance(Attendance attendance) {
-        attendances.remove(attendance);
-        attendance.setAssignment(null);
-    }
-
     @Override
     public String toString() {
         return "Assignment{" +
                 "id=" + id +
-                ", volunteer=" + (volunteer != null ? volunteer.getFullName() : null) +
-                ", project=" + (project != null ? project.getTitle() : null) +
+                ", assignmentDate=" + assignmentDate +
+                ", role='" + role + '\'' +
                 ", status=" + status +
                 '}';
     }

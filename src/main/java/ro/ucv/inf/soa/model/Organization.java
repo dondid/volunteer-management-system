@@ -1,8 +1,8 @@
 package ro.ucv.inf.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,18 +25,18 @@ public class Organization {
     @Column(length = 20)
     private String phone;
 
-    @Column(length = 300)
+    @Column(columnDefinition = "TEXT")
     private String address;
 
     @Column(length = 200)
     private String website;
 
-    @Column(name = "registration_number", unique = true, length = 50)
+    @Column(name = "registration_number", length = 50)
     private String registrationNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private OrganizationStatus status = OrganizationStatus.ACTIVE;
+    @Column(nullable = false, length = 20)
+    private OrganizationStatus status = OrganizationStatus.PENDING;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -44,16 +44,10 @@ public class Organization {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Project> projects = new ArrayList<>();
-
-    public Organization() {
-    }
-
-    public Organization(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    // Relații - cu @JsonIgnore pentru a evita lazy initialization
+    @JsonIgnore
+    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Project> projects;
 
     @PrePersist
     protected void onCreate() {
@@ -64,6 +58,15 @@ public class Organization {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    // Constructors
+    public Organization() {
+    }
+
+    public Organization(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     // Getters and Setters
@@ -143,8 +146,16 @@ public class Organization {
         return createdAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public List<Project> getProjects() {
@@ -153,16 +164,6 @@ public class Organization {
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;
-    }
-
-    public void addProject(Project project) {
-        projects.add(project);
-        project.setOrganization(this);
-    }
-
-    public void removeProject(Project project) {
-        projects.remove(project);
-        project.setOrganization(null);
     }
 
     @Override

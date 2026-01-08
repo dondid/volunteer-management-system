@@ -1,9 +1,9 @@
 package ro.ucv.inf.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,10 +13,6 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organization_id", nullable = false)
-    private Organization organization;
 
     @Column(nullable = false, length = 200)
     private String title;
@@ -40,17 +36,17 @@ public class Project {
     private String county;
 
     @Column(name = "max_volunteers")
-    private Integer maxVolunteers = 10;
+    private Integer maxVolunteers;
 
     @Column(name = "current_volunteers")
-    private Integer currentVolunteers = 0;
+    private Integer currentVolunteers;
+
+    @Column(length = 500)
+    private String imageUrl;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private ProjectStatus status = ProjectStatus.DRAFT;
-
-    @Column(name = "image_url", length = 500)
-    private String imageUrl;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -58,33 +54,50 @@ public class Project {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProjectSkill> projectSkills = new ArrayList<>();
+    // Relații
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organization_id", nullable = false)
+    @JsonIgnore
+    private Organization organization;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Assignment> assignments = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Assignment> assignments;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Event> events = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Event> events;
 
-    public Project() {
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProjectSkill> requiredSkills;
 
-    public Project(String title, Organization organization, LocalDate startDate) {
-        this.title = title;
-        this.organization = organization;
-        this.startDate = startDate;
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    private List<Certificate> certificates;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (currentVolunteers == null) {
+            currentVolunteers = 0;
+        }
     }
 
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    // Constructors
+    public Project() {
+    }
+
+    public Project(String title, LocalDate startDate, Organization organization) {
+        this.title = title;
+        this.startDate = startDate;
+        this.organization = organization;
     }
 
     // Getters and Setters
@@ -94,14 +107,6 @@ public class Project {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
     }
 
     public String getTitle() {
@@ -176,14 +181,6 @@ public class Project {
         this.currentVolunteers = currentVolunteers;
     }
 
-    public ProjectStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ProjectStatus status) {
-        this.status = status;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -192,20 +189,36 @@ public class Project {
         this.imageUrl = imageUrl;
     }
 
+    public ProjectStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProjectStatus status) {
+        this.status = status;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public List<ProjectSkill> getProjectSkills() {
-        return projectSkills;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public void setProjectSkills(List<ProjectSkill> projectSkills) {
-        this.projectSkills = projectSkills;
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     public List<Assignment> getAssignments() {
@@ -224,11 +237,28 @@ public class Project {
         this.events = events;
     }
 
+    public List<ProjectSkill> getRequiredSkills() {
+        return requiredSkills;
+    }
+
+    public void setRequiredSkills(List<ProjectSkill> requiredSkills) {
+        this.requiredSkills = requiredSkills;
+    }
+
+    public List<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", startDate=" + startDate +
                 ", status=" + status +
                 '}';
     }

@@ -1,8 +1,8 @@
 package ro.ucv.inf.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,10 +12,6 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", nullable = false)
-    private Project project;
 
     @Column(nullable = false, length = 200)
     private String title;
@@ -30,13 +26,13 @@ public class Event {
     private String location;
 
     @Column(name = "max_participants")
-    private Integer maxParticipants = 50;
+    private Integer maxParticipants;
 
     @Column(name = "current_participants")
-    private Integer currentParticipants = 0;
+    private Integer currentParticipants;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private EventStatus status = EventStatus.SCHEDULED;
 
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -45,27 +41,38 @@ public class Event {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EventParticipant> participants = new ArrayList<>();
+    // Relații
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id", nullable = false)
+    @JsonIgnore
+    private Project project;
 
-    public Event() {
-    }
-
-    public Event(Project project, String title, LocalDateTime eventDate) {
-        this.project = project;
-        this.title = title;
-        this.eventDate = eventDate;
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EventParticipant> participants;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (currentParticipants == null) {
+            currentParticipants = 0;
+        }
     }
 
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    // Constructors
+    public Event() {
+    }
+
+    public Event(String title, LocalDateTime eventDate, Project project) {
+        this.title = title;
+        this.eventDate = eventDate;
+        this.project = project;
     }
 
     // Getters and Setters
@@ -75,14 +82,6 @@ public class Event {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public String getTitle() {
@@ -145,8 +144,24 @@ public class Event {
         return createdAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public List<EventParticipant> getParticipants() {
@@ -157,28 +172,12 @@ public class Event {
         this.participants = participants;
     }
 
-    public void addParticipant(EventParticipant participant) {
-        participants.add(participant);
-        participant.setEvent(this);
-        currentParticipants++;
-    }
-
-    public void removeParticipant(EventParticipant participant) {
-        participants.remove(participant);
-        participant.setEvent(null);
-        currentParticipants--;
-    }
-
-    public boolean isFull() {
-        return currentParticipants >= maxParticipants;
-    }
-
     @Override
     public String toString() {
         return "Event{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", date=" + eventDate +
+                ", eventDate=" + eventDate +
                 ", status=" + status +
                 '}';
     }
