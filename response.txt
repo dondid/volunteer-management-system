@@ -1,0 +1,1 @@
+could not initialize proxy [ro.ucv.inf.soa.model.Organization#1] - no Session (through reference chain: ro.ucv.inf.soa.dto.ApiResponse["data"]->ro.ucv.inf.soa.model.Project["organization"]->ro.ucv.inf.soa.model.Organization$HibernateProxy$eIMYE3wz["name"])

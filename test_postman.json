@@ -1,0 +1,667 @@
+{
+    "info": {
+        "_postman_id": "b3e3e3e3-3e3e-3e3e-3e3e-3e3e3e3e3e3e",
+        "name": "Volunteer Management System - Automated Suite (V3 Final)",
+        "description": "Suită completă de teste automatizate (V3 FINAL).\nInclude fix pentru capturarea ID-urilor din structura ApiResponse (jsonData.data.id).",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Setup & Config",
+            "item": [
+                {
+                    "name": "Health Check (Root)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/organizations",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "organizations"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "2. Main Flow (Create All)",
+            "item": [
+                {
+                    "name": "Create Organization",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"orgId\", jsonData.data.id);",
+                                    "    console.log(\"Organization Created with ID: \" + jsonData.data.id);",
+                                    "} else {",
+                                    "    console.error(\"Organization creation failed to return ID in data field\");",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Org AutoTest {{$randomInt}}\",\n    \"email\": \"contact_{{$randomInt}}@autotest.com\",\n    \"phone\": \"07{{$randomInt}}000\",\n    \"website\": \"https://auto{{$randomInt}}.com\",\n    \"address\": \"Test Lane 1\",\n    \"description\": \"Automated Test Org\",\n    \"registrationNumber\": \"REG-{{$randomInt}}\",\n    \"status\": \"ACTIVE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/organizations",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "organizations"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Volunteer",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"volId\", jsonData.data.id);",
+                                    "    console.log(\"Volunteer Created with ID: \" + jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"firstName\": \"Vol Auto\",\n    \"lastName\": \"Test {{$randomInt}}\",\n    \"email\": \"vol_{{$randomInt}}@autotest.com\",\n    \"phone\": \"07{{$randomInt}}111\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"cnp\": \"1900101{{$randomInt}}\",\n    \"address\": \"Vol Street\",\n    \"city\": \"Test City\",\n    \"county\": \"Test County\",\n    \"status\": \"ACTIVE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/volunteers",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "volunteers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Skill",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"skillId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Skill Auto {{$randomInt}}\",\n    \"category\": \"TECHNICAL\",\n    \"description\": \"Automated Skill\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/skills",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "skills"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Project (using OrgId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"projectId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Project Auto {{$randomInt}}\",\n    \"description\": \"Automated Project Desc\",\n    \"startDate\": \"2026-06-01\",\n    \"endDate\": \"2026-12-31\",\n    \"location\": \"Online\",\n    \"status\": \"ACTIVE\",\n    \"maxVolunteers\": 50,\n    \"organization\": {\n        \"id\": \"{{orgId}}\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "projects"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Event (using ProjectId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"eventId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Event Auto {{$randomInt}}\",\n    \"description\": \"Automated Event Desc\",\n    \"eventDate\": \"2026-07-01T10:00:00\",\n    \"location\": \"Main Hall\",\n    \"maxParticipants\": 100,\n    \"status\": \"SCHEDULED\",\n    \"project\": {\n        \"id\": \"{{projectId}}\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/events",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "events"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Assignment (using VolId + ProjectId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"assignmentId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"volunteer\": { \"id\": \"{{volId}}\" },\n    \"project\": { \"id\": \"{{projectId}}\" },\n    \"role\": \"Auto Tester\",\n    \"assignmentDate\": \"2026-06-02\",\n    \"status\": \"ACCEPTED\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/assignments",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "assignments"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Attendance (using AssignmentId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"attendanceId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"date\": \"2026-06-03\",\n    \"hoursWorked\": 5,\n    \"notes\": \"Auto checked in\",\n    \"verifiedBy\": \"System\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/attendance",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "attendance"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Feedback (using AssignmentId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"feedbackId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"rating\": 5,\n    \"comment\": \"Excellent auto test experience\",\n    \"feedbackType\": \"VOLUNTEER_TO_ORG\",\n    \"feedbackDate\": \"2026-06-04T12:00:00\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/feedback",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "feedback"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Certificate (using VolId & ProjectId)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "var jsonData = pm.response.json();",
+                                    "if(jsonData.data && jsonData.data.id) {",
+                                    "    pm.globals.set(\"certId\", jsonData.data.id);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"volunteer\": { \"id\": \"{{volId}}\" },\n    \"project\": { \"id\": \"{{projectId}}\" },\n    \"certificateNumber\": \"AUTO-CERT-{{$randomInt}}\",\n    \"description\": \"Auto Generated Certificate\",\n    \"issueDate\": \"2026-12-31\",\n    \"totalHours\": 100\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/certificates",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "certificates"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "3. Update Flow (Update All)",
+            "item": [
+                {
+                    "name": "Update Volunteer",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"{{volId}}\",\n    \"firstName\": \"Vol Auto Updated\",\n    \"lastName\": \"Test Updated\",\n    \"email\": \"vol_updated_{{$randomInt}}@autotest.com\",\n    \"status\": \"ACTIVE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/volunteers/{{volId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "volunteers",
+                                "{{volId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Organization",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"{{orgId}}\",\n    \"name\": \"Org AutoTest Updated\",\n    \"email\": \"contact_updated_{{$randomInt}}@autotest.com\",\n    \"status\": \"ACTIVE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/organizations/{{orgId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "organizations",
+                                "{{orgId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "4. Cleanup Flow (Delete All)",
+            "item": [
+                {
+                    "name": "Delete Certificate",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/certificates/{{certId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "certificates",
+                                "{{certId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Feedback",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/feedback/{{feedbackId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "feedback",
+                                "{{feedbackId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Attendance",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/attendance/{{attendanceId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "attendance",
+                                "{{attendanceId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Assignment",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/assignments/{{assignmentId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "assignments",
+                                "{{assignmentId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Event",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/events/{{eventId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "events",
+                                "{{eventId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Project",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/projects/{{projectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "projects",
+                                "{{projectId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Skill",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/skills/{{skillId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "skills",
+                                "{{skillId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Volunteer",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/volunteers/{{volId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "volunteers",
+                                "{{volId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Organization",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/organizations/{{orgId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "organizations",
+                                "{{orgId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080/volunteer-management-system/api"
+        }
+    ]
+}
