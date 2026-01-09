@@ -64,6 +64,26 @@ public class VolunteerResource {
                         .build();
             }
 
+            if (volunteer.getCnp() != null && !volunteer.getCnp().isEmpty()) {
+                if (!volunteer.getCnp().matches("^\\d{13}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("CNP must be exactly 13 digits"))
+                            .build();
+                }
+            }
+            if (!volunteer.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Invalid email format"))
+                        .build();
+            }
+            if (volunteer.getPhone() != null && !volunteer.getPhone().isEmpty()) {
+                if (!volunteer.getPhone().matches("^\\d{10}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Phone number must be exactly 10 digits"))
+                            .build();
+                }
+            }
+
             if (volunteerDAO.findByEmail(volunteer.getEmail()).isPresent()) {
                 return Response.status(Response.Status.CONFLICT)
                         .entity(ApiResponse.error("Volunteer with this email already exists"))
@@ -102,10 +122,22 @@ public class VolunteerResource {
                 volunteer.setFirstName(existing.getFirstName());
             if (volunteer.getLastName() == null)
                 volunteer.setLastName(existing.getLastName());
-            if (volunteer.getEmail() == null)
-                volunteer.setEmail(existing.getEmail());
-            if (volunteer.getPhone() == null)
-                volunteer.setPhone(existing.getPhone());
+            if (volunteer.getEmail() != null) {
+                if (!volunteer.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Invalid email format"))
+                            .build();
+                }
+                existing.setEmail(volunteer.getEmail());
+            }
+            if (volunteer.getPhone() != null) {
+                if (!volunteer.getPhone().isEmpty() && !volunteer.getPhone().matches("^\\d{10}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Phone number must be exactly 10 digits"))
+                            .build();
+                }
+                existing.setPhone(volunteer.getPhone());
+            }
             if (volunteer.getDateOfBirth() == null)
                 volunteer.setDateOfBirth(existing.getDateOfBirth());
             if (volunteer.getAddress() == null)

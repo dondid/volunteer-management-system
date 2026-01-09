@@ -93,8 +93,14 @@ public class SkillResource {
             }
 
             // Update scalar fields
-            if (skill.getName() != null)
+            if (skill.getName() != null) {
+                if (!skill.getName().equals(existing.getName()) && skillDAO.findByName(skill.getName()).isPresent()) {
+                    return Response.status(Response.Status.CONFLICT)
+                            .entity(ApiResponse.error("Skill with this name already exists"))
+                            .build();
+                }
                 existing.setName(skill.getName());
+            }
             if (skill.getDescription() != null)
                 existing.setDescription(skill.getDescription());
             if (skill.getCategory() != null)

@@ -1,8 +1,8 @@
 {
     "info": {
         "_postman_id": "b3e3e3e3-3e3e-3e3e-3e3e-3e3e3e3e3e3e",
-        "name": "Volunteer Management System - Automated Suite (V3 Final)",
-        "description": "Suită completă de teste automatizate (V3 FINAL).\nInclude fix pentru capturarea ID-urilor din structura ApiResponse (jsonData.data.id).",
+        "name": "Test ",
+        "description": "Suită completă de teste automatizate.\nInclude fix pentru capturarea ID-urilor din structura ApiResponse (jsonData.data.id).",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
@@ -64,7 +64,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"Org AutoTest {{$randomInt}}\",\n    \"email\": \"contact_{{$randomInt}}@autotest.com\",\n    \"phone\": \"07{{$randomInt}}000\",\n    \"website\": \"https://auto{{$randomInt}}.com\",\n    \"address\": \"Test Lane 1\",\n    \"description\": \"Automated Test Org\",\n    \"registrationNumber\": \"REG-{{$randomInt}}\",\n    \"status\": \"ACTIVE\"\n}"
+                            "raw": "{\n    \"name\": \"Org AutoTest {{$randomInt}}\",\n    \"email\": \"contact_{{$randomInt}}@autotest.com\",\n    \"phone\": \"0711223344\",\n    \"website\": \"https://auto{{$randomInt}}.com\",\n    \"address\": \"Test Lane 1\",\n    \"description\": \"Automated Test Org\",\n    \"registrationNumber\": \"REG-{{$randomInt}}\",\n    \"status\": \"ACTIVE\"\n}"
                         },
                         "url": {
                             "raw": "{{baseUrl}}/organizations",
@@ -109,7 +109,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"firstName\": \"Vol Auto\",\n    \"lastName\": \"Test {{$randomInt}}\",\n    \"email\": \"vol_{{$randomInt}}@autotest.com\",\n    \"phone\": \"07{{$randomInt}}111\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"cnp\": \"1900101{{$randomInt}}\",\n    \"address\": \"Vol Street\",\n    \"city\": \"Test City\",\n    \"county\": \"Test County\",\n    \"status\": \"ACTIVE\"\n}"
+                            "raw": "{\n    \"firstName\": \"Vol Auto\",\n    \"lastName\": \"Test {{$randomInt}}\",\n    \"email\": \"vol_{{$randomInt}}@autotest.com\",\n    \"phone\": \"0722123456\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"cnp\": \"1900101123456\",\n    \"address\": \"Vol Street\",\n    \"city\": \"Test City\",\n    \"county\": \"Test County\",\n    \"status\": \"ACTIVE\"\n}"
                         },
                         "url": {
                             "raw": "{{baseUrl}}/volunteers",
@@ -329,7 +329,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"date\": \"2026-06-03\",\n    \"hoursWorked\": 5,\n    \"notes\": \"Auto checked in\",\n    \"verifiedBy\": \"System\"\n}"
+                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"date\": \"2025-01-01\",\n    \"hoursWorked\": 5,\n    \"notes\": \"Auto checked in\",\n    \"verifiedBy\": \"System\"\n}"
                         },
                         "url": {
                             "raw": "{{baseUrl}}/attendance",
@@ -372,7 +372,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"rating\": 5,\n    \"comment\": \"Excellent auto test experience\",\n    \"feedbackType\": \"VOLUNTEER_TO_ORG\",\n    \"feedbackDate\": \"2026-06-04T12:00:00\"\n}"
+                            "raw": "{\n    \"assignment\": { \"id\": \"{{assignmentId}}\" },\n    \"rating\": 5,\n    \"comment\": \"Excellent auto test experience\",\n    \"feedbackType\": \"VOLUNTEER_TO_ORG\",\n    \"feedbackDate\": \"2025-01-02T12:00:00\"\n}"
                         },
                         "url": {
                             "raw": "{{baseUrl}}/feedback",

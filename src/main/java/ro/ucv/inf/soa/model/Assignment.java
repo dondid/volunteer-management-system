@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "assignments")
+@Table(name = "assignments", uniqueConstraints = @UniqueConstraint(columnNames = { "volunteer_id", "project_id" }))
 public class Assignment {
 
     @Id

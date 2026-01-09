@@ -96,6 +96,34 @@ public class AssignmentResource {
                         .build();
             }
 
+            // Professional Logic: Cannot assign to closed projects
+            if (project.getStatus() == ro.ucv.inf.soa.model.ProjectStatus.COMPLETED ||
+                    project.getStatus() == ro.ucv.inf.soa.model.ProjectStatus.CANCELLED) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Cannot assign volunteers to a " + project.getStatus() + " project"))
+                        .build();
+            }
+
+            // Check if project has reached maximum capacity
+            int currentCount = assignmentDAO.findByProjectId(assignment.getProject().getId()).size();
+            if (currentCount >= project.getMaxVolunteers()) {
+                return Response.status(Response.Status.CONFLICT)
+                        .entity(ApiResponse.error("Project has reached its maximum capacity of "
+                                + project.getMaxVolunteers() + " volunteers"))
+                        .build();
+            }
+
+            // Check for duplicate assignment
+            List<Assignment> existingAssignments = assignmentDAO.findByVolunteerAndProject(
+                    assignment.getVolunteer().getId(),
+                    assignment.getProject().getId());
+
+            if (!existingAssignments.isEmpty()) {
+                return Response.status(Response.Status.CONFLICT)
+                        .entity(ApiResponse.error("Volunteer is already assigned to this project"))
+                        .build();
+            }
+
             assignment.setVolunteer(volunteer);
             assignment.setProject(project);
 

@@ -72,6 +72,16 @@ public class AttendanceResource {
                         .entity(ApiResponse.error("Hours worked is required"))
                         .build();
             }
+            if (attendance.getHoursWorked().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Hours worked must be positive"))
+                        .build();
+            }
+            if (attendance.getDate().isAfter(java.time.LocalDate.now())) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Attendance date cannot be in the future"))
+                        .build();
+            }
 
             ro.ucv.inf.soa.model.Assignment assignment = assignmentDAO.findById(attendance.getAssignment().getId())
                     .orElse(null);
@@ -112,10 +122,22 @@ public class AttendanceResource {
             }
 
             // Update scalar fields
-            if (attendance.getDate() != null)
+            if (attendance.getDate() != null) {
+                if (attendance.getDate().isAfter(java.time.LocalDate.now())) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Attendance date cannot be in the future"))
+                            .build();
+                }
                 existing.setDate(attendance.getDate());
-            if (attendance.getHoursWorked() != null)
+            }
+            if (attendance.getHoursWorked() != null) {
+                if (attendance.getHoursWorked().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Hours worked must be positive"))
+                            .build();
+                }
                 existing.setHoursWorked(attendance.getHoursWorked());
+            }
             if (attendance.getNotes() != null)
                 existing.setNotes(attendance.getNotes());
             if (attendance.getVerifiedBy() != null)

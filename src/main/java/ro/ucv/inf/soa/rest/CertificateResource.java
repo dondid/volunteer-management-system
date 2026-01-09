@@ -73,6 +73,11 @@ public class CertificateResource {
                         .entity(ApiResponse.error("Total hours is required"))
                         .build();
             }
+            if (certificate.getTotalHours().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Total hours must be positive"))
+                        .build();
+            }
 
             if (certificateDAO.findByCertificateNumber(certificate.getCertificateNumber()).isPresent()) {
                 return Response.status(Response.Status.CONFLICT)
@@ -133,8 +138,14 @@ public class CertificateResource {
                 existing.setCertificateNumber(certificate.getCertificateNumber());
             if (certificate.getIssueDate() != null)
                 existing.setIssueDate(certificate.getIssueDate());
-            if (certificate.getTotalHours() != null)
+            if (certificate.getTotalHours() != null) {
+                if (certificate.getTotalHours().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Total hours must be positive"))
+                            .build();
+                }
                 existing.setTotalHours(certificate.getTotalHours());
+            }
             if (certificate.getDescription() != null)
                 existing.setDescription(certificate.getDescription());
             if (certificate.getSignedBy() != null)

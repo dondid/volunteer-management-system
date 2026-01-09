@@ -114,11 +114,18 @@ public abstract class GenericDAOImpl<T, ID> implements GenericDAO<T, ID> {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
+            System.out.println(
+                    "GenericDAOImpl: Attempting to delete entity " + entityClass.getSimpleName() + " with ID: " + id);
             T entity = em.find(entityClass, id);
             if (entity != null) {
+                System.out.println("GenericDAOImpl: Entity found. Removing...");
                 em.remove(entity);
+                System.out.println("GenericDAOImpl: Entity removed from context.");
+            } else {
+                System.out.println("GenericDAOImpl: Entity NOT FOUND with ID: " + id);
             }
             em.getTransaction().commit();
+            System.out.println("GenericDAOImpl: Transaction committed.");
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();

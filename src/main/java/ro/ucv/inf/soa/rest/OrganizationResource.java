@@ -58,6 +58,18 @@ public class OrganizationResource {
                         .entity(ApiResponse.error("Organization email is required"))
                         .build();
             }
+            if (!organization.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Invalid email format"))
+                        .build();
+            }
+            if (organization.getPhone() != null && !organization.getPhone().isEmpty()) {
+                if (!organization.getPhone().matches("^\\d{10}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Phone number must be exactly 10 digits"))
+                            .build();
+                }
+            }
 
             if (organizationDAO.findByEmail(organization.getEmail()).isPresent()) {
                 return Response.status(Response.Status.CONFLICT)
@@ -93,10 +105,22 @@ public class OrganizationResource {
                 existing.setName(organization.getName());
             if (organization.getDescription() != null)
                 existing.setDescription(organization.getDescription());
-            if (organization.getEmail() != null)
+            if (organization.getEmail() != null) {
+                if (!organization.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Invalid email format"))
+                            .build();
+                }
                 existing.setEmail(organization.getEmail());
-            if (organization.getPhone() != null)
+            }
+            if (organization.getPhone() != null) {
+                if (!organization.getPhone().isEmpty() && !organization.getPhone().matches("^\\d{10}$")) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Phone number must be exactly 10 digits"))
+                            .build();
+                }
                 existing.setPhone(organization.getPhone());
+            }
             if (organization.getAddress() != null)
                 existing.setAddress(organization.getAddress());
             if (organization.getWebsite() != null)

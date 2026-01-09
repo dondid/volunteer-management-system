@@ -110,8 +110,14 @@ public class FeedbackResource {
             }
 
             // Update scalar fields
-            if (feedback.getRating() != null)
+            if (feedback.getRating() != null) {
+                if (feedback.getRating() < 1 || feedback.getRating() > 5) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Rating must be between 1 and 5"))
+                            .build();
+                }
                 existing.setRating(feedback.getRating());
+            }
             if (feedback.getComment() != null)
                 existing.setComment(feedback.getComment());
             if (feedback.getFeedbackDate() != null)

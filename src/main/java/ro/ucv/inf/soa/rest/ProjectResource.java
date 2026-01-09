@@ -77,15 +77,21 @@ public class ProjectResource {
                         .build();
             }
 
-            ro.ucv.inf.soa.model.Organization org = organizationDAO.findById(project.getOrganization().getId())
+            ro.ucv.inf.soa.model.Organization organization = organizationDAO.findById(project.getOrganization().getId())
                     .orElse(null);
-            if (org == null) {
+            if (organization == null) {
                 return Response.status(Response.Status.BAD_REQUEST)
                         .entity(ApiResponse
                                 .error("Organization not found with id: " + project.getOrganization().getId()))
                         .build();
             }
-            project.setOrganization(org);
+            project.setOrganization(organization);
+
+            if (project.getEndDate() != null && project.getStartDate().isAfter(project.getEndDate())) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Start date cannot be after End date"))
+                        .build();
+            }
 
             Project saved = projectDAO.save(project);
 
@@ -126,6 +132,14 @@ public class ProjectResource {
                 existing.setStartDate(project.getStartDate());
             if (project.getEndDate() != null)
                 existing.setEndDate(project.getEndDate());
+
+            // Validate dates
+            if (existing.getEndDate() != null && existing.getStartDate().isAfter(existing.getEndDate())) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Start date cannot be after End date"))
+                        .build();
+            }
+
             if (project.getLocation() != null)
                 existing.setLocation(project.getLocation());
             if (project.getStatus() != null)
@@ -140,7 +154,13 @@ public class ProjectResource {
             // For now assuming organization change is not primary use case of simple Edit
             // or handled carefully
 
-            Project updated = projectDAO.update(existing);
+            projectDAO.update(existing);
+
+            // Reload to ensure full initialization (avoid proxy errors)
+            Project updated = projectDAO.findById(id)
+                    .orElseThrow(() -> new RuntimeException(
+                            "CRITICAL: Could not find project after update! ID: " + id));
+
             return Response.ok(ApiResponse.success("Project updated successfully", updated))
                     .build();
         } catch (Exception e) {

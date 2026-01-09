@@ -89,6 +89,12 @@ public class EventResource {
             }
             event.setProject(project);
 
+            if (event.getMaxParticipants() != null && event.getMaxParticipants() <= 0) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ApiResponse.error("Max participants must be positive"))
+                        .build();
+            }
+
             Event saved = eventDAO.save(event);
 
             // Reload to ensure full initialization (avoid proxy errors)
@@ -126,8 +132,19 @@ public class EventResource {
                 existing.setEventDate(event.getEventDate());
             if (event.getLocation() != null)
                 existing.setLocation(event.getLocation());
-            if (event.getMaxParticipants() != null)
+            if (event.getMaxParticipants() != null) {
+                if (event.getMaxParticipants() <= 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Max participants must be positive"))
+                            .build();
+                }
+                if (existing.getCurrentParticipants() > event.getMaxParticipants()) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse.error("Max participants cannot be less than current participants"))
+                            .build();
+                }
                 existing.setMaxParticipants(event.getMaxParticipants());
+            }
             if (event.getCurrentParticipants() != null)
                 existing.setCurrentParticipants(event.getCurrentParticipants());
             if (event.getStatus() != null)

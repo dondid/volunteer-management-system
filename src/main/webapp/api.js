@@ -4,7 +4,13 @@ const API_BASE = '/volunteer-management-system/api';
 // Generic API functions
 async function apiGet(endpoint) {
     try {
-        const response = await fetch(`${API_BASE}${endpoint}`);
+        const response = await fetch(`${API_BASE}${endpoint}`, {
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
         const data = await response.json();
         if (data.success) {
             return data.data;
