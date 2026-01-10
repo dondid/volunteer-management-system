@@ -131,4 +131,4 @@ Toate răspunsurile REST (Succes sau Eroare) au aceeași structură pentru o int
 ---
 
 ## 👤 Autor
-Proiect realizat de **Daniel** pentru Masterat Inginerie Software.
+Proiect realizat de **Daniel** pentru Masterat Distributed), conform cerințelor cursului Distributed Services Oriented Architectures.
