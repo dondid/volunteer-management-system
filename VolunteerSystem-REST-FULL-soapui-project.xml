@@ -608,7 +608,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"name": "Rest Org ${= (int)(Math.random()*10000) }", "email": "rest_org_${= (int)(Math.random()*10000) }@test.com", "phone": "0711223344", "website": "https://resttest.com", "address": "Rest Lane", "registrationNumber": "REG-${= (int)(Math.random()*10000) }", "status": "ACTIVE"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="961a138b-4e39-4fcb-87fe-cfb95abcc434" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="961a138b-4e39-4fcb-87fe-cfb95abcc434" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -637,7 +637,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="26c9e398-1232-4935-a70e-cc123f1b841e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="26c9e398-1232-4935-a70e-cc123f1b841e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#orgId}"/>
@@ -653,7 +653,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"id": "${#Project#orgId}", "name": "Rest Org Updated", "email": "rest_org_upd_${= (int)(Math.random()*10000) }@test.com", "status": "ACTIVE"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="7199ee21-9fb4-4a14-83de-3f70ed47c802" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="7199ee21-9fb4-4a14-83de-3f70ed47c802" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
               <con:entry key="id" value="${#Project#orgId}"/>
@@ -669,7 +669,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="47e99af6-d247-45b9-bfbe-44898ce3dead" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="47e99af6-d247-45b9-bfbe-44898ce3dead" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#orgId}"/>
@@ -693,7 +693,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"firstName": "Rest", "lastName": "User ${= (int)(Math.random()*10000) }", "email": "rest_vol_${= (int)(Math.random()*10000) }@test.com", "phone": "0722123456", "dateOfBirth": "1990-01-01", "cnp": "1900101123456", "address": "Rest Street", "city": "Rest City", "county": "Rest County", "status": "ACTIVE"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="96f3de36-bd7e-45f2-906b-ade9b85e373e" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/volunteers</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="96f3de36-bd7e-45f2-906b-ade9b85e373e" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -722,7 +722,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="a81dcd28-440e-43c0-a5d1-894eae1becc5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/volunteers/39</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="a81dcd28-440e-43c0-a5d1-894eae1becc5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#volunteerId}"/>
@@ -738,7 +738,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"id": "${#Project#volunteerId}", "firstName": "RestUpdated", "lastName": "UserUpdated", "email": "rest_vol_upd_${= (int)(Math.random()*10000) }@test.com", "status": "ACTIVE"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="5ffee874-46ff-4a16-adc9-c6cabd90a910" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/volunteers/39</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="5ffee874-46ff-4a16-adc9-c6cabd90a910" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
               <con:entry key="id" value="${#Project#volunteerId}"/>
@@ -754,7 +754,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="7a5bf6b5-6b32-48a1-95f5-3ec18dec80d4" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/volunteers/39</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="7a5bf6b5-6b32-48a1-95f5-3ec18dec80d4" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#volunteerId}"/>
@@ -778,7 +778,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"name": "Rest Skill ${= (int)(Math.random()*10000) }", "category": "TECHNICAL", "description": "Rest Skill Desc"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="20ba62af-bcef-4588-ac30-6e8668512d9c" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/skills</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="20ba62af-bcef-4588-ac30-6e8668512d9c" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -807,7 +807,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="1da890d4-7839-4de4-b060-666f00c96c96" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/skills/24</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="1da890d4-7839-4de4-b060-666f00c96c96" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#skillId}"/>
@@ -823,7 +823,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"id": "${#Project#skillId}", "name": "Rest Skill Updated", "description": "Rest Skill Desc Updated"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="2e240e68-da90-42aa-96c0-2710de20c38c" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/skills/24</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="2e240e68-da90-42aa-96c0-2710de20c38c" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
               <con:entry key="id" value="${#Project#skillId}"/>
@@ -839,7 +839,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="4d2bbbd8-3867-46bb-9e91-ff396ddfe756" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/skills/24</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="4d2bbbd8-3867-46bb-9e91-ff396ddfe756" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters>
               <con:entry key="id" value="${#Project#skillId}"/>
@@ -863,7 +863,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"title": "Rest Project ${= (int)(Math.random()*10000) }", "description": "Rest Project Desc", "startDate": "2026-06-01", "endDate": "2026-12-31", "location": "Online", "status": "ACTIVE", "maxVolunteers": 50, "organization": {"id": "${#Project#orgId}"}}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="f3c982d3-32c9-47bb-91e1-209067daa4b7" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/projects</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="f3c982d3-32c9-47bb-91e1-209067daa4b7" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -948,7 +948,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"title": "Rest Event ${= (int)(Math.random()*10000) }", "description": "Rest Event Desc", "eventDate": "2026-07-01T10:00:00", "location": "Rest Hall", "maxParticipants": 100, "status": "SCHEDULED", "project": {"id": "${#Project#projectId}"}}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="7ca087c0-0e93-4993-b11b-8ae93ececc47" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/events</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="7ca087c0-0e93-4993-b11b-8ae93ececc47" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -1033,7 +1033,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}, "role": "Rest Tester", "assignmentDate": "2026-06-02", "status": "ACCEPTED"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="fa1b3ef3-18ef-464e-b08b-45046382dd0d" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/assignments</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="fa1b3ef3-18ef-464e-b08b-45046382dd0d" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -1118,7 +1118,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"assignment": {"id": "${#Project#assignmentId}"}, "date": "2026-06-05", "hoursWorked": 5, "notes": "Rest checkin", "verifiedBy": "System"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="01f8bd1b-c058-44d3-855d-287cff8e0e8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/attendance</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="01f8bd1b-c058-44d3-855d-287cff8e0e8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -1203,7 +1203,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"assignment": {"id": "${#Project#assignmentId}"}, "rating": 5, "comment": "Rest Feedback", "feedbackType": "VOLUNTEER_TO_ORG", "feedbackDate": "2026-06-06T12:00:00"}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="607ade33-4d98-444d-b1c1-1ce40db6556a" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/feedback</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="607ade33-4d98-444d-b1c1-1ce40db6556a" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -1288,7 +1288,7 @@
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
             <con:request>{"volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}, "certificateNumber": "REST-CERT-${= (int)(Math.random()*10000) }", "description": "Rest Certificate", "issueDate": "2026-12-31", "totalHours": 100}</con:request>
-            <con:assertion type="Valid HTTP Status Codes" id="44f3015a-c2e6-4c2e-be0e-4dc630efdd8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:originalUri>http://localhost/volunteer-management-system/api/certificates</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="44f3015a-c2e6-4c2e-be0e-4dc630efdd8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
           </con:restRequest>
@@ -1360,14 +1360,14 @@
     <con:properties/></con:testCase>
   <con:properties/></con:testSuite>
   <con:properties>
-    <con:property><con:name>orgId</con:name><con:value/></con:property>
-    <con:property><con:name>volunteerId</con:name><con:value/></con:property>
+    <con:property><con:name>orgId</con:name><con:value>23</con:value></con:property>
+    <con:property><con:name>volunteerId</con:name><con:value>39</con:value></con:property>
     <con:property><con:name>projectId</con:name><con:value/></con:property>
     <con:property><con:name>eventId</con:name><con:value/></con:property>
     <con:property><con:name>assignmentId</con:name><con:value/></con:property>
     <con:property><con:name>attendanceId</con:name><con:value/></con:property>
     <con:property><con:name>feedbackId</con:name><con:value/></con:property>
     <con:property><con:name>certId</con:name><con:value/></con:property>
-    <con:property><con:name>skillId</con:name><con:value/></con:property>
+    <con:property><con:name>skillId</con:name><con:value>24</con:value></con:property>
   </con:properties>
-<con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+<con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="e569a981-2f39-4840-9b69-d5001e5006f2" activeEnvironment="Default" name="VolunteerSystem-FULL" soapui-version="5.9.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="69b579ae-8d7a-4283-8007-b32ee97c3a5c" activeEnvironment="Default" name="VolunteerSystem-FULL" soapui-version="5.9.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
 
-  <con:interface xsi:type="con:WsdlInterface" id="48c940a0-cbef-404d-a61a-2204178fd5ae" wsaVersion="NONE" name="OrganizationServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}OrganizationServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/organizations?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="558785c5-4202-477d-ab0c-328ab9285d0f" wsaVersion="NONE" name="OrganizationServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}OrganizationServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/organizations?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="4bce0963-3e74-442f-a004-b1b13d53c004" wsaVersion="NONE" name="VolunteerServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}VolunteerServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/volunteers?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="4f180722-f700-411a-8331-c8d439da3ad7" wsaVersion="NONE" name="VolunteerServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}VolunteerServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/volunteers?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="8346d0e9-658a-4cae-9ed2-bd1d9e5171c3" wsaVersion="NONE" name="ProjectServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}ProjectServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/projects?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="4a8ef1c8-eca0-477a-aca1-719c113fc4e5" wsaVersion="NONE" name="ProjectServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}ProjectServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/projects?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="7f691db9-965f-4e6d-9568-4c68ebad1c78" wsaVersion="NONE" name="EventServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}EventServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/events?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="d0792996-fadb-4a4d-adaa-8cd993684cc5" wsaVersion="NONE" name="EventServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}EventServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/events?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="b79a0bf2-9519-4495-8925-c85065f171fa" wsaVersion="NONE" name="AssignmentServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AssignmentServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/assignments?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="4f2ae1e9-21db-4bf5-8f30-a4d62c59e157" wsaVersion="NONE" name="AssignmentServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AssignmentServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/assignments?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="3b5c8c08-27df-4b52-826b-81a213c2e214" wsaVersion="NONE" name="AttendanceServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AttendanceServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/attendance?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="15e300c7-1043-48b1-9520-e8ee6093c202" wsaVersion="NONE" name="AttendanceServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AttendanceServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/attendance?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="16a6a2e7-19b7-4443-8143-7fdf538a87db" wsaVersion="NONE" name="FeedbackServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}FeedbackServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/feedback?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="76a27608-7dac-4a94-b6f0-dc4a2f109e66" wsaVersion="NONE" name="FeedbackServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}FeedbackServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/feedback?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="e9973dd5-e118-4b59-9f11-05aaa41cb3bd" wsaVersion="NONE" name="CertificateServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}CertificateServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/certificates?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="653e21f4-32ce-4997-b5bf-38ee784b87d6" wsaVersion="NONE" name="CertificateServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}CertificateServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/certificates?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:interface xsi:type="con:WsdlInterface" id="df05e46b-3982-4b25-b925-4b52fac322b2" wsaVersion="NONE" name="SkillServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}SkillServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/skills?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="37b7a9d1-89b9-41fb-92c2-e0e7dd3a5d58" wsaVersion="NONE" name="SkillServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}SkillServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/skills?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/><con:endpoints>
+    <con:endpoints>
       <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
     </con:endpoints>
   </con:interface>
 
-  <con:testSuite id="634c3f93-d5e6-4510-a07c-de384247fd29" name="OrganizationTests">
+  <con:testSuite id="492d547e-35b6-4fb3-b2f6-fa231a310b6a" name="OrganizationTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="06ee4a6a-2a8e-4612-ac5e-3523e7580572" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="9dbdb6c2-29b0-49f0-9bc4-365cdbeb3071" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="170f89d8-7c56-4394-b9bf-68e43be311ce" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="de3fff13-ba8d-4f98-9adc-61c4e14857de">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>OrganizationServicePortBinding</con:interface>
           <con:operation>addOrganization</con:operation>
-          <con:request name="Step1_Create" id="89ccbb81-dee6-4e1d-a986-90488eb07fb3">
+          <con:request name="Step1_Create" id="e683da9f-e251-4f36-b004-e0f0daae140b">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
@@ -93,7 +93,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="cd16f1d9-edb1-4015-a068-308d1e936778">
+      <con:testStep type="transfer" name="Transfer_ID" id="dcd4564b-e2c3-489a-a6d5-e2594a4b74c6">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -103,16 +103,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>orgId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="ad417c6a-4551-427e-91ab-200446662024" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="7b4078ed-74d8-4d06-ba2a-eaec73402493">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>OrganizationServicePortBinding</con:interface>
           <con:operation>getOrganizationById</con:operation>
-          <con:request name="Step2_Get" id="d5701e1a-8af0-4454-a979-29fadfe57892">
+          <con:request name="Step2_Get" id="1aa5b904-11d3-4928-9258-afe392b4e875">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
@@ -131,12 +131,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="8faf51ba-70aa-44c0-bcec-8b541adcee00" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="044826eb-b8ea-4b0e-a415-21ea02609624">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>OrganizationServicePortBinding</con:interface>
           <con:operation>updateOrganization</con:operation>
-          <con:request name="Step3_Update" id="44d6230a-00ae-4958-9413-25528f3012f4">
+          <con:request name="Step3_Update" id="4851d3a6-6223-4c76-8a2e-b2a2424818e3">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
@@ -153,12 +153,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="d8c7625c-7fab-4f08-baf6-f927e6dd5dea" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="b455a4f1-d864-4c60-a3c3-51470f0ff71b">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>OrganizationServicePortBinding</con:interface>
           <con:operation>deleteOrganization</con:operation>
-          <con:request name="Step4_Delete" id="89354bdc-b67c-4cb7-a92e-32b436391e5a">
+          <con:request name="Step4_Delete" id="7aa414a3-0e31-47c7-9916-0d72847150a8">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
@@ -176,21 +176,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="766cde00-99cd-476e-9b2d-9c98d07436b7" name="VolunteerTests">
+  <con:testSuite id="6a6ff0b8-b8cb-4f4e-b426-66cddd784bf8" name="VolunteerTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="049b74ae-60ec-4193-b4bc-2596532b53ae" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="014a39f2-f924-4293-abf5-c60d1f2087bf" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="01c6d316-fd7d-4806-ab6f-448266b486b5" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="fda707a8-eb17-4447-a080-afe9e18cf739">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>VolunteerServicePortBinding</con:interface>
           <con:operation>addVolunteer</con:operation>
-          <con:request name="Step1_Create" id="a29d5a59-7822-4ca6-9df0-9c057189b762">
+          <con:request name="Step1_Create" id="1a906654-29f3-4140-8621-17bc9c59666a">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
@@ -207,7 +207,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="c967fd3f-5dcf-46fa-9f3a-bb118124ee5e">
+      <con:testStep type="transfer" name="Transfer_ID" id="129207b0-d806-4355-87d2-cf682637682d">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -217,16 +217,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>volunteerId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="36f63a4d-64cd-41b5-bddf-31b1b94592c5" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="12271194-2fa4-4cc2-bdde-74d7da73faa4">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>VolunteerServicePortBinding</con:interface>
           <con:operation>getVolunteerById</con:operation>
-          <con:request name="Step2_Get" id="badbbe10-9217-4ead-9e3f-485bcad67edf">
+          <con:request name="Step2_Get" id="cc60ab9a-27ce-4271-a866-7c49beb78a03">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
@@ -245,12 +245,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="b66d7dd5-e8c1-492c-b7ec-1f07e0b27f3a" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="686b6022-4a19-43bf-a816-df256e967c62">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>VolunteerServicePortBinding</con:interface>
           <con:operation>updateVolunteer</con:operation>
-          <con:request name="Step3_Update" id="0844ca3a-af33-4676-98fe-d2f3504527dc">
+          <con:request name="Step3_Update" id="f7644a40-e4b1-4aa2-bd8b-1d4072e7b7cf">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
@@ -267,12 +267,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="8d93a4fa-deea-4d95-8e3d-328ed092de31" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="ab190dee-bd06-47d2-8dae-5f8a77623050">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>VolunteerServicePortBinding</con:interface>
           <con:operation>deleteVolunteer</con:operation>
-          <con:request name="Step4_Delete" id="384e2edf-d861-4804-803a-f19a32561bd1">
+          <con:request name="Step4_Delete" id="f4199f27-a624-42b5-8c8e-a5694e9df24a">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
@@ -290,21 +290,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="ef356a30-663f-4ba4-a9e3-33b8acdd9bf4" name="ProjectTests">
+  <con:testSuite id="94f1391e-ba09-44eb-b4b7-c2a61d249e13" name="ProjectTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="6b554ae3-39af-4ebb-8f9b-8bc058e4bd47" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="67483599-903d-4174-9d37-a7d86cb74d09" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="172ad9cb-0f42-4567-b12b-2faa5416758f" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="2db46fd9-3f46-4042-b007-ca2fb3201284">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>ProjectServicePortBinding</con:interface>
           <con:operation>addProject</con:operation>
-          <con:request name="Step1_Create" id="9b4dea48-6b39-4f38-ac5d-de04068acc19">
+          <con:request name="Step1_Create" id="590a2042-6e39-43c0-9ff2-d8b7045adc44">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
@@ -321,7 +321,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="864bf60b-915a-49b2-a4da-f35cacbaea84">
+      <con:testStep type="transfer" name="Transfer_ID" id="2556019b-1603-41b4-82e7-7d3b1228cf20">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -331,16 +331,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>projectId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="6d827c4e-d0f1-4f19-b157-d84b3b3b0f09" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="6f5ddd1e-b490-47ed-906e-25d25f12e575">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>ProjectServicePortBinding</con:interface>
           <con:operation>getProjectById</con:operation>
-          <con:request name="Step2_Get" id="b4e8e093-0550-4c61-ae78-ac086d4e9fc8">
+          <con:request name="Step2_Get" id="062ab1a7-5e63-4c21-ad8b-f94072839651">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
@@ -359,12 +359,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="1cb15095-3c99-48e1-a4be-eb1c0129e1b6" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="6fdfe059-e552-41db-ad19-1509f3aa9ee3">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>ProjectServicePortBinding</con:interface>
           <con:operation>updateProject</con:operation>
-          <con:request name="Step3_Update" id="f5e40755-5d1b-43b2-a380-41d85c5ee5de">
+          <con:request name="Step3_Update" id="f01802a1-77e3-4c90-a476-ca43fe01b07a">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
@@ -381,12 +381,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="e484d5a9-eb42-44f1-a581-37259b921a96" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="8a16dcaf-65ed-4cc2-9fe2-72885402284e">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>ProjectServicePortBinding</con:interface>
           <con:operation>deleteProject</con:operation>
-          <con:request name="Step4_Delete" id="7cbac206-8186-436f-97cd-6c05746f5e72">
+          <con:request name="Step4_Delete" id="a0022b65-ea1d-476b-9302-b913ec82f6af">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
@@ -404,21 +404,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="83ff4bd9-3768-4b1a-a2d6-eb2cb3902b76" name="EventTests">
+  <con:testSuite id="b1e7d415-e458-487a-9236-79602d6d4b88" name="EventTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="9fc32210-bbba-4edd-9afe-a18f4daeaaa1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="190e933e-64aa-4a92-8c0a-5515c31ec47f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="b746932e-bfbf-438d-8465-2e8a63f45ae5" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="9cde7cc7-0e37-42f4-8c4a-a90f7a208ccc">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>EventServicePortBinding</con:interface>
           <con:operation>addEvent</con:operation>
-          <con:request name="Step1_Create" id="a35f707c-6ad7-4032-b72e-c7a0988baa0e">
+          <con:request name="Step1_Create" id="c4d0dcea-4870-423a-bdde-c7450cce04b9">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
@@ -435,7 +435,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="dee0aaf0-b23b-4615-94b6-591cd86cf18b">
+      <con:testStep type="transfer" name="Transfer_ID" id="665d8b60-6aa9-40a6-a674-a379e857cfbb">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -445,16 +445,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>eventId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="4c558815-9ac4-40d2-8f2f-92c503343bbd" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="1e868b14-a9a4-433b-b7fd-ce7a3c0d6034">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>EventServicePortBinding</con:interface>
           <con:operation>getEventById</con:operation>
-          <con:request name="Step2_Get" id="bf98ee1e-e157-4ee4-87db-a8c7c0caf668">
+          <con:request name="Step2_Get" id="20e06b91-0df3-4b59-b233-f69ff7cde560">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
@@ -473,12 +473,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="7977f62e-5b15-46ab-b46f-c142a3dca588" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="60e268eb-0e08-4b2a-b8d2-1534cd8f5236">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>EventServicePortBinding</con:interface>
           <con:operation>updateEvent</con:operation>
-          <con:request name="Step3_Update" id="4ea85972-a7f7-403f-8eb5-a05f1fb789bd">
+          <con:request name="Step3_Update" id="0b94db8b-d26f-492f-8456-6b0e531f0e3e">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
@@ -495,12 +495,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="1f8b9b45-0b17-46b2-b599-b1fa490ca267" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="4b7167cc-345e-49c2-b776-6542ccab3d89">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>EventServicePortBinding</con:interface>
           <con:operation>deleteEvent</con:operation>
-          <con:request name="Step4_Delete" id="c71e2016-230b-4612-a89f-5b9bb78d1639">
+          <con:request name="Step4_Delete" id="e7ba8c07-ff74-45ad-9054-bed62d360b41">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
@@ -518,21 +518,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="8cd9b598-53ac-415a-9a32-b04bf026e0ca" name="AssignmentTests">
+  <con:testSuite id="605c98fc-1049-4d6f-bd91-6dfe21f7d069" name="AssignmentTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="ec1e79fb-8ad8-442b-bc5f-fb3befc7e8fe" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="7fb0cd28-02f3-4562-9a2d-83b2be8f2219" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="d5cc4f84-cba3-4dd2-890d-11e171a3ea50" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="0f0e09c8-880a-4daf-a9cc-123577d4c943">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AssignmentServicePortBinding</con:interface>
           <con:operation>addAssignment</con:operation>
-          <con:request name="Step1_Create" id="abc3d15a-e8eb-4e64-8a0e-8823651039cb">
+          <con:request name="Step1_Create" id="c15e2856-c579-4dc9-bd87-57a32e245895">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
@@ -549,7 +549,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="3e78877f-fbb5-41f1-a3b8-c09f2baa5eda">
+      <con:testStep type="transfer" name="Transfer_ID" id="1991d6c8-682d-4fc5-b945-d3fa4060ac73">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -559,16 +559,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>assignmentId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="fb867730-724f-466e-9cdd-cedd7483edf8" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="8d00bf57-a0bc-4127-80cf-474d63522620">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AssignmentServicePortBinding</con:interface>
           <con:operation>getAssignmentById</con:operation>
-          <con:request name="Step2_Get" id="54caac44-7cc7-40cb-9548-54fbe1fb8372">
+          <con:request name="Step2_Get" id="970fc40f-dea0-4ea5-a3c0-433276aba9f4">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
@@ -587,12 +587,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="bb48ecf7-cac9-4788-8461-268bb0fcbd13" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="03eed219-4f8e-4898-af9f-c5bbd39cae32">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AssignmentServicePortBinding</con:interface>
           <con:operation>updateAssignment</con:operation>
-          <con:request name="Step3_Update" id="a45f6a41-5f03-438a-9ced-bed043d570e7">
+          <con:request name="Step3_Update" id="4730a38f-1745-413c-8286-80abad5f94cf">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
@@ -609,12 +609,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="c7ff811b-7563-48c7-8e17-618a34cdb0c0" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="026bb45a-114a-4b07-9654-6e7e957210a1">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AssignmentServicePortBinding</con:interface>
           <con:operation>deleteAssignment</con:operation>
-          <con:request name="Step4_Delete" id="4d7b049b-1e52-4d0e-ac17-ab4c7454d24b">
+          <con:request name="Step4_Delete" id="c0c94e4b-e5d5-4500-8999-c99fa82a9ce0">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
@@ -632,21 +632,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="5e761701-5e78-471e-952f-73c99baad35e" name="AttendanceTests">
+  <con:testSuite id="ff4d83e0-f912-472c-ba0f-4b90f1754f90" name="AttendanceTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="32a3554d-3ea8-4b38-af6f-b7fb68b67a2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="d29fd10b-2a33-4dc9-8c8b-233329ca8223" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="6b10481c-a435-4945-8512-b49aeaf7d5d3" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="ab287f8a-e880-4a0a-822b-9e4e2ab80893">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AttendanceServicePortBinding</con:interface>
           <con:operation>addAttendance</con:operation>
-          <con:request name="Step1_Create" id="50e1e1a2-dad5-4025-8f0b-ffa0a551138d">
+          <con:request name="Step1_Create" id="58e49ce3-6475-46a2-8061-bc169d6637e4">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
@@ -663,7 +663,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="10c87c10-954d-4d04-a30b-1c05e57be687">
+      <con:testStep type="transfer" name="Transfer_ID" id="e4d26eb0-ed4d-4ee9-99b3-07b1fb3e2ada">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -673,16 +673,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>attendanceId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="06bbf8c4-2727-4590-87b0-b433f4d34443" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="aa6f103e-baa5-4317-9e76-3a9907e657be">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AttendanceServicePortBinding</con:interface>
           <con:operation>getAttendanceById</con:operation>
-          <con:request name="Step2_Get" id="477b551a-7612-4594-b2ae-c18869777e60">
+          <con:request name="Step2_Get" id="bdb60923-d8d6-40a3-a4a7-27105fe635f7">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
@@ -701,12 +701,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="5baf7a0f-0a98-4b14-9485-b8c3551facb1" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="e6dffa88-0237-4133-85f5-8db24e4bbd3e">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AttendanceServicePortBinding</con:interface>
           <con:operation>updateAttendance</con:operation>
-          <con:request name="Step3_Update" id="7e36cdf9-249b-462f-b7a9-a65b5f9bf162">
+          <con:request name="Step3_Update" id="dd065fd5-6b75-4d24-96d3-b0584dbc3d52">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
@@ -723,12 +723,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="8544359d-52ba-449c-bf28-b4dea43e2b45" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="207f75bc-debe-495f-a890-e70fc86721d6">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>AttendanceServicePortBinding</con:interface>
           <con:operation>deleteAttendance</con:operation>
-          <con:request name="Step4_Delete" id="d91569f4-4644-49c5-ba63-e4b6397a773f">
+          <con:request name="Step4_Delete" id="e7827169-9bf5-4905-bed0-bffbc40bc508">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
@@ -746,21 +746,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="c57bee10-69f1-43d3-9b20-db7bf2e18cb9" name="FeedbackTests">
+  <con:testSuite id="d894958f-83d6-413c-9171-540b721bbac2" name="FeedbackTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="cd1f6473-b7a3-4b4a-9bd8-f266d9a9c907" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="1a39ce84-b98b-4ac7-8151-a6b80f2768c3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="aadfc1af-2ff7-42af-87ed-a97d8ea894f0" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="069bb29e-0eb3-4bdf-b85e-add10a58e498">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>FeedbackServicePortBinding</con:interface>
           <con:operation>addFeedback</con:operation>
-          <con:request name="Step1_Create" id="deee4386-4a05-4cf8-8f70-210f383afec6">
+          <con:request name="Step1_Create" id="6fa64b76-ece4-484a-a60f-28ce4014bac2">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
@@ -777,7 +777,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="c17e56b7-c42d-4790-a4ed-7a624fc1defa">
+      <con:testStep type="transfer" name="Transfer_ID" id="f244370c-ec44-4354-8fdb-fc66e352efb2">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -787,16 +787,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>feedbackId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="44f6dd9d-008c-4cbb-9e04-f719e23fb635" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="3c2206b8-7d43-4377-997c-854f8389dd9f">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>FeedbackServicePortBinding</con:interface>
           <con:operation>getFeedbackById</con:operation>
-          <con:request name="Step2_Get" id="be3ccf9e-1fc0-4d1a-a81e-ce0406ee0ce5">
+          <con:request name="Step2_Get" id="e77de62b-f066-4487-940e-34f69280060c">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
@@ -815,12 +815,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="e572c9d1-6ffa-4239-9a98-2a3c81247d6e" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="172c1d07-3ba5-4185-834b-6a84ea97a7b1">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>FeedbackServicePortBinding</con:interface>
           <con:operation>updateFeedback</con:operation>
-          <con:request name="Step3_Update" id="164c34b0-cb71-4bde-8780-93b8c723bc64">
+          <con:request name="Step3_Update" id="f7c06b01-c905-42fb-9fd8-fa10665a9dac">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
@@ -837,12 +837,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="a3fd2349-c830-4fca-a8d4-d99698012f2b" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="70618492-c70b-423c-b669-09c2df752b60">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>FeedbackServicePortBinding</con:interface>
           <con:operation>deleteFeedback</con:operation>
-          <con:request name="Step4_Delete" id="5c118efd-e373-4322-bb6b-1d09fa3f6d42">
+          <con:request name="Step4_Delete" id="832cab4c-dd4a-4919-8bb2-55b776c0823d">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
@@ -860,21 +860,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="d4408d45-a709-4029-b2be-1d77c43e79c1" name="CertificateTests">
+  <con:testSuite id="ce242550-41ad-4461-b408-4c968134f09e" name="CertificateTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="8d1a74b5-a79a-4ee1-8131-8318ada9c38c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="7d9a33e8-8ce0-4a0f-870b-38cd3e68361d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="f4c21389-f5e0-4cae-b3d2-3557c386a069" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="4567e3bc-5abd-46f4-98ba-1c1163665d2e">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>CertificateServicePortBinding</con:interface>
           <con:operation>addCertificate</con:operation>
-          <con:request name="Step1_Create" id="a433a012-5e2e-4037-9359-665ea021c90f">
+          <con:request name="Step1_Create" id="37f60067-a16b-4208-bdae-7566c81e02b7">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
@@ -891,7 +891,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="26a53675-83a5-4dc7-b94e-c81a134c0792">
+      <con:testStep type="transfer" name="Transfer_ID" id="7aefb655-23ff-4c72-a02b-f07e52dc193c">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -901,16 +901,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>certId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="26c65466-044a-4bec-90a5-f19f55315b34" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="bce4db9b-f6fd-46e5-ac55-52ebc14f48d3">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>CertificateServicePortBinding</con:interface>
           <con:operation>getCertificateById</con:operation>
-          <con:request name="Step2_Get" id="7eb9e176-a2cc-4dab-97ef-9481a0162fc7">
+          <con:request name="Step2_Get" id="bf02babe-afb4-472b-9181-07da4c299ee6">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
@@ -929,12 +929,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="05db6ae8-c49b-4da3-9fce-dab190adf6de" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="5bd0ae2a-cc02-4337-a939-d0148faddaf3">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>CertificateServicePortBinding</con:interface>
           <con:operation>updateCertificate</con:operation>
-          <con:request name="Step3_Update" id="919bb938-9d54-4b81-85ad-085993915d0b">
+          <con:request name="Step3_Update" id="8a2622cf-c076-4dbb-82d3-02d59711a0e5">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
@@ -951,12 +951,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="631183d6-bfa8-4a82-a025-2743e7c907b9" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="9ffd7239-1f7c-4c50-9260-523babe95793">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>CertificateServicePortBinding</con:interface>
           <con:operation>deleteCertificate</con:operation>
-          <con:request name="Step4_Delete" id="3298779e-0777-4892-b9a1-e5057bf173a4">
+          <con:request name="Step4_Delete" id="07ab84b4-16a9-47a9-9a10-8a9d5c9eede8">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
@@ -974,21 +974,21 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
 
-  <con:testSuite id="9dc268b5-04bf-4ffc-b973-7ef17af42e34" name="SkillTests">
+  <con:testSuite id="6195e4c7-802d-468e-b490-d9535224de8d" name="SkillTests">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="7f2c0acc-eb36-4721-8657-6da63f314f09" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+    <con:testCase id="bbca37d8-3a78-4d05-9f39-5e088ee57727" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
       <con:settings/>
 
-      <con:testStep type="request" name="Step1_Create" id="92b261d3-4ca4-486f-81e6-5bf5685a9508" disabled="true">
+      <con:testStep type="request" name="Step1_Create" id="72f800d0-4699-484d-989b-05e50aa08de9">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>SkillServicePortBinding</con:interface>
           <con:operation>addSkill</con:operation>
-          <con:request name="Step1_Create" id="e2a3c7e2-194b-4632-bebb-99883f8b8310">
+          <con:request name="Step1_Create" id="3269a4f9-79b0-46d8-80df-4a94fc3b972c">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
@@ -1005,7 +1005,7 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="transfer" name="Transfer_ID" id="47a694b0-93e9-4aa6-b8b2-5342f635197d">
+      <con:testStep type="transfer" name="Transfer_ID" id="c642fd69-5201-4516-ab05-e20ab70d3839">
         <con:settings/>
         <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -1015,16 +1015,16 @@
             <con:sourcePath>//*:return/*:id</con:sourcePath>
             <con:targetType>skillId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          <con:upgraded>true</con:upgraded></con:transfers>
+          </con:transfers>
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step2_Get" id="168591fd-d4dc-42a0-844f-929fbb330e15" disabled="true">
+      <con:testStep type="request" name="Step2_Get" id="5556d8f4-e533-4a6b-9854-b92b4a5047fe">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>SkillServicePortBinding</con:interface>
           <con:operation>getSkillById</con:operation>
-          <con:request name="Step2_Get" id="61149992-f475-479e-8848-a30f5646bbc8">
+          <con:request name="Step2_Get" id="b4bfe5c1-e61a-4c90-acec-c505b5edada0">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
@@ -1043,12 +1043,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step3_Update" id="94bff1a1-0ec8-486b-ae7b-a4b1336e79bc" disabled="true">
+      <con:testStep type="request" name="Step3_Update" id="b2912546-e05e-4444-915f-f314858f69ab">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>SkillServicePortBinding</con:interface>
           <con:operation>updateSkill</con:operation>
-          <con:request name="Step3_Update" id="83ec1e03-952b-4d8f-bb05-f55533bb4efe">
+          <con:request name="Step3_Update" id="5622b6c6-916c-4ae3-99ce-3554fd4472c6">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
@@ -1065,12 +1065,12 @@
         </con:config>
       </con:testStep>
 
-      <con:testStep type="request" name="Step4_Delete" id="01f56b41-f824-4c89-b812-25f865b406e9" disabled="true">
+      <con:testStep type="request" name="Step4_Delete" id="752ec44a-db06-478b-b16a-2916880b7f4e">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:interface>SkillServicePortBinding</con:interface>
           <con:operation>deleteSkill</con:operation>
-          <con:request name="Step4_Delete" id="095ff976-bd82-4b59-9a8b-7cfb495818ca">
+          <con:request name="Step4_Delete" id="57840820-5e5d-44db-9f8d-041c20605bde">
             <con:settings/>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
@@ -1088,8 +1088,8 @@
           </con:request>
         </con:config>
       </con:testStep>
-    <con:properties/></con:testCase>
-  <con:properties/></con:testSuite>
+    </con:testCase>
+  </con:testSuite>
   <con:properties>
     <con:property><con:name>orgId</con:name><con:value/></con:property>
     <con:property><con:name>volunteerId</con:name><con:value/></con:property>
