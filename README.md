@@ -257,7 +257,30 @@ curl http://localhost:8080/volunteer-management-system/api/statistics/overview
 
 ### Cu Postman
 
-Importă colecția de request-uri sau testează manual endpoint-urile de mai sus.
+Importă colecția `test_postman.json` inclusă în proiect pentru a testa toate endpoint-urile. Colecția conține scenarii de test pre-configurate.
+
+## 🛡️ Reguli de Validare
+
+Aplicația impune următoarele reguli de validare a datelor:
+
+### Voluntari
+- **Email**: Trebuie să respecte formatul standard (regex) și să fie unic.
+- **Telefon**: Dacă este furnizat, trebuie să conțină exact 10 cifre (`^\\d{10}$`).
+- **CNP**: Dacă este furnizat, trebuie să conțină exact 13 cifre (`^\\d{13}$`).
+- **Campuri obligatorii**: `firstName`, `lastName`, `email`.
+
+### Prezență (Attendance)
+- **Data**: Nu poate fi în viitor.
+- **Ore lucrate**: Trebuie să fie un număr pozitiv (`> 0`).
+
+### Proiecte
+- **Perioada**: Data de început nu poate fi după data de sfârșit.
+- **Organizație**: Trebuie să existe și să fie validă.
+
+### Asignări
+- **Capacitate**: Nu se poate depăși `maxVolunteers` al proiectului.
+- **Status Proiect**: Nu se pot face asignări la proiecte finalizate sau anulate.
+- **Unicitate**: Un voluntar nu poate fi asignat de două ori la același proiect.
 
 ## 📝 Format Răspuns API
 
@@ -267,7 +290,8 @@ Toate răspunsurile folosesc formatul `ApiResponse`:
 {
   "success": true,
   "message": "Operation successful",
-  "data": { ... }
+  "data": { ... },
+  "timestamp": 1704879000000
 }
 ```
 
