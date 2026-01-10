@@ -11,7 +11,7 @@
 
     <con:resource name="organizations" path="organizations" id="f8fbbb30-26ba-404e-9e1e-20f03be1cca1">
       <con:settings/>
-      <con:method name="Create" id="d92938b3-f09a-4132-b98e-51c5ec8f8147" method="POST">
+      <con:parameters/><con:method name="Create" id="d92938b3-f09a-4132-b98e-51c5ec8f8147" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -76,7 +76,7 @@
 
     <con:resource name="volunteers" path="volunteers" id="e4813d33-fe28-4e8a-b7e6-fda2fb9c0286">
       <con:settings/>
-      <con:method name="Create" id="d21e205a-c8b4-41a2-86c1-351dd86aa8d0" method="POST">
+      <con:parameters/><con:method name="Create" id="d21e205a-c8b4-41a2-86c1-351dd86aa8d0" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -141,7 +141,7 @@
 
     <con:resource name="skills" path="skills" id="5d5143ba-19b7-4ca1-85b1-945adbbef498">
       <con:settings/>
-      <con:method name="Create" id="41202bc4-f860-47dd-805b-5de7511ead81" method="POST">
+      <con:parameters/><con:method name="Create" id="41202bc4-f860-47dd-805b-5de7511ead81" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -206,7 +206,7 @@
 
     <con:resource name="projects" path="projects" id="76cab0cc-4084-4c76-b23a-82c49281bdac">
       <con:settings/>
-      <con:method name="Create" id="be02163a-15c4-4b1f-858d-817b992e61bd" method="POST">
+      <con:parameters/><con:method name="Create" id="be02163a-15c4-4b1f-858d-817b992e61bd" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -271,7 +271,7 @@
 
     <con:resource name="events" path="events" id="d3bbab05-e965-4074-bb67-c835da97e883">
       <con:settings/>
-      <con:method name="Create" id="e3491630-3082-43f4-8dbf-23369a50e72e" method="POST">
+      <con:parameters/><con:method name="Create" id="e3491630-3082-43f4-8dbf-23369a50e72e" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -336,7 +336,7 @@
 
     <con:resource name="assignments" path="assignments" id="bef73818-42e3-4755-96d7-e7a857dcb42a">
       <con:settings/>
-      <con:method name="Create" id="f19b5ea6-83a3-4974-aa0a-b13847fc761e" method="POST">
+      <con:parameters/><con:method name="Create" id="f19b5ea6-83a3-4974-aa0a-b13847fc761e" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -401,7 +401,7 @@
 
     <con:resource name="attendance" path="attendance" id="69156a3a-d02d-4a63-8359-43a850c5038a">
       <con:settings/>
-      <con:method name="Create" id="c28078b4-284d-4a09-8cf8-700bc84d2e98" method="POST">
+      <con:parameters/><con:method name="Create" id="c28078b4-284d-4a09-8cf8-700bc84d2e98" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -466,7 +466,7 @@
 
     <con:resource name="feedback" path="feedback" id="845114f8-8fcc-4cc8-94f0-a1364d55c653">
       <con:settings/>
-      <con:method name="Create" id="3f726daf-464b-48c3-b3f7-850ac23c4ae5" method="POST">
+      <con:parameters/><con:method name="Create" id="3f726daf-464b-48c3-b3f7-850ac23c4ae5" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -531,7 +531,7 @@
 
     <con:resource name="certificates" path="certificates" id="47b337c7-32a7-4003-960f-813fe9c835f2">
       <con:settings/>
-      <con:method name="Create" id="09d076ef-eb80-4222-9c90-723bfe493087" method="POST">
+      <con:parameters/><con:method name="Create" id="09d076ef-eb80-4222-9c90-723bfe493087" method="POST">
         <con:settings/>
         <con:parameters/>
         <con:representation type="REQUEST">
@@ -607,7 +607,7 @@
           <con:restRequest name="Step1_Create" id="574db9f9-d667-49f2-9f9b-40c9695aa312" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;name&quot;: &quot;Rest Org ${= (int)(Math.random()*10000) }&quot;, &quot;email&quot;: &quot;rest_org_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;phone&quot;: &quot;0711223344&quot;, &quot;website&quot;: &quot;https://resttest.com&quot;, &quot;address&quot;: &quot;Rest Lane&quot;, &quot;registrationNumber&quot;: &quot;REG-${= (int)(Math.random()*10000) }&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:request>{"name": "Rest Org ${= (int)(Math.random()*10000) }", "email": "rest_org_${= (int)(Math.random()*10000) }@test.com", "phone": "0711223344", "website": "https://resttest.com", "address": "Rest Lane", "registrationNumber": "REG-${= (int)(Math.random()*10000) }", "status": "ACTIVE"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="961a138b-4e39-4fcb-87fe-cfb95abcc434" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -626,7 +626,7 @@
             <con:targetType>orgId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -652,7 +652,7 @@
           <con:restRequest name="Step3_Update" id="57c1a5b3-5066-400e-8181-d1d4326ff4d3" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#orgId}&quot;, &quot;name&quot;: &quot;Rest Org Updated&quot;, &quot;email&quot;: &quot;rest_org_upd_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:request>{"id": "${#Project#orgId}", "name": "Rest Org Updated", "email": "rest_org_upd_${= (int)(Math.random()*10000) }@test.com", "status": "ACTIVE"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="7199ee21-9fb4-4a14-83de-3f70ed47c802" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -677,8 +677,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="2c37c9cf-3c91-48cd-b6bb-8da4efe65360" name="VolunteerRestTests">
     <con:settings/>
@@ -692,7 +692,7 @@
           <con:restRequest name="Step1_Create" id="eea24b48-c54c-4db4-8c29-20857b2abd4b" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;firstName&quot;: &quot;Rest&quot;, &quot;lastName&quot;: &quot;User ${= (int)(Math.random()*10000) }&quot;, &quot;email&quot;: &quot;rest_vol_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;phone&quot;: &quot;0722123456&quot;, &quot;dateOfBirth&quot;: &quot;1990-01-01&quot;, &quot;cnp&quot;: &quot;1900101123456&quot;, &quot;address&quot;: &quot;Rest Street&quot;, &quot;city&quot;: &quot;Rest City&quot;, &quot;county&quot;: &quot;Rest County&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:request>{"firstName": "Rest", "lastName": "User ${= (int)(Math.random()*10000) }", "email": "rest_vol_${= (int)(Math.random()*10000) }@test.com", "phone": "0722123456", "dateOfBirth": "1990-01-01", "cnp": "1900101123456", "address": "Rest Street", "city": "Rest City", "county": "Rest County", "status": "ACTIVE"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="96f3de36-bd7e-45f2-906b-ade9b85e373e" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -711,7 +711,7 @@
             <con:targetType>volunteerId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -737,7 +737,7 @@
           <con:restRequest name="Step3_Update" id="4df0cb1b-9683-4de3-967a-c8a90ea88bcc" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#volunteerId}&quot;, &quot;firstName&quot;: &quot;RestUpdated&quot;, &quot;lastName&quot;: &quot;UserUpdated&quot;, &quot;email&quot;: &quot;rest_vol_upd_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:request>{"id": "${#Project#volunteerId}", "firstName": "RestUpdated", "lastName": "UserUpdated", "email": "rest_vol_upd_${= (int)(Math.random()*10000) }@test.com", "status": "ACTIVE"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="5ffee874-46ff-4a16-adc9-c6cabd90a910" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -762,8 +762,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="c5a1923d-de94-4f94-8243-effcf1cd9611" name="SkillRestTests">
     <con:settings/>
@@ -777,7 +777,7 @@
           <con:restRequest name="Step1_Create" id="b0df3191-e9f1-43c2-92da-2556718b1846" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;name&quot;: &quot;Rest Skill ${= (int)(Math.random()*10000) }&quot;, &quot;category&quot;: &quot;TECHNICAL&quot;, &quot;description&quot;: &quot;Rest Skill Desc&quot;}</con:request>
+            <con:request>{"name": "Rest Skill ${= (int)(Math.random()*10000) }", "category": "TECHNICAL", "description": "Rest Skill Desc"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="20ba62af-bcef-4588-ac30-6e8668512d9c" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -796,7 +796,7 @@
             <con:targetType>skillId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -822,7 +822,7 @@
           <con:restRequest name="Step3_Update" id="d5f94e05-5ed5-4ce9-8558-076e5f1c7433" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#skillId}&quot;, &quot;name&quot;: &quot;Rest Skill Updated&quot;, &quot;description&quot;: &quot;Rest Skill Desc Updated&quot;}</con:request>
+            <con:request>{"id": "${#Project#skillId}", "name": "Rest Skill Updated", "description": "Rest Skill Desc Updated"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="2e240e68-da90-42aa-96c0-2710de20c38c" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -847,8 +847,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="7a7404dc-0145-4c38-a31a-9813f7898ea5" name="ProjectRestTests">
     <con:settings/>
@@ -862,7 +862,7 @@
           <con:restRequest name="Step1_Create" id="fa6cc7ab-d6d0-487a-a281-26ee01f4ad32" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;title&quot;: &quot;Rest Project ${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Project Desc&quot;, &quot;startDate&quot;: &quot;2026-06-01&quot;, &quot;endDate&quot;: &quot;2026-12-31&quot;, &quot;location&quot;: &quot;Online&quot;, &quot;status&quot;: &quot;ACTIVE&quot;, &quot;maxVolunteers&quot;: 50, &quot;organization&quot;: {&quot;id&quot;: &quot;${#Project#orgId}&quot;}}</con:request>
+            <con:request>{"title": "Rest Project ${= (int)(Math.random()*10000) }", "description": "Rest Project Desc", "startDate": "2026-06-01", "endDate": "2026-12-31", "location": "Online", "status": "ACTIVE", "maxVolunteers": 50, "organization": {"id": "${#Project#orgId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="f3c982d3-32c9-47bb-91e1-209067daa4b7" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -881,7 +881,7 @@
             <con:targetType>projectId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -907,7 +907,7 @@
           <con:restRequest name="Step3_Update" id="be188486-bca1-4571-a8d1-528f10a06fe8" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#projectId}&quot;, &quot;title&quot;: &quot;Rest Project Updated&quot;, &quot;description&quot;: &quot;Updated Desc&quot;, &quot;organization&quot;: {&quot;id&quot;: &quot;${#Project#orgId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#projectId}", "title": "Rest Project Updated", "description": "Updated Desc", "organization": {"id": "${#Project#orgId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="9f9e12fd-2a45-468d-bc0d-3ec744d36694" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -932,8 +932,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="a1fa80b5-15c7-4916-8d57-70a94ae3ac01" name="EventRestTests">
     <con:settings/>
@@ -947,7 +947,7 @@
           <con:restRequest name="Step1_Create" id="4620ce4a-c1a8-428d-98f3-f9c228987e42" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;title&quot;: &quot;Rest Event ${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Event Desc&quot;, &quot;eventDate&quot;: &quot;2026-07-01T10:00:00&quot;, &quot;location&quot;: &quot;Rest Hall&quot;, &quot;maxParticipants&quot;: 100, &quot;status&quot;: &quot;SCHEDULED&quot;, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:request>{"title": "Rest Event ${= (int)(Math.random()*10000) }", "description": "Rest Event Desc", "eventDate": "2026-07-01T10:00:00", "location": "Rest Hall", "maxParticipants": 100, "status": "SCHEDULED", "project": {"id": "${#Project#projectId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="7ca087c0-0e93-4993-b11b-8ae93ececc47" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -966,7 +966,7 @@
             <con:targetType>eventId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -992,7 +992,7 @@
           <con:restRequest name="Step3_Update" id="801fee2b-59cb-4aa3-b02a-350c21e8cf6e" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#eventId}&quot;, &quot;title&quot;: &quot;Rest Event Updated&quot;, &quot;status&quot;: &quot;COMPLETED&quot;, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#eventId}", "title": "Rest Event Updated", "status": "COMPLETED", "project": {"id": "${#Project#projectId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="6eb94734-f5ad-4ed5-8649-1649a8ed7685" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -1017,8 +1017,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="b00e6eac-d8ae-43a6-9d0b-ee34cd2d0866" name="AssignmentRestTests">
     <con:settings/>
@@ -1032,7 +1032,7 @@
           <con:restRequest name="Step1_Create" id="faf41cd1-5715-4499-af58-75c554c78fdc" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}, &quot;role&quot;: &quot;Rest Tester&quot;, &quot;assignmentDate&quot;: &quot;2026-06-02&quot;, &quot;status&quot;: &quot;ACCEPTED&quot;}</con:request>
+            <con:request>{"volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}, "role": "Rest Tester", "assignmentDate": "2026-06-02", "status": "ACCEPTED"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="fa1b3ef3-18ef-464e-b08b-45046382dd0d" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -1051,7 +1051,7 @@
             <con:targetType>assignmentId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -1077,7 +1077,7 @@
           <con:restRequest name="Step3_Update" id="7199d82c-a826-4af2-b838-9ce12b8b641b" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#assignmentId}&quot;, &quot;role&quot;: &quot;Rest Manager&quot;, &quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#assignmentId}", "role": "Rest Manager", "volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="75d613ff-73c5-4d41-a5e2-a95086da2463" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -1102,8 +1102,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="1371fef6-b5ee-40e2-b3a8-d3184adb3499" name="AttendanceRestTests">
     <con:settings/>
@@ -1117,7 +1117,7 @@
           <con:restRequest name="Step1_Create" id="5f3902e7-885a-4edf-8c62-74285b02d933" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}, &quot;date&quot;: &quot;2026-06-05&quot;, &quot;hoursWorked&quot;: 5, &quot;notes&quot;: &quot;Rest checkin&quot;, &quot;verifiedBy&quot;: &quot;System&quot;}</con:request>
+            <con:request>{"assignment": {"id": "${#Project#assignmentId}"}, "date": "2026-06-05", "hoursWorked": 5, "notes": "Rest checkin", "verifiedBy": "System"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="01f8bd1b-c058-44d3-855d-287cff8e0e8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -1136,7 +1136,7 @@
             <con:targetType>attendanceId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -1162,7 +1162,7 @@
           <con:restRequest name="Step3_Update" id="bb115961-c113-45fb-9694-8ac42ba7b513" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#attendanceId}&quot;, &quot;hoursWorked&quot;: 8, &quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#attendanceId}", "hoursWorked": 8, "assignment": {"id": "${#Project#assignmentId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="8da9d60f-bd16-4990-a7de-2fae9d9488d6" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -1187,8 +1187,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="5d951414-1aec-408b-8fed-21a4559d39be" name="FeedbackRestTests">
     <con:settings/>
@@ -1202,7 +1202,7 @@
           <con:restRequest name="Step1_Create" id="39bc6a13-60da-485a-a1f8-e9e6d44bcde4" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}, &quot;rating&quot;: 5, &quot;comment&quot;: &quot;Rest Feedback&quot;, &quot;feedbackType&quot;: &quot;VOLUNTEER_TO_ORG&quot;, &quot;feedbackDate&quot;: &quot;2026-06-06T12:00:00&quot;}</con:request>
+            <con:request>{"assignment": {"id": "${#Project#assignmentId}"}, "rating": 5, "comment": "Rest Feedback", "feedbackType": "VOLUNTEER_TO_ORG", "feedbackDate": "2026-06-06T12:00:00"}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="607ade33-4d98-444d-b1c1-1ce40db6556a" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -1221,7 +1221,7 @@
             <con:targetType>feedbackId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -1247,7 +1247,7 @@
           <con:restRequest name="Step3_Update" id="0443e004-63da-4b57-845f-a1ea9901cbcb" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#feedbackId}&quot;, &quot;rating&quot;: 4, &quot;comment&quot;: &quot;Rest Feedback Updated&quot;, &quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#feedbackId}", "rating": 4, "comment": "Rest Feedback Updated", "assignment": {"id": "${#Project#assignmentId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="25b300a0-2f78-442f-81f9-c52b9bd32f5a" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -1272,8 +1272,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
 
   <con:testSuite id="4100a8d4-2aa3-49e8-a566-733842495772" name="CertificateRestTests">
     <con:settings/>
@@ -1287,7 +1287,7 @@
           <con:restRequest name="Step1_Create" id="5cbad112-5c2f-4905-8d33-c3e908b921ea" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}, &quot;certificateNumber&quot;: &quot;REST-CERT-${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Certificate&quot;, &quot;issueDate&quot;: &quot;2026-12-31&quot;, &quot;totalHours&quot;: 100}</con:request>
+            <con:request>{"volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}, "certificateNumber": "REST-CERT-${= (int)(Math.random()*10000) }", "description": "Rest Certificate", "issueDate": "2026-12-31", "totalHours": 100}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="44f3015a-c2e6-4c2e-be0e-4dc630efdd8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
             <con:parameters/>
@@ -1306,7 +1306,7 @@
             <con:targetType>certId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:type>JSONPATH</con:type>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 
@@ -1332,7 +1332,7 @@
           <con:restRequest name="Step3_Update" id="ae185c47-94b3-46f8-999c-06c92139fe9f" mediaType="application/json" postQueryString="false">
             <con:settings/>
             <con:endpoint>http://localhost:8080</con:endpoint>
-            <con:request>{&quot;id&quot;: &quot;${#Project#certId}&quot;, &quot;description&quot;: &quot;Rest Certificate Updated&quot;, &quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:request>{"id": "${#Project#certId}", "description": "Rest Certificate Updated", "volunteer": {"id": "${#Project#volunteerId}"}, "project": {"id": "${#Project#projectId}"}}</con:request>
             <con:assertion type="Valid HTTP Status Codes" id="6e86a2ad-ab64-4bb4-a6a1-dfa0944cae52" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
             <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
              <con:parameters>
@@ -1357,8 +1357,8 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-    </con:testCase>
-  </con:testSuite>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
   <con:properties>
     <con:property><con:name>orgId</con:name><con:value/></con:property>
     <con:property><con:name>volunteerId</con:name><con:value/></con:property>
@@ -1370,4 +1370,4 @@
     <con:property><con:name>certId</con:name><con:value/></con:property>
     <con:property><con:name>skillId</con:name><con:value/></con:property>
   </con:properties>
-</con:soapui-project>
+<con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
