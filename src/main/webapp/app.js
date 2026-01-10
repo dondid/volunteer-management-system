@@ -10,11 +10,11 @@ let certificates = [];
 let feedback = [];
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Load data when tabs are shown
     const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
     tabButtons.forEach(button => {
-        button.addEventListener('shown.bs.tab', function(event) {
+        button.addEventListener('shown.bs.tab', function (event) {
             const target = event.target.getAttribute('data-bs-target');
             if (target === '#organizations') loadOrganizations();
             else if (target === '#volunteers') loadVolunteers();
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             else if (target === '#feedback') loadFeedback();
         });
     });
-    
+
     // Load initial data
     loadOrganizations();
 });
@@ -48,7 +48,7 @@ function displayOrganizations() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-building"></i><p>Nu există organizații</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -117,7 +117,7 @@ function showOrganizationForm(id = null) {
             </div>
         </form>
     `;
-    
+
     createModal('organization-modal', 'Organizație', modalBody, async () => {
         const formData = {
             name: document.getElementById('org-name').value,
@@ -126,7 +126,7 @@ function showOrganizationForm(id = null) {
             address: document.getElementById('org-address').value,
             status: document.getElementById('org-status').value
         };
-        
+
         try {
             if (id) {
                 await API.updateOrganization(id, formData);
@@ -140,7 +140,7 @@ function showOrganizationForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('organization-modal')).show();
 }
 
@@ -175,7 +175,7 @@ function displayVolunteers() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-person-badge"></i><p>Nu există voluntari</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -253,7 +253,7 @@ function showVolunteerForm(id = null) {
             phone: document.getElementById('vol-phone').value,
             status: document.getElementById('vol-status').value
         };
-        
+
         try {
             if (id) {
                 await API.updateVolunteer(id, formData);
@@ -267,7 +267,7 @@ function showVolunteerForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('volunteer-modal')).show();
 }
 
@@ -293,7 +293,7 @@ async function loadProjects() {
         const params = {};
         if (filter === 'available') params.available = true;
         else if (filter) params.status = filter;
-        
+
         projects = await API.getProjects(params);
         displayProjects();
     } catch (error) {
@@ -307,7 +307,7 @@ function displayProjects() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-folder"></i><p>Nu există proiecte</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -345,8 +345,17 @@ function displayProjects() {
     `;
 }
 
-function showProjectForm(id = null) {
+async function showProjectForm(id = null) {
     const proj = id ? projects.find(p => p.id === id) : null;
+
+    // Fetch organizations for the dropdown
+    let orgs = [];
+    try {
+        orgs = await API.getOrganizations();
+    } catch (e) {
+        console.error("Failed to load organizations", e);
+    }
+
     const modal = createModal('project-modal', 'Proiect', `
         <form id="project-form">
             <input type="hidden" id="proj-id" value="${id || ''}">
@@ -355,8 +364,11 @@ function showProjectForm(id = null) {
                 <input type="text" class="form-control" id="proj-title" value="${proj?.title || ''}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Organizație ID *</label>
-                <input type="number" class="form-control" id="proj-org-id" value="${proj?.organization?.id || ''}" required>
+                <label class="form-label">Organizație *</label>
+                <select class="form-select" id="proj-org-id" required>
+                    <option value="">Selectează Organizația</option>
+                    ${orgs.map(o => `<option value="${o.id}" ${proj?.organization?.id === o.id ? 'selected' : ''}>${o.name}</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Status</label>
@@ -386,7 +398,7 @@ function showProjectForm(id = null) {
             maxVolunteers: parseInt(document.getElementById('proj-max-vol').value) || 10,
             startDate: document.getElementById('proj-start-date').value
         };
-        
+
         try {
             if (id) {
                 await API.updateProject(id, formData);
@@ -400,7 +412,7 @@ function showProjectForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('project-modal')).show();
 }
 
@@ -435,7 +447,7 @@ function displaySkills() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-star"></i><p>Nu există competențe</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -495,7 +507,7 @@ function showSkillForm(id = null) {
             name: document.getElementById('skill-name').value,
             category: document.getElementById('skill-category').value
         };
-        
+
         try {
             if (id) {
                 await API.updateSkill(id, formData);
@@ -509,7 +521,7 @@ function showSkillForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('skill-modal')).show();
 }
 
@@ -535,7 +547,7 @@ async function loadEvents() {
         const params = {};
         if (filter === 'upcoming') params.upcoming = true;
         else if (filter === 'available') params.available = true;
-        
+
         events = await API.getEvents(params);
         displayEvents();
     } catch (error) {
@@ -549,7 +561,7 @@ function displayEvents() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-calendar-event"></i><p>Nu există evenimente</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -587,8 +599,21 @@ function displayEvents() {
     `;
 }
 
-function showEventForm(id = null) {
+async function showEventForm(id = null) {
     const event = id ? events.find(e => e.id === id) : null;
+
+    // Fetch projects for the dropdown
+    let activeProjects = [];
+    try {
+        activeProjects = await API.getProjects({ status: 'ACTIVE' });
+    } catch (e) {
+        console.error("Failed to load projects", e);
+        try {
+            // Fallback to all projects if filter fails
+            activeProjects = await API.getProjects();
+        } catch (e2) { }
+    }
+
     const modal = createModal('event-modal', 'Eveniment', `
         <form id="event-form">
             <input type="hidden" id="event-id" value="${id || ''}">
@@ -597,8 +622,11 @@ function showEventForm(id = null) {
                 <input type="text" class="form-control" id="event-title" value="${event?.title || ''}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Proiect ID *</label>
-                <input type="number" class="form-control" id="event-project-id" value="${event?.project?.id || ''}" required>
+                <label class="form-label">Proiect *</label>
+                <select class="form-select" id="event-project-id" required>
+                    <option value="">Selectează Proiectul</option>
+                    ${activeProjects.map(p => `<option value="${p.id}" ${event?.project?.id === p.id ? 'selected' : ''}>${p.title}</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Data Eveniment *</label>
@@ -616,7 +644,7 @@ function showEventForm(id = null) {
             eventDate: document.getElementById('event-date').value + ':00', // Append seconds
             maxParticipants: parseInt(document.getElementById('event-max-participants').value) || 50
         };
-        
+
         try {
             if (id) {
                 await API.updateEvent(id, formData);
@@ -630,7 +658,7 @@ function showEventForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('event-modal')).show();
 }
 
@@ -665,7 +693,7 @@ function displayAssignments() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-link-45deg"></i><p>Nu există asignări</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -703,18 +731,41 @@ function displayAssignments() {
     `;
 }
 
-function showAssignmentForm(id = null) {
+async function showAssignmentForm(id = null) {
     const ass = id ? assignments.find(a => a.id === id) : null;
+
+    let vols = [];
+    let projs = [];
+
+    try {
+        [vols, projs] = await Promise.all([
+            API.getVolunteers(),
+            API.getProjects({ available: true }).catch(() => API.getProjects({ status: 'ACTIVE' }))
+        ]);
+        // Include current project if editing even if not available
+        if (ass?.project && !projs.find(p => p.id === ass.project.id)) {
+            projs.push(ass.project);
+        }
+    } catch (e) {
+        console.error("Failed to load data", e);
+    }
+
     const modal = createModal('assignment-modal', 'Asignare', `
         <form id="assignment-form">
             <input type="hidden" id="ass-id" value="${id || ''}">
             <div class="mb-3">
-                <label class="form-label">Voluntar ID *</label>
-                <input type="number" class="form-control" id="ass-volunteer-id" value="${ass?.volunteer?.id || ''}" required>
+                <label class="form-label">Voluntar *</label>
+                <select class="form-select" id="ass-volunteer-id" required>
+                    <option value="">Selectează Voluntar</option>
+                    ${vols.map(v => `<option value="${v.id}" ${ass?.volunteer?.id === v.id ? 'selected' : ''}>${v.firstName} ${v.lastName} (${v.email})</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Proiect ID *</label>
-                <input type="number" class="form-control" id="ass-project-id" value="${ass?.project?.id || ''}" required>
+                <label class="form-label">Proiect *</label>
+                <select class="form-select" id="ass-project-id" required>
+                    <option value="">Selectează Proiect</option>
+                    ${projs.map(p => `<option value="${p.id}" ${ass?.project?.id === p.id ? 'selected' : ''}>${p.title} (Vol: ${p.currentVolunteers || 0}/${p.maxVolunteers || 'Unlim'})</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Status</label>
@@ -737,7 +788,7 @@ function showAssignmentForm(id = null) {
             status: document.getElementById('ass-status').value,
             assignmentDate: document.getElementById('ass-date').value || new Date().toISOString().split('T')[0]
         };
-        
+
         try {
             if (id) {
                 await API.updateAssignment(id, formData);
@@ -751,7 +802,7 @@ function showAssignmentForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('assignment-modal')).show();
 }
 
@@ -786,7 +837,7 @@ function displayAttendance() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-clock-history"></i><p>Nu există înregistrări de prezență</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -822,14 +873,29 @@ function displayAttendance() {
     `;
 }
 
-function showAttendanceForm(id = null) {
+async function showAttendanceForm(id = null) {
     const att = id ? attendance.find(a => a.id === id) : null;
+
+    let assigns = [];
+    try {
+        assigns = await API.getAssignments({ status: 'ACCEPTED' });
+        // Include currently referenced assignment even if status changed, if editing
+        if (att?.assignment && !assigns.find(a => a.id === att.assignment.id)) {
+            assigns.push(att.assignment);
+        }
+    } catch (e) {
+        console.error("Failed to load assignments", e);
+    }
+
     const modal = createModal('attendance-modal', 'Prezență', `
         <form id="attendance-form">
             <input type="hidden" id="att-id" value="${id || ''}">
             <div class="mb-3">
-                <label class="form-label">Asignare ID *</label>
-                <input type="number" class="form-control" id="att-assignment-id" value="${att?.assignment?.id || ''}" required>
+                <label class="form-label">Asignare (Voluntar - Proiect) *</label>
+                <select class="form-select" id="att-assignment-id" required>
+                    <option value="">Selectează Asignare</option>
+                    ${assigns.map(a => `<option value="${a.id}" ${att?.assignment?.id === a.id ? 'selected' : ''}>${a.volunteer?.firstName} ${a.volunteer?.lastName} - ${a.project?.title}</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Data *</label>
@@ -846,7 +912,7 @@ function showAttendanceForm(id = null) {
             date: document.getElementById('att-date').value,
             hoursWorked: parseFloat(document.getElementById('att-hours').value)
         };
-        
+
         try {
             if (id) {
                 await API.updateAttendance(id, formData);
@@ -860,7 +926,7 @@ function showAttendanceForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('attendance-modal')).show();
 }
 
@@ -895,7 +961,7 @@ function displayCertificates() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-award"></i><p>Nu există certificate</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -933,14 +999,23 @@ function displayCertificates() {
     `;
 }
 
-function showCertificateForm(id = null) {
+async function showCertificateForm(id = null) {
     const cert = id ? certificates.find(c => c.id === id) : null;
+
+    let vols = [];
+    try {
+        vols = await API.getVolunteers();
+    } catch (e) { console.error(e); }
+
     const modal = createModal('certificate-modal', 'Certificat', `
         <form id="certificate-form">
             <input type="hidden" id="cert-id" value="${id || ''}">
             <div class="mb-3">
-                <label class="form-label">Voluntar ID *</label>
-                <input type="number" class="form-control" id="cert-volunteer-id" value="${cert?.volunteer?.id || ''}" required>
+                <label class="form-label">Voluntar *</label>
+                <select class="form-select" id="cert-volunteer-id" required>
+                    <option value="">Selectează Voluntar</option>
+                    ${vols.map(v => `<option value="${v.id}" ${cert?.volunteer?.id === v.id ? 'selected' : ''}>${v.firstName} ${v.lastName}</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Număr Certificat *</label>
@@ -962,7 +1037,7 @@ function showCertificateForm(id = null) {
             totalHours: parseFloat(document.getElementById('cert-hours').value),
             issueDate: document.getElementById('cert-issue-date').value || new Date().toISOString().split('T')[0]
         };
-        
+
         try {
             if (id) {
                 await API.updateCertificate(id, formData);
@@ -976,7 +1051,7 @@ function showCertificateForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('certificate-modal')).show();
 }
 
@@ -1011,7 +1086,7 @@ function displayFeedback() {
         container.innerHTML = '<div class="empty-state"><i class="bi bi-chat-left-text"></i><p>Nu există feedback</p></div>';
         return;
     }
-    
+
     container.innerHTML = `
         <div class="table-responsive">
             <table class="table table-hover">
@@ -1049,14 +1124,28 @@ function displayFeedback() {
     `;
 }
 
-function showFeedbackForm(id = null) {
+async function showFeedbackForm(id = null) {
     const fb = id ? feedback.find(f => f.id === id) : null;
+
+    let assigns = [];
+    try {
+        assigns = await API.getAssignments({ status: 'COMPLETED' });
+        if (assigns.length === 0) {
+            // If no completed, maybe show accepted too? Or just all?
+            // Let's fallback to all just in case for flexibility
+            assigns = await API.getAssignments();
+        }
+    } catch (e) { console.error(e); }
+
     const modal = createModal('feedback-modal', 'Feedback', `
         <form id="feedback-form">
             <input type="hidden" id="fb-id" value="${id || ''}">
             <div class="mb-3">
-                <label class="form-label">Asignare ID *</label>
-                <input type="number" class="form-control" id="fb-assignment-id" value="${fb?.assignment?.id || ''}" required>
+                <label class="form-label">Asignare *</label>
+                <select class="form-select" id="fb-assignment-id" required>
+                    <option value="">Selectează Asignare</option>
+                    ${assigns.map(a => `<option value="${a.id}" ${fb?.assignment?.id === a.id ? 'selected' : ''}>${a.volunteer?.firstName} ${a.volunteer?.lastName} @ ${a.project?.title}</option>`).join('')}
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Rating (1-5) *</label>
@@ -1081,7 +1170,7 @@ function showFeedbackForm(id = null) {
             comment: document.getElementById('fb-comment').value,
             feedbackType: document.getElementById('fb-type').value
         };
-        
+
         try {
             if (id) {
                 await API.updateFeedback(id, formData);
@@ -1095,7 +1184,7 @@ function showFeedbackForm(id = null) {
             showError('modal-error', error.message);
         }
     });
-    
+
     new bootstrap.Modal(document.getElementById('feedback-modal')).show();
 }
 
@@ -1118,15 +1207,15 @@ async function deleteFeedback(id) {
 async function loadStatistics(type) {
     const container = document.getElementById('statistics-content');
     container.innerHTML = '<div class="loading"><i class="bi bi-arrow-repeat spin"></i> Se încarcă...</div>';
-    
+
     try {
         let data;
         let params = {};
-        
+
         if (type === 'hours-per-volunteer') {
             params.limit = 10;
         }
-        
+
         data = await API.getStatistics(type, params);
         displayStatistics(type, data);
     } catch (error) {
@@ -1136,7 +1225,7 @@ async function loadStatistics(type) {
 
 function displayStatistics(type, data) {
     const container = document.getElementById('statistics-content');
-    
+
     if (type === 'overview') {
         container.innerHTML = `
             <div class="row">
@@ -1212,16 +1301,16 @@ function createModal(id, title, body, onSave) {
             </div>
         </div>
     `;
-    
+
     // Insert modal and attach handler
     document.getElementById('modals-container').innerHTML = modalHtml;
     const modalElement = document.getElementById(id);
     const saveBtn = document.getElementById(`modal-save-btn-${id}`);
-    
+
     if (saveBtn && onSave) {
         saveBtn.addEventListener('click', onSave);
     }
-    
+
     return modalElement;
 }
 

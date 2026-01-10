@@ -1,0 +1,554 @@
+{
+    "info": {
+        "_postman_id": "soap-test-full-id",
+        "name": "Volunteer Management - SOAP Tests (Full CRUD + Verified)",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Setup & Create Flow",
+            "item": [
+                {
+                    "name": "Add Organization",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addOrganizationResponse']['return']['id'];",
+                                    "pm.environment.set('soap_org_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                                    "pm.test('ID received', function () { pm.expect(newId).to.not.be.undefined; });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addOrganization><arg0><name>Soap Org {{$randomInt}}</name><address>Soap Address</address><email>org_{{$randomInt}}@soap.com</email></arg0></ws:addOrganization></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/organizations"
+                    }
+                },
+                {
+                    "name": "Add Volunteer",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addVolunteerResponse']['return']['id'];",
+                                    "pm.environment.set('soap_volunteer_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                                    "pm.test('ID received', function () { pm.expect(newId).to.not.be.undefined; });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addVolunteer><arg0><firstName>Soap</firstName><lastName>User</lastName><email>soap.user_{{$randomInt}}@test.com</email></arg0></ws:addVolunteer></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/volunteers"
+                    }
+                },
+                {
+                    "name": "Add Skill",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addSkillResponse']['return']['id'];",
+                                    "pm.environment.set('soap_skill_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addSkill><arg0><name>Soap Skill {{$randomInt}}</name><description>Soap Desc</description></arg0></ws:addSkill></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/skills"
+                    }
+                },
+                {
+                    "name": "Add Project",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addProjectResponse']['return']['id'];",
+                                    "pm.environment.set('soap_project_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addProject><arg0><title>Soap Project {{$randomInt}}</title><description>Soap Desc</description><startDate>2026-06-01</startDate><organization><id>{{soap_org_id}}</id></organization></arg0></ws:addProject></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/projects"
+                    }
+                },
+                {
+                    "name": "Add Event",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addEventResponse']['return']['id'];",
+                                    "pm.environment.set('soap_event_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addEvent><arg0><title>Soap Event {{$randomInt}}</title><location>Soap Loc</location><eventDate>2026-07-01T10:00:00</eventDate><project><id>{{soap_project_id}}</id></project></arg0></ws:addEvent></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/events"
+                    }
+                },
+                {
+                    "name": "Add Assignment",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addAssignmentResponse']['return']['id'];",
+                                    "pm.environment.set('soap_assignment_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addAssignment><arg0><role>Coordinator</role><assignmentDate>2026-06-02</assignmentDate><volunteer><id>{{soap_volunteer_id}}</id></volunteer><project><id>{{soap_project_id}}</id></project></arg0></ws:addAssignment></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/assignments"
+                    }
+                },
+                {
+                    "name": "Add Attendance",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addAttendanceResponse']['return']['id'];",
+                                    "pm.environment.set('soap_attendance_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addAttendance><arg0><status>Present</status><hoursWorked>8</hoursWorked><assignment><id>{{soap_assignment_id}}</id></assignment></arg0></ws:addAttendance></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/attendance"
+                    }
+                },
+                {
+                    "name": "Add Feedback",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addFeedbackResponse']['return']['id'];",
+                                    "pm.environment.set('soap_feedback_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addFeedback><arg0><rating>5</rating><comment>Great work</comment><feedbackType>VOLUNTEER_TO_ORG</feedbackType><assignment><id>{{soap_assignment_id}}</id></assignment></arg0></ws:addFeedback></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/feedback"
+                    }
+                },
+                {
+                    "name": "Add Certificate",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var response = xml2Json(responseBody);",
+                                    "var newId = response['S:Envelope']['S:Body']['ns2:addCertificateResponse']['return']['id'];",
+                                    "pm.environment.set('soap_cert_id', newId);",
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:addCertificate><arg0><certificateNumber>CERT-{{$randomInt}}</certificateNumber><description>Excellence</description><totalHours>100</totalHours><volunteer><id>{{soap_volunteer_id}}</id></volunteer><project><id>{{soap_project_id}}</id></project></arg0></ws:addCertificate></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/certificates"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Read & Update Flow",
+            "item": [
+                {
+                    "name": "Get All Organizations",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:getAllOrganizations/></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/organizations"
+                    }
+                },
+                {
+                    "name": "Update Organization",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:updateOrganization><arg0><id>{{soap_org_id}}</id><name>Soap Org Updated</name><address>New Address</address><email>updated_{{$randomInt}}@soap.com</email></arg0></ws:updateOrganization></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/organizations"
+                    }
+                },
+                {
+                    "name": "Update Volunteer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:updateVolunteer><arg0><id>{{soap_volunteer_id}}</id><firstName>SoapUpdated</firstName><lastName>UserUpdated</lastName><email>soap.updated@test.com</email></arg0></ws:updateVolunteer></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/volunteers"
+                    }
+                },
+                {
+                    "name": "Update Project",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:updateProject><arg0><id>{{soap_project_id}}</id><title>Soap Project Updated</title><description>Updated Desc</description><startDate>2026-06-01</startDate><organization><id>{{soap_org_id}}</id></organization></arg0></ws:updateProject></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/projects"
+                    }
+                },
+                {
+                    "name": "Get Skill By ID",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:getSkillById><arg0>{{soap_skill_id}}</arg0></ws:getSkillById></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/skills"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Cleanup Flow",
+            "item": [
+                {
+                    "name": "Delete Certificate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteCertificate><arg0>{{soap_cert_id}}</arg0></ws:deleteCertificate></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/certificates"
+                    }
+                },
+                {
+                    "name": "Delete Feedback",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteFeedback><arg0>{{soap_feedback_id}}</arg0></ws:deleteFeedback></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/feedback"
+                    }
+                },
+                {
+                    "name": "Delete Attendance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteAttendance><arg0>{{soap_attendance_id}}</arg0></ws:deleteAttendance></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/attendance"
+                    }
+                },
+                {
+                    "name": "Delete Assignment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteAssignment><arg0>{{soap_assignment_id}}</arg0></ws:deleteAssignment></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/assignments"
+                    }
+                },
+                {
+                    "name": "Delete Event",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteEvent><arg0>{{soap_event_id}}</arg0></ws:deleteEvent></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/events"
+                    }
+                },
+                {
+                    "name": "Delete Project",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteProject><arg0>{{soap_project_id}}</arg0></ws:deleteProject></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/projects"
+                    }
+                },
+                {
+                    "name": "Delete Volunteer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteVolunteer><arg0>{{soap_volunteer_id}}</arg0></ws:deleteVolunteer></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/volunteers"
+                    }
+                },
+                {
+                    "name": "Delete Organization",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteOrganization><arg0>{{soap_org_id}}</arg0></ws:deleteOrganization></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/organizations"
+                    }
+                },
+                {
+                    "name": "Delete Skill",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "text/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.soa.inf.ucv.ro/\"><soapenv:Header/><soapenv:Body><ws:deleteSkill><arg0>{{soap_skill_id}}</arg0></ws:deleteSkill></soapenv:Body></soapenv:Envelope>"
+                        },
+                        "url": "http://localhost:8080/volunteer-management-system/ws/skills"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -18,6 +18,7 @@ public class CertificateResource {
     private final CertificateDAO certificateDAO = new CertificateDAOImpl();
     private final ro.ucv.inf.soa.dao.VolunteerDAO volunteerDAO = new ro.ucv.inf.soa.dao.VolunteerDAOImpl();
     private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
+    private final ro.ucv.inf.soa.dao.AttendanceDAO attendanceDAO = new ro.ucv.inf.soa.dao.AttendanceDAOImpl();
 
     @GET
     public Response getAllCertificates(@QueryParam("volunteerId") Long volunteerId,
@@ -68,15 +69,24 @@ public class CertificateResource {
                         .entity(ApiResponse.error("Certificate number is required"))
                         .build();
             }
-            if (certificate.getTotalHours() == null) {
-                return Response.status(Response.Status.BAD_REQUEST)
-                        .entity(ApiResponse.error("Total hours is required"))
-                        .build();
-            }
-            if (certificate.getTotalHours().compareTo(java.math.BigDecimal.ZERO) <= 0) {
-                return Response.status(Response.Status.BAD_REQUEST)
-                        .entity(ApiResponse.error("Total hours must be positive"))
-                        .build();
+            if (certificate.getTotalHours() == null
+                    || certificate.getTotalHours().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                // Auto-calculate hours if not provided or 0
+                java.math.BigDecimal calculatedHours;
+                if (certificate.getProject() != null && certificate.getProject().getId() != null) {
+                    calculatedHours = attendanceDAO.calculateTotalHoursForVolunteerAndProject(
+                            certificate.getVolunteer().getId(), certificate.getProject().getId());
+                } else {
+                    calculatedHours = attendanceDAO.calculateTotalHoursForVolunteer(certificate.getVolunteer().getId());
+                }
+
+                if (calculatedHours.compareTo(java.math.BigDecimal.ZERO) <= 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity(ApiResponse
+                                    .error("Total hours is required or could not be calculated from attendance"))
+                            .build();
+                }
+                certificate.setTotalHours(calculatedHours);
             }
 
             if (certificateDAO.findByCertificateNumber(certificate.getCertificateNumber()).isPresent()) {

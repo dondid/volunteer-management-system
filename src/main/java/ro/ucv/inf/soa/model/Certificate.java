@@ -5,25 +5,30 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "certificates")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Certificate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "volunteer_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "volunteer_id")
     private Volunteer volunteer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private Project project;
 
     @Column(name = "certificate_number", nullable = false, unique = true, length = 50)
     private String certificateNumber;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "issue_date", nullable = false)
     private LocalDate issueDate;
 
@@ -39,6 +44,7 @@ public class Certificate {
     @Column(name = "file_url", length = 500)
     private String fileUrl;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

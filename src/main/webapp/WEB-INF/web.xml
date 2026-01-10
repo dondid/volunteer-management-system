@@ -46,4 +46,21 @@
         <servlet-name>Jersey REST Service</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+
+    <!-- Configure ContextListener for JAX-WS -->
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+
+    <!-- Configure Servlet for JAX-WS -->
+    <servlet>
+        <servlet-name>JAX-WS Servlet</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JAX-WS Servlet</servlet-name>
+        <url-pattern>/ws/*</url-pattern>
+    </servlet-mapping>
 </web-app>

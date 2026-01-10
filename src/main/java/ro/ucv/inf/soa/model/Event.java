@@ -5,8 +5,12 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "events")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Event {
 
     @Id
@@ -19,6 +23,7 @@ public class Event {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
 
@@ -28,25 +33,28 @@ public class Event {
     @Column(name = "max_participants")
     private Integer maxParticipants;
 
-    @Column(name = "current_participants")
+    @org.hibernate.annotations.Formula("(SELECT COUNT(*) FROM event_participants ep WHERE ep.event_id = id)")
     private Integer currentParticipants;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private EventStatus status = EventStatus.SCHEDULED;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     // Relații
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<EventParticipant> participants;
 
@@ -54,9 +62,6 @@ public class Event {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-        if (currentParticipants == null) {
-            currentParticipants = 0;
-        }
     }
 
     @PreUpdate

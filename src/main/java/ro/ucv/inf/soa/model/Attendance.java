@@ -5,18 +5,23 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "attendance")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Attendance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assignment_id", nullable = false)
     private Assignment assignment;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(nullable = false)
     private LocalDate date;
 
@@ -29,9 +34,11 @@ public class Attendance {
     @Column(name = "verified_by", length = 100)
     private String verifiedBy;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "verified_at")
     private LocalDateTime verifiedAt;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

@@ -6,8 +6,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "projects")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Project {
 
     @Id
@@ -20,9 +24,11 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "end_date")
     private LocalDate endDate;
 
@@ -38,7 +44,7 @@ public class Project {
     @Column(name = "max_volunteers")
     private Integer maxVolunteers;
 
-    @Column(name = "current_volunteers")
+    @org.hibernate.annotations.Formula("(SELECT COUNT(*) FROM assignments a WHERE a.project_id = id)")
     private Integer currentVolunteers;
 
     @Column(length = 500)
@@ -48,30 +54,36 @@ public class Project {
     @Column(nullable = false, length = 20)
     private ProjectStatus status = ProjectStatus.DRAFT;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     // Relații
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "organization_id", nullable = false)
     private Organization organization;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Assignment> assignments;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Event> events;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProjectSkill> requiredSkills;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private List<Certificate> certificates;
 
@@ -79,9 +91,6 @@ public class Project {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-        if (currentVolunteers == null) {
-            currentVolunteers = 0;
-        }
     }
 
     @PreUpdate

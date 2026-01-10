@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+        name="VolunteerService"
+        implementation="ro.ucv.inf.soa.ws.VolunteerSoapService"
+        url-pattern="/ws/volunteers"/>
+    <endpoint
+        name="OrganizationService"
+        implementation="ro.ucv.inf.soa.ws.OrganizationSoapService"
+        url-pattern="/ws/organizations"/>
+    <endpoint
+        name="ProjectService"
+        implementation="ro.ucv.inf.soa.ws.ProjectSoapService"
+        url-pattern="/ws/projects"/>
+    <endpoint
+        name="EventService"
+        implementation="ro.ucv.inf.soa.ws.EventSoapService"
+        url-pattern="/ws/events"/>
+    <endpoint
+        name="AssignmentService"
+        implementation="ro.ucv.inf.soa.ws.AssignmentSoapService"
+        url-pattern="/ws/assignments"/>
+    <endpoint
+        name="AttendanceService"
+        implementation="ro.ucv.inf.soa.ws.AttendanceSoapService"
+        url-pattern="/ws/attendance"/>
+    <endpoint
+        name="CertificateService"
+        implementation="ro.ucv.inf.soa.ws.CertificateSoapService"
+        url-pattern="/ws/certificates"/>
+    <endpoint
+        name="FeedbackService"
+        implementation="ro.ucv.inf.soa.ws.FeedbackSoapService"
+        url-pattern="/ws/feedback"/>
+    <endpoint
+        name="SkillService"
+        implementation="ro.ucv.inf.soa.ws.SkillSoapService"
+        url-pattern="/ws/skills"/>
+</endpoints>

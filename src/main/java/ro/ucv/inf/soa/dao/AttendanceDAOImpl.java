@@ -80,4 +80,33 @@ public class AttendanceDAOImpl extends GenericDAOImpl<Attendance, Long> implemen
             em.close();
         }
     }
+
+    @Override
+    public java.math.BigDecimal calculateTotalHoursForVolunteer(Long volunteerId) {
+        EntityManager em = getEntityManager();
+        try {
+            jakarta.persistence.Query query = em.createQuery(
+                    "SELECT SUM(a.hoursWorked) FROM Attendance a WHERE a.assignment.volunteer.id = :volunteerId");
+            query.setParameter("volunteerId", volunteerId);
+            java.math.BigDecimal sum = (java.math.BigDecimal) query.getSingleResult();
+            return sum != null ? sum : java.math.BigDecimal.ZERO;
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public java.math.BigDecimal calculateTotalHoursForVolunteerAndProject(Long volunteerId, Long projectId) {
+        EntityManager em = getEntityManager();
+        try {
+            jakarta.persistence.Query query = em.createQuery(
+                    "SELECT SUM(a.hoursWorked) FROM Attendance a WHERE a.assignment.volunteer.id = :volunteerId AND a.assignment.project.id = :projectId");
+            query.setParameter("volunteerId", volunteerId);
+            query.setParameter("projectId", projectId);
+            java.math.BigDecimal sum = (java.math.BigDecimal) query.getSingleResult();
+            return sum != null ? sum : java.math.BigDecimal.ZERO;
+        } finally {
+            em.close();
+        }
+    }
 }

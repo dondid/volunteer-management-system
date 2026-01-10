@@ -4,15 +4,19 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "feedback")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Feedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assignment_id", nullable = false)
     private Assignment assignment;
 
@@ -22,6 +26,7 @@ public class Feedback {
     @Column(columnDefinition = "TEXT")
     private String comment;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "feedback_date", nullable = false)
     private LocalDate feedbackDate;
 
@@ -32,6 +37,7 @@ public class Feedback {
     @Column(name = "feedback_type", nullable = false)
     private FeedbackType feedbackType = FeedbackType.ORG_TO_VOLUNTEER;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

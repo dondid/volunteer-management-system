@@ -5,8 +5,12 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "organizations")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Organization {
 
     @Id
@@ -38,14 +42,17 @@ public class Organization {
     @Column(nullable = false, length = 20)
     private OrganizationStatus status = OrganizationStatus.PENDING;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     // Relații - cu @JsonIgnore pentru a evita lazy initialization
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Project> projects;
 

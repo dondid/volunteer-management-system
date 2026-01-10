@@ -1,4 +1,4 @@
-# Volunteer Management System - REST API
+# Volunteer Management System - REST & SOAP API
 
 Sistem de management al voluntarilor implementat ca serviciu web RESTful conform cerințelor cursului **Distributed Services Oriented Architectures**.
 
@@ -15,7 +15,21 @@ Aplicația permite gestionarea:
 - **Feedback-ului** între organizații și voluntari
 - **Competențelor** necesare pentru proiecte
 
-## 🏗️ Arhitectură
+## 🏗️ Arhitectură Hibridă (Hybrid Architecture)
+
+Acest proiect demonstrează o arhitectură modernă de tip **Hibrid**, suportând simultan două stiluri de comunicare:
+
+1.  **REST API (JSON)** - Pentru interfața web modernă și clienți mobile.
+    *   Endpoint: `/api/*`
+    *   Documentație: Vezi secțiunea API de mai jos.
+
+2.  **SOAP Web Services (XML)** - Pentru integrare cu sisteme legacy sau enterprise (B2B).
+    *   **Service Dashboard (Lista completă):** [http://localhost:8080/volunteer-management-system/ws/organizations](http://localhost:8080/volunteer-management-system/ws/organizations)
+    *   *Accesați link-ul de mai sus în browser pentru a vedea toate endpoint-urile SOAP și WSDL-urile disponibile.*
+
+Ambele interfețe folosesc **același strat de date (DAO)**, asigurând sincronizarea perfectă a informațiilor.
+
+## 🏗️ Arhitectură Tehnică
 
 - **Backend**: Java 17, JAX-RS (Jersey), JPA/Hibernate
 - **Baza de date**: MySQL 8.0
@@ -257,7 +271,24 @@ curl http://localhost:8080/volunteer-management-system/api/statistics/overview
 
 ### Cu Postman
 
-Importă colecția `test_postman.json` inclusă în proiect pentru a testa toate endpoint-urile. Colecția conține scenarii de test pre-configurate.
+Importă colecțiile incluse în proiect:
+
+1.  **REST API**: `rest_tests_postman.json` - Testează toate endpoint-urile JSON standard.
+2.  **SOAP API**: `soap_tests_postman.json` - Testează serviciile XML (CRUD complet: Create, Read, Update, Delete). Ambele interfețe folosesc **același strat de date (DAO)**, asigurând sincronizarea perfectă a informațiilor.
+    - Suport complet pentru **CRUD** (Create, Read, Update, Delete) pe toate cele 9 entități.
+    - **Smart Merge (Robust Partial Updates)**: Actualizările parțiale sunt gestionate inteligent (ex. trimiterea doar a titlului nu șterge restul datelor).
+    - **Validare Strictă**: Erorile de validare sunt tratate corect (ex. câmpuri obligatorii).
+
+## 📊 Rezultate Testare Automată
+
+Sistemul a fost testat complet automatizat folosind Postman. Rezultatele ultimei rulări verificate (`*.postman_test_run.json`):
+
+| Metrică | REST API (JSON) | SOAP API (XML) |
+| :--- | :--- | :--- |
+| **Total Request-uri** | 33 | 23 |
+| **Rată Succes** | 100% | 100% |
+| **Eșecuri** | 0 | 0 |
+| **Scenarii Testate** | CRUD complet, Statistici, Validări | CRUD complet, Smart Updates |
 
 ## 🛡️ Reguli de Validare
 

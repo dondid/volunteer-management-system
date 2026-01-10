@@ -46,7 +46,8 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Assignment> query = em.createQuery(
-                    "SELECT a FROM Assignment a WHERE a.volunteer.id = :volunteerId", Assignment.class);
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization WHERE a.volunteer.id = :volunteerId",
+                    Assignment.class);
             query.setParameter("volunteerId", volunteerId);
             return query.getResultList();
         } finally {
@@ -59,7 +60,8 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Assignment> query = em.createQuery(
-                    "SELECT a FROM Assignment a WHERE a.project.id = :projectId", Assignment.class);
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization WHERE a.project.id = :projectId",
+                    Assignment.class);
             query.setParameter("projectId", projectId);
             return query.getResultList();
         } finally {
@@ -72,7 +74,8 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Assignment> query = em.createQuery(
-                    "SELECT a FROM Assignment a WHERE a.status = :status", Assignment.class);
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization WHERE a.status = :status",
+                    Assignment.class);
             query.setParameter("status", status);
             return query.getResultList();
         } finally {
@@ -85,7 +88,7 @@ public class AssignmentDAOImpl extends GenericDAOImpl<Assignment, Long> implemen
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Assignment> query = em.createQuery(
-                    "SELECT a FROM Assignment a WHERE a.volunteer.id = :volunteerId AND a.project.id = :projectId",
+                    "SELECT a FROM Assignment a JOIN FETCH a.volunteer JOIN FETCH a.project JOIN FETCH a.project.organization WHERE a.volunteer.id = :volunteerId AND a.project.id = :projectId",
                     Assignment.class);
             query.setParameter("volunteerId", volunteerId);
             query.setParameter("projectId", projectId);

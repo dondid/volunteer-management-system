@@ -6,8 +6,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 @Entity
 @Table(name = "volunteers")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Volunteer {
 
     @Id
@@ -26,6 +30,7 @@ public class Volunteer {
     @Column(length = 20)
     private String phone;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
@@ -51,29 +56,36 @@ public class Volunteer {
     @Column(nullable = false, length = 20)
     private VolunteerStatus status = VolunteerStatus.ACTIVE;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateAdapter.class)
     @Column(name = "registration_date", nullable = false)
     private LocalDate registrationDate;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(ro.ucv.inf.soa.ws.adapter.LocalDateTimeAdapter.class)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     // Relații - cu @JsonIgnore
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Assignment> assignments;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<VolunteerSkill> skills;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<EventParticipant> eventParticipations;
 
     @JsonIgnore
+    @jakarta.xml.bind.annotation.XmlTransient
     @OneToMany(mappedBy = "volunteer", fetch = FetchType.LAZY)
     private List<Certificate> certificates;
 
