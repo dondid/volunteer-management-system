@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e569a981-2f39-4840-9b69-d5001e5006f2" activeEnvironment="Default" name="VolunteerSystem-FULL" soapui-version="5.9.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+
+  <con:interface xsi:type="con:WsdlInterface" id="48c940a0-cbef-404d-a61a-2204178fd5ae" wsaVersion="NONE" name="OrganizationServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}OrganizationServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/organizations?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="4bce0963-3e74-442f-a004-b1b13d53c004" wsaVersion="NONE" name="VolunteerServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}VolunteerServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/volunteers?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="8346d0e9-658a-4cae-9ed2-bd1d9e5171c3" wsaVersion="NONE" name="ProjectServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}ProjectServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/projects?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="7f691db9-965f-4e6d-9568-4c68ebad1c78" wsaVersion="NONE" name="EventServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}EventServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/events?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="b79a0bf2-9519-4495-8925-c85065f171fa" wsaVersion="NONE" name="AssignmentServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AssignmentServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/assignments?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="3b5c8c08-27df-4b52-826b-81a213c2e214" wsaVersion="NONE" name="AttendanceServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}AttendanceServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/attendance?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="16a6a2e7-19b7-4443-8143-7fdf538a87db" wsaVersion="NONE" name="FeedbackServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}FeedbackServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/feedback?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="e9973dd5-e118-4b59-9f11-05aaa41cb3bd" wsaVersion="NONE" name="CertificateServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}CertificateServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/certificates?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:interface xsi:type="con:WsdlInterface" id="df05e46b-3982-4b25-b925-4b52fac322b2" wsaVersion="NONE" name="SkillServicePortBinding" type="wsdl" bindingName="{http://ws.soa.inf.ucv.ro/}SkillServicePortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/volunteer-management-system/ws/skills?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/><con:endpoints>
+      <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
+    </con:endpoints>
+  </con:interface>
+
+  <con:testSuite id="634c3f93-d5e6-4510-a07c-de384247fd29" name="OrganizationTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="06ee4a6a-2a8e-4612-ac5e-3523e7580572" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="170f89d8-7c56-4394-b9bf-68e43be311ce" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>addOrganization</con:operation>
+          <con:request name="Step1_Create" id="89ccbb81-dee6-4e1d-a986-90488eb07fb3">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addOrganization><arg0><name>Soap Org ${= (int)(Math.random()*10000) }</name><address>Test Address</address><email>org_${= (int)(Math.random()*10000) }@soap.com</email></arg0></ws:addOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="cd16f1d9-edb1-4015-a068-308d1e936778">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>orgId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>orgId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="ad417c6a-4551-427e-91ab-200446662024" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>getOrganizationById</con:operation>
+          <con:request name="Step2_Get" id="d5701e1a-8af0-4454-a979-29fadfe57892">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getOrganizationById>
+         <arg0>${#Project#orgId}</arg0>
+      </ws:getOrganizationById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="8faf51ba-70aa-44c0-bcec-8b541adcee00" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>updateOrganization</con:operation>
+          <con:request name="Step3_Update" id="44d6230a-00ae-4958-9413-25528f3012f4">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateOrganization><arg0><id>${#Project#orgId}</id><name>Soap Org Updated</name><address>Updated Address</address><email>org_upd_${= (int)(Math.random()*10000) }@soap.com</email></arg0></ws:updateOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="d8c7625c-7fab-4f08-baf6-f927e6dd5dea" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>deleteOrganization</con:operation>
+          <con:request name="Step4_Delete" id="89354bdc-b67c-4cb7-a92e-32b436391e5a">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteOrganization>
+         <arg0>${#Project#orgId}</arg0>
+      </ws:deleteOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="766cde00-99cd-476e-9b2d-9c98d07436b7" name="VolunteerTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="049b74ae-60ec-4193-b4bc-2596532b53ae" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="01c6d316-fd7d-4806-ab6f-448266b486b5" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VolunteerServicePortBinding</con:interface>
+          <con:operation>addVolunteer</con:operation>
+          <con:request name="Step1_Create" id="a29d5a59-7822-4ca6-9df0-9c057189b762">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addVolunteer><arg0><firstName>John</firstName><lastName>Soap</lastName><email>john.soap_${= (int)(Math.random()*10000) }@test.com</email></arg0></ws:addVolunteer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="c967fd3f-5dcf-46fa-9f3a-bb118124ee5e">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>volunteerId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>volunteerId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="36f63a4d-64cd-41b5-bddf-31b1b94592c5" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VolunteerServicePortBinding</con:interface>
+          <con:operation>getVolunteerById</con:operation>
+          <con:request name="Step2_Get" id="badbbe10-9217-4ead-9e3f-485bcad67edf">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getVolunteerById>
+         <arg0>${#Project#volunteerId}</arg0>
+      </ws:getVolunteerById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="b66d7dd5-e8c1-492c-b7ec-1f07e0b27f3a" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VolunteerServicePortBinding</con:interface>
+          <con:operation>updateVolunteer</con:operation>
+          <con:request name="Step3_Update" id="0844ca3a-af33-4676-98fe-d2f3504527dc">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateVolunteer><arg0><id>${#Project#volunteerId}</id><firstName>JohnUpdated</firstName><lastName>SoapUpdated</lastName><email>john.upd_${= (int)(Math.random()*10000) }@test.com</email></arg0></ws:updateVolunteer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="8d93a4fa-deea-4d95-8e3d-328ed092de31" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VolunteerServicePortBinding</con:interface>
+          <con:operation>deleteVolunteer</con:operation>
+          <con:request name="Step4_Delete" id="384e2edf-d861-4804-803a-f19a32561bd1">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/volunteers</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteVolunteer>
+         <arg0>${#Project#volunteerId}</arg0>
+      </ws:deleteVolunteer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="ef356a30-663f-4ba4-a9e3-33b8acdd9bf4" name="ProjectTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="6b554ae3-39af-4ebb-8f9b-8bc058e4bd47" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="172ad9cb-0f42-4567-b12b-2faa5416758f" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>ProjectServicePortBinding</con:interface>
+          <con:operation>addProject</con:operation>
+          <con:request name="Step1_Create" id="9b4dea48-6b39-4f38-ac5d-de04068acc19">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addProject><arg0><title>Soap Project ${= (int)(Math.random()*10000) }</title><description>Test Desc</description><startDate>2026-06-01</startDate><organization><id>${#Project#orgId}</id></organization></arg0></ws:addProject>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="864bf60b-915a-49b2-a4da-f35cacbaea84">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>projectId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>projectId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="6d827c4e-d0f1-4f19-b157-d84b3b3b0f09" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>ProjectServicePortBinding</con:interface>
+          <con:operation>getProjectById</con:operation>
+          <con:request name="Step2_Get" id="b4e8e093-0550-4c61-ae78-ac086d4e9fc8">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getProjectById>
+         <arg0>${#Project#projectId}</arg0>
+      </ws:getProjectById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="1cb15095-3c99-48e1-a4be-eb1c0129e1b6" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>ProjectServicePortBinding</con:interface>
+          <con:operation>updateProject</con:operation>
+          <con:request name="Step3_Update" id="f5e40755-5d1b-43b2-a380-41d85c5ee5de">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateProject><arg0><id>${#Project#projectId}</id><title>Soap Project Updated</title><description>Updated Desc</description><startDate>2026-06-01</startDate><organization><id>${#Project#orgId}</id></organization></arg0></ws:updateProject>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="e484d5a9-eb42-44f1-a581-37259b921a96" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>ProjectServicePortBinding</con:interface>
+          <con:operation>deleteProject</con:operation>
+          <con:request name="Step4_Delete" id="7cbac206-8186-436f-97cd-6c05746f5e72">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/projects</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteProject>
+         <arg0>${#Project#projectId}</arg0>
+      </ws:deleteProject>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="83ff4bd9-3768-4b1a-a2d6-eb2cb3902b76" name="EventTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="9fc32210-bbba-4edd-9afe-a18f4daeaaa1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="b746932e-bfbf-438d-8465-2e8a63f45ae5" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>EventServicePortBinding</con:interface>
+          <con:operation>addEvent</con:operation>
+          <con:request name="Step1_Create" id="a35f707c-6ad7-4032-b72e-c7a0988baa0e">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addEvent><arg0><title>Soap Event ${= (int)(Math.random()*10000) }</title><location>Test Loc</location><eventDate>2026-07-01T10:00:00</eventDate><project><id>${#Project#projectId}</id></project></arg0></ws:addEvent>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="dee0aaf0-b23b-4615-94b6-591cd86cf18b">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>eventId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>eventId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="4c558815-9ac4-40d2-8f2f-92c503343bbd" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>EventServicePortBinding</con:interface>
+          <con:operation>getEventById</con:operation>
+          <con:request name="Step2_Get" id="bf98ee1e-e157-4ee4-87db-a8c7c0caf668">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getEventById>
+         <arg0>${#Project#eventId}</arg0>
+      </ws:getEventById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="7977f62e-5b15-46ab-b46f-c142a3dca588" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>EventServicePortBinding</con:interface>
+          <con:operation>updateEvent</con:operation>
+          <con:request name="Step3_Update" id="4ea85972-a7f7-403f-8eb5-a05f1fb789bd">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateEvent><arg0><id>${#Project#eventId}</id><title>Soap Event Updated</title><location>Test Loc</location><eventDate>2026-07-01T10:00:00</eventDate><project><id>${#Project#projectId}</id></project></arg0></ws:updateEvent>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="1f8b9b45-0b17-46b2-b599-b1fa490ca267" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>EventServicePortBinding</con:interface>
+          <con:operation>deleteEvent</con:operation>
+          <con:request name="Step4_Delete" id="c71e2016-230b-4612-a89f-5b9bb78d1639">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/events</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteEvent>
+         <arg0>${#Project#eventId}</arg0>
+      </ws:deleteEvent>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="8cd9b598-53ac-415a-9a32-b04bf026e0ca" name="AssignmentTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="ec1e79fb-8ad8-442b-bc5f-fb3befc7e8fe" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="d5cc4f84-cba3-4dd2-890d-11e171a3ea50" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AssignmentServicePortBinding</con:interface>
+          <con:operation>addAssignment</con:operation>
+          <con:request name="Step1_Create" id="abc3d15a-e8eb-4e64-8a0e-8823651039cb">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addAssignment><arg0><role>Coordinator</role><assignmentDate>2026-06-02</assignmentDate><volunteer><id>${#Project#volunteerId}</id></volunteer><project><id>${#Project#projectId}</id></project></arg0></ws:addAssignment>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="3e78877f-fbb5-41f1-a3b8-c09f2baa5eda">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>assignmentId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>assignmentId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="fb867730-724f-466e-9cdd-cedd7483edf8" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AssignmentServicePortBinding</con:interface>
+          <con:operation>getAssignmentById</con:operation>
+          <con:request name="Step2_Get" id="54caac44-7cc7-40cb-9548-54fbe1fb8372">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getAssignmentById>
+         <arg0>${#Project#assignmentId}</arg0>
+      </ws:getAssignmentById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="bb48ecf7-cac9-4788-8461-268bb0fcbd13" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AssignmentServicePortBinding</con:interface>
+          <con:operation>updateAssignment</con:operation>
+          <con:request name="Step3_Update" id="a45f6a41-5f03-438a-9ced-bed043d570e7">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateAssignment><arg0><id>${#Project#assignmentId}</id><role>Manager</role><assignmentDate>2026-06-02</assignmentDate><volunteer><id>${#Project#volunteerId}</id></volunteer><project><id>${#Project#projectId}</id></project></arg0></ws:updateAssignment>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="c7ff811b-7563-48c7-8e17-618a34cdb0c0" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AssignmentServicePortBinding</con:interface>
+          <con:operation>deleteAssignment</con:operation>
+          <con:request name="Step4_Delete" id="4d7b049b-1e52-4d0e-ac17-ab4c7454d24b">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/assignments</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteAssignment>
+         <arg0>${#Project#assignmentId}</arg0>
+      </ws:deleteAssignment>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="5e761701-5e78-471e-952f-73c99baad35e" name="AttendanceTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="32a3554d-3ea8-4b38-af6f-b7fb68b67a2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="6b10481c-a435-4945-8512-b49aeaf7d5d3" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AttendanceServicePortBinding</con:interface>
+          <con:operation>addAttendance</con:operation>
+          <con:request name="Step1_Create" id="50e1e1a2-dad5-4025-8f0b-ffa0a551138d">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addAttendance><arg0><status>Present</status><hoursWorked>8</hoursWorked><assignment><id>${#Project#assignmentId}</id></assignment></arg0></ws:addAttendance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="10c87c10-954d-4d04-a30b-1c05e57be687">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>attendanceId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>attendanceId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="06bbf8c4-2727-4590-87b0-b433f4d34443" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AttendanceServicePortBinding</con:interface>
+          <con:operation>getAttendanceById</con:operation>
+          <con:request name="Step2_Get" id="477b551a-7612-4594-b2ae-c18869777e60">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getAttendanceById>
+         <arg0>${#Project#attendanceId}</arg0>
+      </ws:getAttendanceById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="5baf7a0f-0a98-4b14-9485-b8c3551facb1" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AttendanceServicePortBinding</con:interface>
+          <con:operation>updateAttendance</con:operation>
+          <con:request name="Step3_Update" id="7e36cdf9-249b-462f-b7a9-a65b5f9bf162">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateAttendance><arg0><id>${#Project#attendanceId}</id><status>Present</status><hoursWorked>10</hoursWorked><assignment><id>${#Project#assignmentId}</id></assignment></arg0></ws:updateAttendance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="8544359d-52ba-449c-bf28-b4dea43e2b45" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>AttendanceServicePortBinding</con:interface>
+          <con:operation>deleteAttendance</con:operation>
+          <con:request name="Step4_Delete" id="d91569f4-4644-49c5-ba63-e4b6397a773f">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/attendance</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteAttendance>
+         <arg0>${#Project#attendanceId}</arg0>
+      </ws:deleteAttendance>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="c57bee10-69f1-43d3-9b20-db7bf2e18cb9" name="FeedbackTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="cd1f6473-b7a3-4b4a-9bd8-f266d9a9c907" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="aadfc1af-2ff7-42af-87ed-a97d8ea894f0" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>FeedbackServicePortBinding</con:interface>
+          <con:operation>addFeedback</con:operation>
+          <con:request name="Step1_Create" id="deee4386-4a05-4cf8-8f70-210f383afec6">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addFeedback><arg0><rating>5</rating><comment>Great work</comment><feedbackType>VOLUNTEER_TO_ORG</feedbackType><assignment><id>${#Project#assignmentId}</id></assignment></arg0></ws:addFeedback>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="c17e56b7-c42d-4790-a4ed-7a624fc1defa">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>feedbackId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>feedbackId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="44f6dd9d-008c-4cbb-9e04-f719e23fb635" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>FeedbackServicePortBinding</con:interface>
+          <con:operation>getFeedbackById</con:operation>
+          <con:request name="Step2_Get" id="be3ccf9e-1fc0-4d1a-a81e-ce0406ee0ce5">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getFeedbackById>
+         <arg0>${#Project#feedbackId}</arg0>
+      </ws:getFeedbackById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="e572c9d1-6ffa-4239-9a98-2a3c81247d6e" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>FeedbackServicePortBinding</con:interface>
+          <con:operation>updateFeedback</con:operation>
+          <con:request name="Step3_Update" id="164c34b0-cb71-4bde-8780-93b8c723bc64">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateFeedback><arg0><id>${#Project#feedbackId}</id><rating>4</rating><comment>Good work</comment><feedbackType>VOLUNTEER_TO_ORG</feedbackType><assignment><id>${#Project#assignmentId}</id></assignment></arg0></ws:updateFeedback>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="a3fd2349-c830-4fca-a8d4-d99698012f2b" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>FeedbackServicePortBinding</con:interface>
+          <con:operation>deleteFeedback</con:operation>
+          <con:request name="Step4_Delete" id="5c118efd-e373-4322-bb6b-1d09fa3f6d42">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/feedback</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteFeedback>
+         <arg0>${#Project#feedbackId}</arg0>
+      </ws:deleteFeedback>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="d4408d45-a709-4029-b2be-1d77c43e79c1" name="CertificateTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="8d1a74b5-a79a-4ee1-8131-8318ada9c38c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="f4c21389-f5e0-4cae-b3d2-3557c386a069" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>CertificateServicePortBinding</con:interface>
+          <con:operation>addCertificate</con:operation>
+          <con:request name="Step1_Create" id="a433a012-5e2e-4037-9359-665ea021c90f">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addCertificate><arg0><certificateNumber>CERT-${= (int)(Math.random()*10000) }</certificateNumber><description>Excellence</description><totalHours>100</totalHours><volunteer><id>${#Project#volunteerId}</id></volunteer><project><id>${#Project#projectId}</id></project></arg0></ws:addCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="26a53675-83a5-4dc7-b94e-c81a134c0792">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>certId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>certId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="26c65466-044a-4bec-90a5-f19f55315b34" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>CertificateServicePortBinding</con:interface>
+          <con:operation>getCertificateById</con:operation>
+          <con:request name="Step2_Get" id="7eb9e176-a2cc-4dab-97ef-9481a0162fc7">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getCertificateById>
+         <arg0>${#Project#certId}</arg0>
+      </ws:getCertificateById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="05db6ae8-c49b-4da3-9fce-dab190adf6de" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>CertificateServicePortBinding</con:interface>
+          <con:operation>updateCertificate</con:operation>
+          <con:request name="Step3_Update" id="919bb938-9d54-4b81-85ad-085993915d0b">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateCertificate><arg0><id>${#Project#certId}</id><certificateNumber>CERT-${= (int)(Math.random()*10000) }</certificateNumber><description>Excellence Updated</description><totalHours>120</totalHours><volunteer><id>${#Project#volunteerId}</id></volunteer><project><id>${#Project#projectId}</id></project></arg0></ws:updateCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="631183d6-bfa8-4a82-a025-2743e7c907b9" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>CertificateServicePortBinding</con:interface>
+          <con:operation>deleteCertificate</con:operation>
+          <con:request name="Step4_Delete" id="3298779e-0777-4892-b9a1-e5057bf173a4">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/certificates</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteCertificate>
+         <arg0>${#Project#certId}</arg0>
+      </ws:deleteCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+
+  <con:testSuite id="9dc268b5-04bf-4ffc-b973-7ef17af42e34" name="SkillTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="7f2c0acc-eb36-4721-8657-6da63f314f09" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="92b261d3-4ca4-486f-81e6-5bf5685a9508" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>SkillServicePortBinding</con:interface>
+          <con:operation>addSkill</con:operation>
+          <con:request name="Step1_Create" id="e2a3c7e2-194b-4632-bebb-99883f8b8310">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addSkill><arg0><name>Soap Skill ${= (int)(Math.random()*10000) }</name><description>Skill Desc</description></arg0></ws:addSkill>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="47a694b0-93e9-4aa6-b8b2-5342f635197d">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>skillId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>skillId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="168591fd-d4dc-42a0-844f-929fbb330e15" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>SkillServicePortBinding</con:interface>
+          <con:operation>getSkillById</con:operation>
+          <con:request name="Step2_Get" id="61149992-f475-479e-8848-a30f5646bbc8">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getSkillById>
+         <arg0>${#Project#skillId}</arg0>
+      </ws:getSkillById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="94bff1a1-0ec8-486b-ae7b-a4b1336e79bc" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>SkillServicePortBinding</con:interface>
+          <con:operation>updateSkill</con:operation>
+          <con:request name="Step3_Update" id="83ec1e03-952b-4d8f-bb05-f55533bb4efe">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateSkill><arg0><id>${#Project#skillId}</id><name>Soap Skill Updated</name><description>Skill Desc Updated</description></arg0></ws:updateSkill>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="01f56b41-f824-4c89-b812-25f865b406e9" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>SkillServicePortBinding</con:interface>
+          <con:operation>deleteSkill</con:operation>
+          <con:request name="Step4_Delete" id="095ff976-bd82-4b59-9a8b-7cfb495818ca">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/skills</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteSkill>
+         <arg0>${#Project#skillId}</arg0>
+      </ws:deleteSkill>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
+  <con:properties/></con:testSuite>
+  <con:properties>
+    <con:property><con:name>orgId</con:name><con:value/></con:property>
+    <con:property><con:name>volunteerId</con:name><con:value/></con:property>
+    <con:property><con:name>projectId</con:name><con:value/></con:property>
+    <con:property><con:name>eventId</con:name><con:value/></con:property>
+    <con:property><con:name>assignmentId</con:name><con:value/></con:property>
+    <con:property><con:name>attendanceId</con:name><con:value/></con:property>
+    <con:property><con:name>feedbackId</con:name><con:value/></con:property>
+    <con:property><con:name>certId</con:name><con:value/></con:property>
+    <con:property><con:name>skillId</con:name><con:value/></con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:sensitiveInformation/>
+</con:soapui-project>

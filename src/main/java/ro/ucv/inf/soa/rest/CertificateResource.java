@@ -13,6 +13,7 @@ import java.util.List;
 @Path("/certificates")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Certificates", description = "Operations for managing volunteer certificates")
 public class CertificateResource {
 
     private final CertificateDAO certificateDAO = new CertificateDAOImpl();
@@ -21,6 +22,9 @@ public class CertificateResource {
     private final ro.ucv.inf.soa.dao.AttendanceDAO attendanceDAO = new ro.ucv.inf.soa.dao.AttendanceDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List certificates", description = "Retrieves certificates filtered by volunteer or project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of certificates found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllCertificates(@QueryParam("volunteerId") Long volunteerId,
             @QueryParam("projectId") Long projectId) {
         try {
@@ -42,6 +46,9 @@ public class CertificateResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get certificate by ID", description = "Retrieves a specific certificate by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Certificate found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Certificate not found")
     public Response getCertificateById(@PathParam("id") Long id) {
         try {
             return certificateDAO.findById(id)
@@ -57,6 +64,10 @@ public class CertificateResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Issue certificate", description = "Creates a new certificate for a volunteer")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Certificate created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input or missing prerequisites")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Certificate number already exists")
     public Response createCertificate(Certificate certificate) {
         try {
             if (certificate.getVolunteer() == null || certificate.getVolunteer().getId() == null) {
@@ -133,6 +144,9 @@ public class CertificateResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update certificate", description = "Updates an existing certificate")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Certificate updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Certificate not found")
     public Response updateCertificate(@PathParam("id") Long id, Certificate certificate) {
         try {
             Certificate existing = certificateDAO.findById(id).orElse(null);
@@ -175,6 +189,9 @@ public class CertificateResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete certificate", description = "Revokes and removes a certificate")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Certificate deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Certificate not found")
     public Response deleteCertificate(@PathParam("id") Long id) {
         try {
             if (!certificateDAO.existsById(id)) {
@@ -195,6 +212,8 @@ public class CertificateResource {
 
     @GET
     @Path("/volunteer/{volunteerId}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get certificates by volunteer", description = "Retrieves all certificates issued to a specific volunteer")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of certificates found")
     public Response getCertificatesByVolunteer(@PathParam("volunteerId") Long volunteerId) {
         try {
             List<Certificate> certificates = certificateDAO.findByVolunteerId(volunteerId);

@@ -14,6 +14,7 @@ import java.util.List;
 @Path("/assignments")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Assignments", description = "Operations for managing assignments")
 public class AssignmentResource {
 
     private final AssignmentDAO assignmentDAO = new AssignmentDAOImpl();
@@ -21,6 +22,9 @@ public class AssignmentResource {
     private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List assignments", description = "Retrieves a list of assignments with optional filters")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of assignments found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllAssignments(@QueryParam("volunteerId") Long volunteerId,
             @QueryParam("projectId") Long projectId,
             @QueryParam("status") String status) {
@@ -47,6 +51,9 @@ public class AssignmentResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get assignment by ID", description = "Retrieves a specific assignment by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Assignment found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Assignment not found")
     public Response getAssignmentById(@PathParam("id") Long id) {
         try {
             return assignmentDAO.findById(id)
@@ -62,6 +69,10 @@ public class AssignmentResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Create assignment", description = "Assigns a volunteer to a project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Assignment created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input or business rule violation")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Duplicate assignment or capacity reached")
     public Response createAssignment(Assignment assignment) {
         try {
             if (assignment.getVolunteer() == null || assignment.getVolunteer().getId() == null) {
@@ -145,6 +156,9 @@ public class AssignmentResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update assignment", description = "Updates details of an existing assignment")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Assignment updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Assignment not found")
     public Response updateAssignment(@PathParam("id") Long id, Assignment assignment) {
         try {
             Assignment existing = assignmentDAO.findById(id).orElse(null);
@@ -177,6 +191,9 @@ public class AssignmentResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete assignment", description = "Removes an assignment from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Assignment deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Assignment not found")
     public Response deleteAssignment(@PathParam("id") Long id) {
         try {
             if (!assignmentDAO.existsById(id)) {

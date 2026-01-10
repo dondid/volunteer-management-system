@@ -13,11 +13,15 @@ import java.util.List;
 @Path("/organizations")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Organizations", description = "Operations for managing organizations")
 public class OrganizationResource {
 
     private final OrganizationDAO organizationDAO = new OrganizationDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List all organizations", description = "Retrieves a list of all registered organizations")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of organizations found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllOrganizations() {
         try {
             List<Organization> organizations = organizationDAO.findAll();
@@ -31,6 +35,9 @@ public class OrganizationResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get organization by ID", description = "Retrieves a specific organization by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Organization found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Organization not found")
     public Response getOrganizationById(@PathParam("id") Long id) {
         try {
             return organizationDAO.findById(id)
@@ -46,6 +53,10 @@ public class OrganizationResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Create an organization", description = "Registers a new organization")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Organization created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Email already exists")
     public Response createOrganization(Organization organization) {
         try {
             if (organization.getName() == null || organization.getName().trim().isEmpty()) {
@@ -90,6 +101,9 @@ public class OrganizationResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update organization", description = "Updates details of an existing organization")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Organization updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Organization not found")
     public Response updateOrganization(@PathParam("id") Long id, Organization organization) {
         try {
             Organization existing = organizationDAO.findById(id).orElse(null);
@@ -142,6 +156,9 @@ public class OrganizationResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete organization", description = "Deletes an organization from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Organization deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Organization not found")
     public Response deleteOrganization(@PathParam("id") Long id) {
         try {
             if (!organizationDAO.existsById(id)) {

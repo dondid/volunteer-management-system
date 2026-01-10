@@ -13,12 +13,16 @@ import java.util.List;
 @Path("/attendance")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Attendance", description = "Operations for managing attendance records")
 public class AttendanceResource {
 
     private final AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
     private final ro.ucv.inf.soa.dao.AssignmentDAO assignmentDAO = new ro.ucv.inf.soa.dao.AssignmentDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List attendance records", description = "Retrieves attendance records filtered by assignment or volunteer")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of attendance records found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllAttendance(@QueryParam("assignmentId") Long assignmentId,
             @QueryParam("volunteerId") Long volunteerId) {
         try {
@@ -40,6 +44,9 @@ public class AttendanceResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get attendance by ID", description = "Retrieves a specific attendance record by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Attendance record found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Attendance record not found")
     public Response getAttendanceById(@PathParam("id") Long id) {
         try {
             return attendanceDAO.findById(id)
@@ -55,6 +62,9 @@ public class AttendanceResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Log attendance", description = "Records hours worked for an assignment")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Attendance recorded successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input (future date, negative hours)")
     public Response createAttendance(Attendance attendance) {
         try {
             if (attendance.getAssignment() == null || attendance.getAssignment().getId() == null) {
@@ -111,6 +121,9 @@ public class AttendanceResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update attendance", description = "Updates an existing attendance record")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Attendance updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Attendance record not found")
     public Response updateAttendance(@PathParam("id") Long id, Attendance attendance) {
         try {
             Attendance existing = attendanceDAO.findById(id).orElse(null);
@@ -158,6 +171,9 @@ public class AttendanceResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete attendance", description = "Removes an attendance record")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Attendance deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Attendance record not found")
     public Response deleteAttendance(@PathParam("id") Long id) {
         try {
             if (!attendanceDAO.existsById(id)) {
@@ -178,6 +194,8 @@ public class AttendanceResource {
 
     @GET
     @Path("/assignment/{assignmentId}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get attendance by assignment", description = "Retrieves all attendance records for a specific assignment")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of attendance records found")
     public Response getAttendanceByAssignment(@PathParam("assignmentId") Long assignmentId) {
         try {
             List<Attendance> attendances = attendanceDAO.findByAssignmentId(assignmentId);

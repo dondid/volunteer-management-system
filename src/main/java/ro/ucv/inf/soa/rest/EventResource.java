@@ -14,12 +14,16 @@ import java.util.List;
 @Path("/events")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Events", description = "Operations for managing events")
 public class EventResource {
 
     private final EventDAO eventDAO = new EventDAOImpl();
     private final ro.ucv.inf.soa.dao.ProjectDAO projectDAO = new ro.ucv.inf.soa.dao.ProjectDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List events", description = "Retrieves a list of events with optional filters")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of events found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllEvents(@QueryParam("projectId") Long projectId,
             @QueryParam("status") String status,
             @QueryParam("upcoming") Boolean upcoming,
@@ -47,6 +51,9 @@ public class EventResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get event by ID", description = "Retrieves a specific event by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Event found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Event not found")
     public Response getEventById(@PathParam("id") Long id) {
         try {
             return eventDAO.findById(id)
@@ -62,6 +69,9 @@ public class EventResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Create an event", description = "Creates a new event for a project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Event created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input or missing project")
     public Response createEvent(Event event) {
         try {
             if (event.getTitle() == null || event.getTitle().trim().isEmpty()) {
@@ -113,6 +123,10 @@ public class EventResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update event", description = "Updates details of an existing event")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Event updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid participants count")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Event not found")
     public Response updateEvent(@PathParam("id") Long id, Event event) {
         try {
             Event existing = eventDAO.findById(id).orElse(null);
@@ -164,6 +178,9 @@ public class EventResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete event", description = "Removes an event from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Event deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Event not found")
     public Response deleteEvent(@PathParam("id") Long id) {
         try {
             if (!eventDAO.existsById(id)) {
@@ -184,6 +201,8 @@ public class EventResource {
 
     @GET
     @Path("/project/{projectId}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "List events by project", description = "Retrieves events associated with a specific project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of events found")
     public Response getEventsByProject(@PathParam("projectId") Long projectId) {
         try {
             List<Event> events = eventDAO.findByProjectId(projectId);

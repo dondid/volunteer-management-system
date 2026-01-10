@@ -13,11 +13,15 @@ import java.util.List;
 @Path("/volunteers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Volunteers", description = "Operations for managing volunteers")
 public class VolunteerResource {
 
     private final VolunteerDAO volunteerDAO = new VolunteerDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List all volunteers", description = "Retrieves a list of all registered volunteers")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of volunteers found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllVolunteers() {
         try {
             List<Volunteer> volunteers = volunteerDAO.findAll();
@@ -31,6 +35,9 @@ public class VolunteerResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get volunteer by ID", description = "Retrieves a specific volunteer by their ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Volunteer found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Volunteer not found")
     public Response getVolunteerById(@PathParam("id") Long id) {
         try {
             return volunteerDAO.findById(id)
@@ -46,6 +53,10 @@ public class VolunteerResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Register a new volunteer", description = "Creates a new volunteer account")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Volunteer created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input data")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Email already exists")
     public Response createVolunteer(Volunteer volunteer) {
         try {
             if (volunteer.getFirstName() == null || volunteer.getFirstName().trim().isEmpty()) {
@@ -103,6 +114,9 @@ public class VolunteerResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update volunteer", description = "Updates details of an existing volunteer")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Volunteer updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Volunteer not found")
     public Response updateVolunteer(@PathParam("id") Long id, Volunteer volunteer) {
         try {
             Volunteer existing = volunteerDAO.findById(id).orElse(null);
@@ -167,6 +181,9 @@ public class VolunteerResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete volunteer", description = "Removes a volunteer from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Volunteer deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Volunteer not found")
     public Response deleteVolunteer(@PathParam("id") Long id) {
         try {
             if (!volunteerDAO.existsById(id)) {

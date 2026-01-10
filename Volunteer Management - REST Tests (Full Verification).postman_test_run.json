@@ -1,22 +1,22 @@
 {
-	"id": "e0d13c6a-a127-469c-832c-861dea38cb5f",
+	"id": "1bc0da02-54b3-4abb-a822-43a61c93d911",
 	"name": "Volunteer Management - REST Tests (Full Verification)",
-	"timestamp": "2026-01-10T17:15:46.986Z",
-	"collection_id": "28351071-c3781ea8-7f40-4d1f-a166-7ad6f98c65eb",
+	"timestamp": "2026-01-10T20:11:00.314Z",
+	"collection_id": "28351071-b42d914d-30fa-4c9e-a0c3-246f6926ad08",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 33,
+	"totalPass": 39,
 	"delay": 0,
 	"persist": true,
 	"status": "finished",
-	"startedAt": "2026-01-10T17:15:41.215Z",
+	"startedAt": "2026-01-10T20:10:55.362Z",
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "13a44a83-8f42-4482-b145-8e2612d3ecb7",
+			"id": "ef57e43e-8940-4f1f-b00e-9eea62e7eac0",
 			"name": "Health Check (Root)",
 			"url": "http://localhost:8080/volunteer-management-system/api/organizations",
-			"time": 24,
+			"time": 17,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -26,6 +26,33 @@
 			},
 			"testPassFailCounts": {
 				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "cf08d868-e89a-46bb-929c-d0e9cbf77c08",
+			"name": "Create Organization",
+			"url": "http://localhost:8080/volunteer-management-system/api/organizations",
+			"time": 24,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -35,42 +62,15 @@
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "221cabba-735f-4ada-88ac-be4718bf1bde",
-			"name": "Create Organization",
-			"url": "http://localhost:8080/volunteer-management-system/api/organizations",
-			"time": 768,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status code is 201": true
-			},
-			"testPassFailCounts": {
-				"Status code is 201": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				768
-			],
-			"allTests": [
-				{
 					"Status code is 201": true
 				}
 			]
 		},
 		{
-			"id": "f73b538e-7c05-4bb0-aa40-e22e44349cdd",
+			"id": "8a8e910b-e4d4-4be8-8b83-fab9ca09779b",
 			"name": "Get Organization By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/organizations/50",
-			"time": 94,
+			"url": "http://localhost:8080/volunteer-management-system/api/organizations/15",
+			"time": 9,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -85,7 +85,7 @@
 				}
 			},
 			"times": [
-				94
+				9
 			],
 			"allTests": [
 				{
@@ -94,10 +94,10 @@
 			]
 		},
 		{
-			"id": "30e721bf-f773-4e16-b6ec-ce939d3772e9",
+			"id": "f62555c6-05e0-4d4c-b045-8577f3a3e25f",
 			"name": "Create Volunteer",
 			"url": "http://localhost:8080/volunteer-management-system/api/volunteers",
-			"time": 42,
+			"time": 28,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -112,7 +112,7 @@
 				}
 			},
 			"times": [
-				42
+				28
 			],
 			"allTests": [
 				{
@@ -121,9 +121,9 @@
 			]
 		},
 		{
-			"id": "81c6880c-0642-4715-a9b9-b1d43b619799",
+			"id": "1e1085fd-60b6-4a35-b0e2-1f8738459aef",
 			"name": "Get Volunteer By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/55",
+			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/38",
 			"time": 13,
 			"responseCode": {
 				"code": 200,
@@ -148,10 +148,10 @@
 			]
 		},
 		{
-			"id": "2ca729ab-b1d6-4b7e-8fd9-9bca520081b5",
+			"id": "33a06a4d-56b6-481e-8509-5fb481e6fc5c",
 			"name": "Create Skill",
 			"url": "http://localhost:8080/volunteer-management-system/api/skills",
-			"time": 120,
+			"time": 25,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -166,7 +166,7 @@
 				}
 			},
 			"times": [
-				120
+				25
 			],
 			"allTests": [
 				{
@@ -175,9 +175,117 @@
 			]
 		},
 		{
-			"id": "c4e15255-c705-4d08-8b39-d4cdcda568b3",
+			"id": "614f42ee-ebf6-46c5-a70e-b7fc520357c8",
 			"name": "Get Skill By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/skills/49",
+			"url": "http://localhost:8080/volunteer-management-system/api/skills/23",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "124eb439-abec-44e1-b8ac-d79fa2a70e7e",
+			"name": "Create Project (using OrgId)",
+			"url": "http://localhost:8080/volunteer-management-system/api/projects",
+			"time": 41,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "f445c37b-bf56-4985-b558-a7b4f0772840",
+			"name": "Get Project By ID",
+			"url": "http://localhost:8080/volunteer-management-system/api/projects/21",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8dacf79c-ac1f-4f92-92e0-5ce867cd9ac4",
+			"name": "Create Event (using ProjectId)",
+			"url": "http://localhost:8080/volunteer-management-system/api/events",
+			"time": 40,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "0658cfb9-c3ad-4d82-8d80-d70d161e4d35",
+			"name": "Get Event By ID",
+			"url": "http://localhost:8080/volunteer-management-system/api/events/28",
 			"time": 14,
 			"responseCode": {
 				"code": 200,
@@ -202,63 +310,9 @@
 			]
 		},
 		{
-			"id": "532388da-461c-4768-a356-34a97a3a124a",
-			"name": "Create Project (using OrgId)",
-			"url": "http://localhost:8080/volunteer-management-system/api/projects",
-			"time": 80,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status code is 201": true
-			},
-			"testPassFailCounts": {
-				"Status code is 201": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				80
-			],
-			"allTests": [
-				{
-					"Status code is 201": true
-				}
-			]
-		},
-		{
-			"id": "a369e208-5720-4c74-ba25-e6657ef59f25",
-			"name": "Get Project By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/projects/60",
-			"time": 15,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "03324be7-26fc-4f8b-af1d-c94ec25b29d1",
-			"name": "Create Event (using ProjectId)",
-			"url": "http://localhost:8080/volunteer-management-system/api/events",
+			"id": "15aef867-4308-4d09-88a6-143916397990",
+			"name": "Create Assignment (using VolId + ProjectId)",
+			"url": "http://localhost:8080/volunteer-management-system/api/assignments",
 			"time": 53,
 			"responseCode": {
 				"code": 201,
@@ -283,64 +337,10 @@
 			]
 		},
 		{
-			"id": "468f7801-ad7b-4200-8fe1-a1b1e4c0b9ea",
-			"name": "Get Event By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/events/36",
-			"time": 13,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "ccef90b1-0255-43f7-bdac-4e88b80c1478",
-			"name": "Create Assignment (using VolId + ProjectId)",
-			"url": "http://localhost:8080/volunteer-management-system/api/assignments",
-			"time": 91,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status code is 201": true
-			},
-			"testPassFailCounts": {
-				"Status code is 201": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				91
-			],
-			"allTests": [
-				{
-					"Status code is 201": true
-				}
-			]
-		},
-		{
-			"id": "80f926b0-62ca-48ec-9213-b8b1b9a78890",
+			"id": "c5d038ff-f83d-4a3e-8f90-f552fb463ad1",
 			"name": "Get Assignment By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/assignments/33",
-			"time": 13,
+			"url": "http://localhost:8080/volunteer-management-system/api/assignments/35",
+			"time": 18,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -355,7 +355,7 @@
 				}
 			},
 			"times": [
-				13
+				18
 			],
 			"allTests": [
 				{
@@ -364,10 +364,10 @@
 			]
 		},
 		{
-			"id": "58c4a466-038a-4b3b-ba50-54e56720a87e",
+			"id": "4376e034-da35-46df-8c6c-b8464e248db8",
 			"name": "Create Attendance (using AssignmentId)",
 			"url": "http://localhost:8080/volunteer-management-system/api/attendance",
-			"time": 61,
+			"time": 41,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -382,7 +382,7 @@
 				}
 			},
 			"times": [
-				61
+				41
 			],
 			"allTests": [
 				{
@@ -391,10 +391,10 @@
 			]
 		},
 		{
-			"id": "31b974b7-1038-4c39-bc5b-5d9b01754fa6",
+			"id": "31f79c6d-d428-4a24-9d0c-cec4cdeb17ca",
 			"name": "Get Attendance By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/attendance/28",
-			"time": 16,
+			"url": "http://localhost:8080/volunteer-management-system/api/attendance/31",
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -409,7 +409,7 @@
 				}
 			},
 			"times": [
-				16
+				12
 			],
 			"allTests": [
 				{
@@ -418,10 +418,10 @@
 			]
 		},
 		{
-			"id": "6abe6193-1101-48df-88b7-d3823b866023",
+			"id": "04c157ea-3af7-4679-afff-9500cd822fbe",
 			"name": "Create Feedback (using AssignmentId)",
 			"url": "http://localhost:8080/volunteer-management-system/api/feedback",
-			"time": 62,
+			"time": 38,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -436,7 +436,7 @@
 				}
 			},
 			"times": [
-				62
+				38
 			],
 			"allTests": [
 				{
@@ -445,63 +445,9 @@
 			]
 		},
 		{
-			"id": "308eea51-5313-4952-ad7c-5dbfaa7f7bc7",
+			"id": "9a121f6e-591d-4818-93f1-41aefc87d81f",
 			"name": "Get Feedback By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/feedback/36",
-			"time": 15,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "3c5020d4-60aa-41a5-b1fb-c912191df964",
-			"name": "Create Certificate (using VolId & ProjectId)",
-			"url": "http://localhost:8080/volunteer-management-system/api/certificates",
-			"time": 107,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status code is 201": true
-			},
-			"testPassFailCounts": {
-				"Status code is 201": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				107
-			],
-			"allTests": [
-				{
-					"Status code is 201": true
-				}
-			]
-		},
-		{
-			"id": "580329c6-33d0-403b-a916-460334d2daba",
-			"name": "Get Certificate By ID",
-			"url": "http://localhost:8080/volunteer-management-system/api/certificates/23",
+			"url": "http://localhost:8080/volunteer-management-system/api/feedback/14",
 			"time": 13,
 			"responseCode": {
 				"code": 200,
@@ -526,90 +472,63 @@
 			]
 		},
 		{
-			"id": "0ee6e95a-16b7-43f9-8ebe-2560b2a22f83",
+			"id": "9678e329-77ff-481f-826f-01d3e56efb9e",
+			"name": "Create Certificate (using VolId & ProjectId)",
+			"url": "http://localhost:8080/volunteer-management-system/api/certificates",
+			"time": 45,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "b0cb34c7-6ffd-4c2b-aac8-14ae0b5e3131",
+			"name": "Get Certificate By ID",
+			"url": "http://localhost:8080/volunteer-management-system/api/certificates/15",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "640104f2-1c79-44c7-aa50-636c86460415",
 			"name": "Update Volunteer",
-			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/55",
-			"time": 201,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				201
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "a6987d20-ba70-4de2-ba8b-cbb2c9f033c1",
-			"name": "Update Organization",
-			"url": "http://localhost:8080/volunteer-management-system/api/organizations/50",
-			"time": 190,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				190
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "effcbd76-f89a-4f10-bed5-3178bab78319",
-			"name": "Delete Certificate",
-			"url": "http://localhost:8080/volunteer-management-system/api/certificates/23",
-			"time": 91,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				91
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "b8587747-7f1e-4afd-ad95-297713b9463c",
-			"name": "Delete Feedback",
-			"url": "http://localhost:8080/volunteer-management-system/api/feedback/36",
+			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/38",
 			"time": 33,
 			"responseCode": {
 				"code": 200,
@@ -634,10 +553,91 @@
 			]
 		},
 		{
-			"id": "f7ad95cb-1963-4b9f-bb63-57fe85147e81",
+			"id": "6f230ab9-60d8-49dc-90f5-f6b1ace3c631",
+			"name": "Update Organization",
+			"url": "http://localhost:8080/volunteer-management-system/api/organizations/15",
+			"time": 39,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "90420072-b967-42a1-9abc-856f19893540",
+			"name": "Delete Certificate",
+			"url": "http://localhost:8080/volunteer-management-system/api/certificates/15",
+			"time": 35,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				35
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "fcbe88af-300e-4600-9043-6284c4f4a7e1",
+			"name": "Delete Feedback",
+			"url": "http://localhost:8080/volunteer-management-system/api/feedback/14",
+			"time": 37,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				37
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2621e664-8710-422e-bcca-76edc2ea43d0",
 			"name": "Delete Attendance",
-			"url": "http://localhost:8080/volunteer-management-system/api/attendance/28",
-			"time": 36,
+			"url": "http://localhost:8080/volunteer-management-system/api/attendance/31",
+			"time": 40,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -652,7 +652,7 @@
 				}
 			},
 			"times": [
-				36
+				40
 			],
 			"allTests": [
 				{
@@ -661,10 +661,10 @@
 			]
 		},
 		{
-			"id": "ef2dd0cb-0937-417f-b699-d56d6cf0b5c6",
+			"id": "c3bc4bf0-df3d-4b53-a2ea-f8369c0d19fd",
 			"name": "Delete Assignment",
-			"url": "http://localhost:8080/volunteer-management-system/api/assignments/33",
-			"time": 51,
+			"url": "http://localhost:8080/volunteer-management-system/api/assignments/35",
+			"time": 33,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -679,7 +679,7 @@
 				}
 			},
 			"times": [
-				51
+				33
 			],
 			"allTests": [
 				{
@@ -688,9 +688,9 @@
 			]
 		},
 		{
-			"id": "dc247990-fb41-49a3-b66a-98c4ed0e7ab0",
+			"id": "636aa705-1574-4f4a-8a26-d757db3d7f70",
 			"name": "Delete Event",
-			"url": "http://localhost:8080/volunteer-management-system/api/events/36",
+			"url": "http://localhost:8080/volunteer-management-system/api/events/28",
 			"time": 36,
 			"responseCode": {
 				"code": 200,
@@ -715,10 +715,10 @@
 			]
 		},
 		{
-			"id": "93b0d0e3-6e4b-4a44-92d6-597204083da5",
+			"id": "44fc69a6-e5f7-4680-8297-9fe98256151c",
 			"name": "Delete Project",
-			"url": "http://localhost:8080/volunteer-management-system/api/projects/60",
-			"time": 51,
+			"url": "http://localhost:8080/volunteer-management-system/api/projects/21",
+			"time": 38,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -733,7 +733,7 @@
 				}
 			},
 			"times": [
-				51
+				38
 			],
 			"allTests": [
 				{
@@ -742,10 +742,10 @@
 			]
 		},
 		{
-			"id": "024f6339-72ca-48ef-b49e-df8600e87bb3",
+			"id": "17a909f5-9520-4466-a132-c677a971f845",
 			"name": "Delete Skill",
-			"url": "http://localhost:8080/volunteer-management-system/api/skills/49",
-			"time": 49,
+			"url": "http://localhost:8080/volunteer-management-system/api/skills/23",
+			"time": 35,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -760,7 +760,7 @@
 				}
 			},
 			"times": [
-				49
+				35
 			],
 			"allTests": [
 				{
@@ -769,9 +769,231 @@
 			]
 		},
 		{
-			"id": "fc27c6c6-04f7-45ba-a8a9-edaccfa19288",
+			"id": "de46aaa7-8245-47e3-8d37-417c82f6808e",
 			"name": "Delete Volunteer",
-			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/55",
+			"url": "http://localhost:8080/volunteer-management-system/api/volunteers/38",
+			"time": 38,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				38
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d925feaa-7b29-44dd-a6ad-a0bc40904afa",
+			"name": "Delete Organization",
+			"url": "http://localhost:8080/volunteer-management-system/api/organizations/15",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "1084536a-91a4-417f-a9d0-b044089f583b",
+			"name": "Get Statistics Overview",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/overview",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Has total counts": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Has total counts": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Has total counts": true
+				}
+			]
+		},
+		{
+			"id": "e0f628b4-d18c-4496-81ee-cd5c73f925cf",
+			"name": "Get Hours Per Volunteer",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/hours-per-volunteer?limit=5",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d662a03a-9cb7-464a-87c7-344fff765b7e",
+			"name": "Get Volunteers Per Organization",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/volunteers-per-organization",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "dbca718e-ff7c-4cdc-bcb6-a20d916d50c1",
+			"name": "Get Average Rating Per Project",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/average-rating-per-project",
+			"time": 108,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				108
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2436947a-21df-4452-ad51-096c54ace952",
+			"name": "Get Projects By Volunteer Count",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/projects-by-volunteer-count",
+			"time": 78,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				78
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c50c3eb5-75e1-42b3-8383-2e7fbe06896c",
+			"name": "Get Most Requested Skills",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/most-requested-skills",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "33f819aa-d85b-4ff8-ad29-a95637a4d6f3",
+			"name": "Get Volunteers Paginated",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/volunteers-paginated?page=0&size=5",
 			"time": 41,
 			"responseCode": {
 				"code": 200,
@@ -796,10 +1018,10 @@
 			]
 		},
 		{
-			"id": "ba503c69-4bd4-4ac0-88ed-de95ea295f05",
-			"name": "Delete Organization",
-			"url": "http://localhost:8080/volunteer-management-system/api/organizations/50",
-			"time": 29,
+			"id": "1e5b1f87-93f8-4649-b87d-4063b570ba7c",
+			"name": "Get Available Projects (Filtered)",
+			"url": "http://localhost:8080/volunteer-management-system/api/statistics/available-projects-filtered?minSlots=1",
+			"time": 138,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -814,67 +1036,7 @@
 				}
 			},
 			"times": [
-				29
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "d05ba608-f972-4f8d-bd06-b8cd159957cb",
-			"name": "Get Statistics Overview",
-			"url": "http://localhost:8080/volunteer-management-system/api/statistics/overview",
-			"time": 57,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Has total counts": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Has total counts": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				57
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Has total counts": true
-				}
-			]
-		},
-		{
-			"id": "caed8ceb-50e7-4f3c-96b3-770a7b5196a8",
-			"name": "Get Hours Per Volunteer",
-			"url": "http://localhost:8080/volunteer-management-system/api/statistics/hours-per-volunteer?limit=5",
-			"time": 216,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				216
+				138
 			],
 			"allTests": [
 				{
@@ -884,135 +1046,159 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 2695,
+	"totalTime": 1390,
 	"collection": {
 		"requests": [
 			{
-				"id": "13a44a83-8f42-4482-b145-8e2612d3ecb7",
+				"id": "ef57e43e-8940-4f1f-b00e-9eea62e7eac0",
 				"method": "GET"
 			},
 			{
-				"id": "221cabba-735f-4ada-88ac-be4718bf1bde",
+				"id": "cf08d868-e89a-46bb-929c-d0e9cbf77c08",
 				"method": "POST"
 			},
 			{
-				"id": "f73b538e-7c05-4bb0-aa40-e22e44349cdd",
+				"id": "8a8e910b-e4d4-4be8-8b83-fab9ca09779b",
 				"method": "GET"
 			},
 			{
-				"id": "30e721bf-f773-4e16-b6ec-ce939d3772e9",
+				"id": "f62555c6-05e0-4d4c-b045-8577f3a3e25f",
 				"method": "POST"
 			},
 			{
-				"id": "81c6880c-0642-4715-a9b9-b1d43b619799",
+				"id": "1e1085fd-60b6-4a35-b0e2-1f8738459aef",
 				"method": "GET"
 			},
 			{
-				"id": "2ca729ab-b1d6-4b7e-8fd9-9bca520081b5",
+				"id": "33a06a4d-56b6-481e-8509-5fb481e6fc5c",
 				"method": "POST"
 			},
 			{
-				"id": "c4e15255-c705-4d08-8b39-d4cdcda568b3",
+				"id": "614f42ee-ebf6-46c5-a70e-b7fc520357c8",
 				"method": "GET"
 			},
 			{
-				"id": "532388da-461c-4768-a356-34a97a3a124a",
+				"id": "124eb439-abec-44e1-b8ac-d79fa2a70e7e",
 				"method": "POST"
 			},
 			{
-				"id": "a369e208-5720-4c74-ba25-e6657ef59f25",
+				"id": "f445c37b-bf56-4985-b558-a7b4f0772840",
 				"method": "GET"
 			},
 			{
-				"id": "03324be7-26fc-4f8b-af1d-c94ec25b29d1",
+				"id": "8dacf79c-ac1f-4f92-92e0-5ce867cd9ac4",
 				"method": "POST"
 			},
 			{
-				"id": "468f7801-ad7b-4200-8fe1-a1b1e4c0b9ea",
+				"id": "0658cfb9-c3ad-4d82-8d80-d70d161e4d35",
 				"method": "GET"
 			},
 			{
-				"id": "ccef90b1-0255-43f7-bdac-4e88b80c1478",
+				"id": "15aef867-4308-4d09-88a6-143916397990",
 				"method": "POST"
 			},
 			{
-				"id": "80f926b0-62ca-48ec-9213-b8b1b9a78890",
+				"id": "c5d038ff-f83d-4a3e-8f90-f552fb463ad1",
 				"method": "GET"
 			},
 			{
-				"id": "58c4a466-038a-4b3b-ba50-54e56720a87e",
+				"id": "4376e034-da35-46df-8c6c-b8464e248db8",
 				"method": "POST"
 			},
 			{
-				"id": "31b974b7-1038-4c39-bc5b-5d9b01754fa6",
+				"id": "31f79c6d-d428-4a24-9d0c-cec4cdeb17ca",
 				"method": "GET"
 			},
 			{
-				"id": "6abe6193-1101-48df-88b7-d3823b866023",
+				"id": "04c157ea-3af7-4679-afff-9500cd822fbe",
 				"method": "POST"
 			},
 			{
-				"id": "308eea51-5313-4952-ad7c-5dbfaa7f7bc7",
+				"id": "9a121f6e-591d-4818-93f1-41aefc87d81f",
 				"method": "GET"
 			},
 			{
-				"id": "3c5020d4-60aa-41a5-b1fb-c912191df964",
+				"id": "9678e329-77ff-481f-826f-01d3e56efb9e",
 				"method": "POST"
 			},
 			{
-				"id": "580329c6-33d0-403b-a916-460334d2daba",
+				"id": "b0cb34c7-6ffd-4c2b-aac8-14ae0b5e3131",
 				"method": "GET"
 			},
 			{
-				"id": "0ee6e95a-16b7-43f9-8ebe-2560b2a22f83",
+				"id": "640104f2-1c79-44c7-aa50-636c86460415",
 				"method": "PUT"
 			},
 			{
-				"id": "a6987d20-ba70-4de2-ba8b-cbb2c9f033c1",
+				"id": "6f230ab9-60d8-49dc-90f5-f6b1ace3c631",
 				"method": "PUT"
 			},
 			{
-				"id": "effcbd76-f89a-4f10-bed5-3178bab78319",
+				"id": "90420072-b967-42a1-9abc-856f19893540",
 				"method": "DELETE"
 			},
 			{
-				"id": "b8587747-7f1e-4afd-ad95-297713b9463c",
+				"id": "fcbe88af-300e-4600-9043-6284c4f4a7e1",
 				"method": "DELETE"
 			},
 			{
-				"id": "f7ad95cb-1963-4b9f-bb63-57fe85147e81",
+				"id": "2621e664-8710-422e-bcca-76edc2ea43d0",
 				"method": "DELETE"
 			},
 			{
-				"id": "ef2dd0cb-0937-417f-b699-d56d6cf0b5c6",
+				"id": "c3bc4bf0-df3d-4b53-a2ea-f8369c0d19fd",
 				"method": "DELETE"
 			},
 			{
-				"id": "dc247990-fb41-49a3-b66a-98c4ed0e7ab0",
+				"id": "636aa705-1574-4f4a-8a26-d757db3d7f70",
 				"method": "DELETE"
 			},
 			{
-				"id": "93b0d0e3-6e4b-4a44-92d6-597204083da5",
+				"id": "44fc69a6-e5f7-4680-8297-9fe98256151c",
 				"method": "DELETE"
 			},
 			{
-				"id": "024f6339-72ca-48ef-b49e-df8600e87bb3",
+				"id": "17a909f5-9520-4466-a132-c677a971f845",
 				"method": "DELETE"
 			},
 			{
-				"id": "fc27c6c6-04f7-45ba-a8a9-edaccfa19288",
+				"id": "de46aaa7-8245-47e3-8d37-417c82f6808e",
 				"method": "DELETE"
 			},
 			{
-				"id": "ba503c69-4bd4-4ac0-88ed-de95ea295f05",
+				"id": "d925feaa-7b29-44dd-a6ad-a0bc40904afa",
 				"method": "DELETE"
 			},
 			{
-				"id": "d05ba608-f972-4f8d-bd06-b8cd159957cb",
+				"id": "1084536a-91a4-417f-a9d0-b044089f583b",
 				"method": "GET"
 			},
 			{
-				"id": "caed8ceb-50e7-4f3c-96b3-770a7b5196a8",
+				"id": "e0f628b4-d18c-4496-81ee-cd5c73f925cf",
+				"method": "GET"
+			},
+			{
+				"id": "d662a03a-9cb7-464a-87c7-344fff765b7e",
+				"method": "GET"
+			},
+			{
+				"id": "dbca718e-ff7c-4cdc-bcb6-a20d916d50c1",
+				"method": "GET"
+			},
+			{
+				"id": "2436947a-21df-4452-ad51-096c54ace952",
+				"method": "GET"
+			},
+			{
+				"id": "c50c3eb5-75e1-42b3-8383-2e7fbe06896c",
+				"method": "GET"
+			},
+			{
+				"id": "33f819aa-d85b-4ff8-ad29-a95637a4d6f3",
+				"method": "GET"
+			},
+			{
+				"id": "1e5b1f87-93f8-4649-b87d-4063b570ba7c",
 				"method": "GET"
 			}
 		]

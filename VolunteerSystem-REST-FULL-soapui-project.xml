@@ -1,0 +1,1373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="95b50258-7ede-40d9-ad49-97dbd9faccdc" activeEnvironment="Default" name="VolunteerSystem-REST-FULL" soapui-version="5.9.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+
+  <con:interface xsi:type="con:RestService" id="175ce0ff-b4e5-4cd5-a535-b809fda2d64a" wadlVersion="http://wadl.dev.java.net/2009/02" name="RestService" type="rest" basePath="/volunteer-management-system/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080</con:endpoint>
+    </con:endpoints>
+
+    <con:resource name="organizations" path="organizations" id="f8fbbb30-26ba-404e-9e1e-20f03be1cca1">
+      <con:settings/>
+      <con:method name="Create" id="d92938b3-f09a-4132-b98e-51c5ec8f8147" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="b03c2260-fd7c-4db1-9852-0abd59343a20" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="b4c72d33-5a79-48ae-a1f6-7ace88a9004e">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="6aeeb05f-d24d-4659-8251-20fad59f1b6f" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="5cded79b-b03f-4849-8374-79f795f62be6" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="e940678d-fd23-4afa-97c3-31bba95bb98f" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="57df9df0-77dc-4745-8251-6cb1bec70e3f" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="f16150c1-afc1-426a-a3ac-a42d7ad6c70b" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="382a5f3a-b765-4398-aa1c-acbcbb7746ca" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="volunteers" path="volunteers" id="e4813d33-fe28-4e8a-b7e6-fda2fb9c0286">
+      <con:settings/>
+      <con:method name="Create" id="d21e205a-c8b4-41a2-86c1-351dd86aa8d0" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="3c91bfb1-ee7a-47de-b368-0d4889ceee64" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="a876a4d5-5a0c-4b3e-899f-78a077b91de9">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="6b573477-0cd2-445d-8f6d-82cf19792d1a" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="5d55b03f-e7fc-4b1a-9099-c29c5fdbe556" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="d21df7eb-5bd1-43ad-ade5-2c3c272e5e81" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="e604b4a4-c150-48be-b9a5-7862de0ee86b" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="075c67b0-932f-4305-9bcf-025fc93bdb0f" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="9799da03-6a32-46ac-8b6a-3ab8caefd0c4" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="skills" path="skills" id="5d5143ba-19b7-4ca1-85b1-945adbbef498">
+      <con:settings/>
+      <con:method name="Create" id="41202bc4-f860-47dd-805b-5de7511ead81" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="4f2ae304-6583-447f-aa44-c2ce86c630bc" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="c1519fc5-5bc0-462c-b437-60bde029bc68">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="278fc9ab-51cf-4cd8-adef-4fb5c2478b82" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="6c7aca1a-b833-4847-8ee4-321fd08d47fd" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="c944a7dc-281c-4020-9011-2350b3a52106" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="06607d27-0ff0-4bb6-b0fe-53b319a334fe" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="74a01edd-213c-4398-9436-a9eb5a552a4b" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="4458d220-685f-4178-8ace-e6a3efbc93ff" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="projects" path="projects" id="76cab0cc-4084-4c76-b23a-82c49281bdac">
+      <con:settings/>
+      <con:method name="Create" id="be02163a-15c4-4b1f-858d-817b992e61bd" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="2a618cce-1299-41f7-90d4-37af95b778e1" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="2bd37f3f-0f41-40ab-aef1-dcaed827d81d">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="fcd950c8-209e-4e1e-8a53-4c2438a910b4" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="bc757b13-d8d5-42b8-ae0e-ec48a71180d6" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="608d93e7-288e-4b40-abff-31fcc0b39fec" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="91d0eaba-f8bc-4100-b0d1-45a421fe49b2" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="2e5a843e-ed9d-480e-9d25-ea3719596a7f" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="14446030-213a-4739-8aa3-de0a0d961eff" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="events" path="events" id="d3bbab05-e965-4074-bb67-c835da97e883">
+      <con:settings/>
+      <con:method name="Create" id="e3491630-3082-43f4-8dbf-23369a50e72e" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="951a46ee-d235-4c72-bcd6-bdf3df0f973f" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="2b9c6764-fe4d-41fe-b7ef-a879b14c0416">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="e9b6432a-f83b-4c03-bf7e-ab83965243f1" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="914aaa53-17d1-4ac9-911e-8ac57943e548" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="5d8e2dc9-afa0-4f66-baf2-f75db49b72d9" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="28b68c9a-fffb-404f-a3eb-61f981715a45" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="7e5b892f-7024-4775-8e9d-8e2437cfd9d6" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="e1730613-7f52-46f6-aeb3-ce434629a65f" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="assignments" path="assignments" id="bef73818-42e3-4755-96d7-e7a857dcb42a">
+      <con:settings/>
+      <con:method name="Create" id="f19b5ea6-83a3-4974-aa0a-b13847fc761e" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="50502c46-1ca2-49f6-808c-f64abbbca10f" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="4304f74a-723d-4096-b211-3f75d9163007">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="4287418b-3224-486a-a819-467c3e4d483e" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="dcea895e-365c-4565-b348-7d690e4991d2" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="0e3c8fb9-faac-4171-9eb7-00cc61190fb6" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="fcf7ced3-a3e6-450c-9759-1406b6bd109b" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="277b29a4-e423-413c-a6aa-ec813d15304d" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="8b299a63-0b02-4318-a175-46b321008b58" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="attendance" path="attendance" id="69156a3a-d02d-4a63-8359-43a850c5038a">
+      <con:settings/>
+      <con:method name="Create" id="c28078b4-284d-4a09-8cf8-700bc84d2e98" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="17b71355-3d24-4d2c-b5ba-d4e45c61ad6d" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="73659f2b-cb3b-44ce-8aa9-ddc3d68041cc">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="9298a565-e096-4e72-97ac-f3c469dba21f" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="7b639c8d-a053-45b6-9471-0cd3b92b5ba0" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="c8108b4d-a2cc-46a4-8c7c-66f1a6f8d422" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="45f8bf9b-c9d5-460a-a742-ba8e54964bbd" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="10d71eb1-3b41-44db-b7ac-d742a6f35815" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="317646a1-a2bc-4b00-9bd1-02603d706c18" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="feedback" path="feedback" id="845114f8-8fcc-4cc8-94f0-a1364d55c653">
+      <con:settings/>
+      <con:method name="Create" id="3f726daf-464b-48c3-b3f7-850ac23c4ae5" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="495d2ae3-016c-42d1-901f-c5d4713e5b2b" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="f4182aac-41fb-4061-8a8b-f60c2f397bb4">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="ada6399f-bb5f-4614-bb37-c98d2330cc34" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="e1f0b5a4-4e7e-4b29-9588-6edc9cbbfaaa" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="46aa1016-fe9b-4d44-a5c0-31340a2c8e7a" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="4da95d2d-11c2-4078-869a-738a120c070a" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="06a2387d-b272-4fc2-970e-ec578ec1cb6a" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="a7a5be00-1c4f-4f6b-a0a9-27db81cc46eb" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+
+    <con:resource name="certificates" path="certificates" id="47b337c7-32a7-4003-960f-813fe9c835f2">
+      <con:settings/>
+      <con:method name="Create" id="09d076ef-eb80-4222-9c90-723bfe493087" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200 201</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="5faddd42-41f6-49f6-913f-51208cb6687e" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      
+      <con:resource name="ById" path="{id}" id="cc7086bd-e784-4941-bf4c-b9e4b525fd26">
+        <con:settings/>
+        <con:parameters>
+           <con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter>
+        </con:parameters>
+        
+        <con:method name="GetById" id="ed4877ba-d902-425a-9d17-565c1c2116ea" method="GET">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="4fbe65b2-a745-45b0-9439-4f9e71209935" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Update" id="3b167ba6-7bf6-40e9-b00f-e67b07325e50" method="PUT">
+           <con:settings/>
+           <con:parameters/>
+           <con:representation type="REQUEST">
+             <con:mediaType>application/json</con:mediaType>
+             <con:params/>
+           </con:representation>
+           <con:request name="Request 1" id="d2fffa52-dfe6-41f3-a1a4-cf88612c8115" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+        
+        <con:method name="Delete" id="e4f0559b-623a-4fe2-97f8-e89406adad73" method="DELETE">
+           <con:settings/>
+           <con:parameters/>
+           <con:request name="Request 1" id="1570f2f4-e505-4693-9d64-1eb1406b1a4e" mediaType="application/json">
+             <con:settings/>
+             <con:endpoint>http://localhost:8080</con:endpoint>
+             <con:parameters/>
+           </con:request>
+        </con:method>
+      </con:resource>
+    </con:resource>
+  </con:interface>
+
+  <con:testSuite id="92a8ef3f-3ff0-484c-b937-167ac851d242" name="OrganizationRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="61ffe02d-958d-4e20-8fcd-299b22f4ec06" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="252cbc53-631d-400b-8c9f-c0da59f92d08">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="574db9f9-d667-49f2-9f9b-40c9695aa312" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;name&quot;: &quot;Rest Org ${= (int)(Math.random()*10000) }&quot;, &quot;email&quot;: &quot;rest_org_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;phone&quot;: &quot;0711223344&quot;, &quot;website&quot;: &quot;https://resttest.com&quot;, &quot;address&quot;: &quot;Rest Lane&quot;, &quot;registrationNumber&quot;: &quot;REG-${= (int)(Math.random()*10000) }&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="961a138b-4e39-4fcb-87fe-cfb95abcc434" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="b946e89e-c0da-471a-8061-ed5b639edca6">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>orgId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>orgId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="5e42eea4-e849-4aab-b112-f93081514aa8">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="1f35d9c6-9eb3-4dd6-b325-fd45f5bcea78" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="26c9e398-1232-4935-a70e-cc123f1b841e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="1332256e-c7df-4eb0-84bd-7c2e39092488">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="57c1a5b3-5066-400e-8181-d1d4326ff4d3" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#orgId}&quot;, &quot;name&quot;: &quot;Rest Org Updated&quot;, &quot;email&quot;: &quot;rest_org_upd_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="7199ee21-9fb4-4a14-83de-3f70ed47c802" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="192e4cb9-8c89-48c2-9a65-b8ede70983e2">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="954f9ce2-581f-429b-b62c-5c9ec35f48ae" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="47e99af6-d247-45b9-bfbe-44898ce3dead" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="2c37c9cf-3c91-48cd-b6bb-8da4efe65360" name="VolunteerRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="591d6fe9-6b0e-43f8-aa68-b958674b5b07" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="32eb7c8e-74d7-4089-9a9f-5819617dc720">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/volunteers" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="eea24b48-c54c-4db4-8c29-20857b2abd4b" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;firstName&quot;: &quot;Rest&quot;, &quot;lastName&quot;: &quot;User ${= (int)(Math.random()*10000) }&quot;, &quot;email&quot;: &quot;rest_vol_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;phone&quot;: &quot;0722123456&quot;, &quot;dateOfBirth&quot;: &quot;1990-01-01&quot;, &quot;cnp&quot;: &quot;1900101123456&quot;, &quot;address&quot;: &quot;Rest Street&quot;, &quot;city&quot;: &quot;Rest City&quot;, &quot;county&quot;: &quot;Rest County&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="96f3de36-bd7e-45f2-906b-ade9b85e373e" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="fd3662fa-f7cb-43d9-a00c-2713d9e9aea2">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>volunteerId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>volunteerId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="af4c1272-e5e7-44e1-8015-5d4e7cd9e628">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/volunteers/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="dfb43899-a8a5-4b1b-bf57-accfb5915dfe" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="a81dcd28-440e-43c0-a5d1-894eae1becc5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#volunteerId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="681d3354-62ec-4200-86fe-7c4fab4c99be">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/volunteers/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="4df0cb1b-9683-4de3-967a-c8a90ea88bcc" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#volunteerId}&quot;, &quot;firstName&quot;: &quot;RestUpdated&quot;, &quot;lastName&quot;: &quot;UserUpdated&quot;, &quot;email&quot;: &quot;rest_vol_upd_${= (int)(Math.random()*10000) }@test.com&quot;, &quot;status&quot;: &quot;ACTIVE&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="5ffee874-46ff-4a16-adc9-c6cabd90a910" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#volunteerId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="8287a5c8-c398-4596-9a7c-56626168fb04">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/volunteers/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="b4cfc678-6922-4576-b4a7-a65fd47bc9ac" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="7a5bf6b5-6b32-48a1-95f5-3ec18dec80d4" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#volunteerId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="c5a1923d-de94-4f94-8243-effcf1cd9611" name="SkillRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="09638cf5-c230-4100-997b-d794de68914a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="15c57454-dc28-4ebd-8efd-29f272c03df9">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/skills" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="b0df3191-e9f1-43c2-92da-2556718b1846" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;name&quot;: &quot;Rest Skill ${= (int)(Math.random()*10000) }&quot;, &quot;category&quot;: &quot;TECHNICAL&quot;, &quot;description&quot;: &quot;Rest Skill Desc&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="20ba62af-bcef-4588-ac30-6e8668512d9c" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="de54b539-8742-45af-9e35-bee0699827ee">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>skillId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>skillId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="d25c39ec-53f9-48f4-880f-c965d721490a">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/skills/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="397557ed-2fcf-4b9a-8b94-c5ceebecf675" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="1da890d4-7839-4de4-b060-666f00c96c96" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#skillId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="a2b2fa17-3291-47fa-a561-4fcbcd4037f2">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/skills/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="d5f94e05-5ed5-4ce9-8558-076e5f1c7433" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#skillId}&quot;, &quot;name&quot;: &quot;Rest Skill Updated&quot;, &quot;description&quot;: &quot;Rest Skill Desc Updated&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="2e240e68-da90-42aa-96c0-2710de20c38c" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#skillId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="4b005f08-ff8a-44db-a819-b9a3eff1f0ff">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/skills/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="d374c6c7-a060-434e-b8ae-9f35428460bb" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="4d2bbbd8-3867-46bb-9e91-ff396ddfe756" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#skillId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="7a7404dc-0145-4c38-a31a-9813f7898ea5" name="ProjectRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="53160c1d-6aaf-4bed-a777-e730e2100577" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="13e9e117-fee9-407d-8d5f-ee985228ee4f">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/projects" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="fa6cc7ab-d6d0-487a-a281-26ee01f4ad32" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;title&quot;: &quot;Rest Project ${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Project Desc&quot;, &quot;startDate&quot;: &quot;2026-06-01&quot;, &quot;endDate&quot;: &quot;2026-12-31&quot;, &quot;location&quot;: &quot;Online&quot;, &quot;status&quot;: &quot;ACTIVE&quot;, &quot;maxVolunteers&quot;: 50, &quot;organization&quot;: {&quot;id&quot;: &quot;${#Project#orgId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="f3c982d3-32c9-47bb-91e1-209067daa4b7" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="c1d9bed4-2508-40bd-9125-5f5087fb737e">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>projectId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>projectId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="5deb21aa-89b5-46d6-a3ca-47eeeaeb0bae">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/projects/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="be97c336-895c-4fe2-82b9-84e013440c39" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="684839f6-df3e-4e89-924a-54f6ca057edd" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#projectId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="b768c078-468f-4014-832a-c3f69cc2bd20">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/projects/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="be188486-bca1-4571-a8d1-528f10a06fe8" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#projectId}&quot;, &quot;title&quot;: &quot;Rest Project Updated&quot;, &quot;description&quot;: &quot;Updated Desc&quot;, &quot;organization&quot;: {&quot;id&quot;: &quot;${#Project#orgId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="9f9e12fd-2a45-468d-bc0d-3ec744d36694" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#projectId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="034c30be-5530-47d9-a137-b9b3190e3dec">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/projects/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="2961be16-7e87-42c7-bee0-178a81fce386" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="15d32d7e-2458-42d4-89ff-dee0a7b97fe3" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#projectId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="a1fa80b5-15c7-4916-8d57-70a94ae3ac01" name="EventRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b59cef6b-e923-443f-aae2-0170d990f2c9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="060e0f51-e9df-4442-abdc-3b983dfbfb73">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/events" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="4620ce4a-c1a8-428d-98f3-f9c228987e42" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;title&quot;: &quot;Rest Event ${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Event Desc&quot;, &quot;eventDate&quot;: &quot;2026-07-01T10:00:00&quot;, &quot;location&quot;: &quot;Rest Hall&quot;, &quot;maxParticipants&quot;: 100, &quot;status&quot;: &quot;SCHEDULED&quot;, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="7ca087c0-0e93-4993-b11b-8ae93ececc47" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="5246a09c-07e2-4979-9ff7-78e4f9066a4e">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>eventId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>eventId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="139cdeb2-3f97-4d6e-9b63-9277d031291e">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/events/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="f7dae936-e079-4f69-b3fd-2046b1b588fa" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="d95e6759-9a22-4b90-be9b-1b10785e4a03" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#eventId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="028ead59-8a75-4f55-bad2-50542db5d7a6">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/events/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="801fee2b-59cb-4aa3-b02a-350c21e8cf6e" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#eventId}&quot;, &quot;title&quot;: &quot;Rest Event Updated&quot;, &quot;status&quot;: &quot;COMPLETED&quot;, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="6eb94734-f5ad-4ed5-8649-1649a8ed7685" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#eventId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="1a1f5454-fb5b-473f-abea-27c55df6a283">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/events/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="a3654aba-f9e2-40d6-a80c-f6f2afc66fce" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="3e3dab5c-69c3-4a9d-965e-04f9f0ff7c79" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#eventId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="b00e6eac-d8ae-43a6-9d0b-ee34cd2d0866" name="AssignmentRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="4bde7eee-fa0e-4cf2-90d2-7b236ad7e201" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="0c52e3f9-ff24-413e-a71b-7c3ebd8fa93a">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/assignments" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="faf41cd1-5715-4499-af58-75c554c78fdc" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}, &quot;role&quot;: &quot;Rest Tester&quot;, &quot;assignmentDate&quot;: &quot;2026-06-02&quot;, &quot;status&quot;: &quot;ACCEPTED&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="fa1b3ef3-18ef-464e-b08b-45046382dd0d" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="c52a2237-e444-4e83-9fe1-3c56e8d0ac72">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>assignmentId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>assignmentId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="3b99a5e9-5138-4465-9f55-2efd954197b5">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/assignments/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="e297ed06-9404-4d05-be01-ceb5758e9475" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="d526b748-75c7-42e0-9fbb-650c053e6eba" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#assignmentId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="b3088280-95e1-4f9d-b067-917e7dba4025">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/assignments/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="7199d82c-a826-4af2-b838-9ce12b8b641b" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#assignmentId}&quot;, &quot;role&quot;: &quot;Rest Manager&quot;, &quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="75d613ff-73c5-4d41-a5e2-a95086da2463" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#assignmentId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="6c36642b-fcbc-448e-b0b9-27c32268b0da">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/assignments/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="5fe4d2ca-2d6f-4c09-9a6a-a8bca3fcc715" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="52d92c89-b3e3-4b92-9e5f-505712c26faf" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#assignmentId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="1371fef6-b5ee-40e2-b3a8-d3184adb3499" name="AttendanceRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b486cc3e-6a57-452f-83b7-243c0326dbc1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="a0bbdeea-4e87-42f8-a1f1-1cd7410fe83f">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/attendance" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="5f3902e7-885a-4edf-8c62-74285b02d933" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}, &quot;date&quot;: &quot;2026-06-05&quot;, &quot;hoursWorked&quot;: 5, &quot;notes&quot;: &quot;Rest checkin&quot;, &quot;verifiedBy&quot;: &quot;System&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="01f8bd1b-c058-44d3-855d-287cff8e0e8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="43439283-6bc7-4628-bdb0-f7dd9baa0b0e">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>attendanceId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>attendanceId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="9e001e54-4dff-4858-93f4-205a5b869af0">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/attendance/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="452ff446-d921-4fbf-8321-2b9f908ddf0d" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="b8314993-7196-4c93-a18b-a318aea4f37d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#attendanceId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="c4562478-2cef-471c-aa33-a15d906802f2">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/attendance/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="bb115961-c113-45fb-9694-8ac42ba7b513" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#attendanceId}&quot;, &quot;hoursWorked&quot;: 8, &quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="8da9d60f-bd16-4990-a7de-2fae9d9488d6" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#attendanceId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="82f778b0-d8b1-4a2b-b668-7637919182ca">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/attendance/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="757ad738-1153-4833-9632-621c52e87cb6" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="d9fd3150-ab1c-419d-a842-520682d18d2a" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#attendanceId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="5d951414-1aec-408b-8fed-21a4559d39be" name="FeedbackRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="bd20283d-69d4-436b-abfc-83a6df685e44" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="30f98eb1-7381-4ba1-b2e6-c95ea0e1183f">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/feedback" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="39bc6a13-60da-485a-a1f8-e9e6d44bcde4" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}, &quot;rating&quot;: 5, &quot;comment&quot;: &quot;Rest Feedback&quot;, &quot;feedbackType&quot;: &quot;VOLUNTEER_TO_ORG&quot;, &quot;feedbackDate&quot;: &quot;2026-06-06T12:00:00&quot;}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="607ade33-4d98-444d-b1c1-1ce40db6556a" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="8db4c6d9-796f-48d4-96d6-84542fb2110a">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>feedbackId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>feedbackId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="67f40f63-fdf3-4019-aea4-ad5fbeefeb18">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/feedback/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="f04630bd-56e3-4c29-9c2a-be8496e0d8c7" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="28f4c474-abb0-474f-967f-f2725303b2ba" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#feedbackId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="bda03edc-9480-44d3-b70a-08c8897112e7">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/feedback/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="0443e004-63da-4b57-845f-a1ea9901cbcb" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#feedbackId}&quot;, &quot;rating&quot;: 4, &quot;comment&quot;: &quot;Rest Feedback Updated&quot;, &quot;assignment&quot;: {&quot;id&quot;: &quot;${#Project#assignmentId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="25b300a0-2f78-442f-81f9-c52b9bd32f5a" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#feedbackId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="804de554-a6d2-4e26-96f7-ab6fb3d9a37f">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/feedback/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="413955f1-304d-4b88-a174-43ce68de815c" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="49b4bc67-a50d-419f-ae2d-3cd25f6bbd60" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#feedbackId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+
+  <con:testSuite id="4100a8d4-2aa3-49e8-a566-733842495772" name="CertificateRestTests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="7330ebaf-db85-458e-ab07-c3b5f00c86a2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="54b574bb-8c2c-4550-9e91-7ff94eb26977">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/certificates" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="5cbad112-5c2f-4905-8d33-c3e908b921ea" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}, &quot;certificateNumber&quot;: &quot;REST-CERT-${= (int)(Math.random()*10000) }&quot;, &quot;description&quot;: &quot;Rest Certificate&quot;, &quot;issueDate&quot;: &quot;2026-12-31&quot;, &quot;totalHours&quot;: 100}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="44f3015a-c2e6-4c2e-be0e-4dc630efdd8b" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="69664316-8249-4903-b35f-e15c1733c102">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>certId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>certId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="a38a6aa7-6001-4e9c-a059-667141491302">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/certificates/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="cc26d2e2-6bf4-45d1-83a0-3c0f0ae0b7a2" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="e4022080-81b9-41a3-af83-d8b0b86d0d58" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#certId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="ffe24815-c17a-41bf-9e75-0775ba58b454">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/certificates/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="ae185c47-94b3-46f8-999c-06c92139fe9f" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{&quot;id&quot;: &quot;${#Project#certId}&quot;, &quot;description&quot;: &quot;Rest Certificate Updated&quot;, &quot;volunteer&quot;: {&quot;id&quot;: &quot;${#Project#volunteerId}&quot;}, &quot;project&quot;: {&quot;id&quot;: &quot;${#Project#projectId}&quot;}}</con:request>
+            <con:assertion type="Valid HTTP Status Codes" id="6e86a2ad-ab64-4bb4-a6a1-dfa0944cae52" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#certId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="e17b54fb-2197-4713-8efd-8fe6ddbee6a1">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/certificates/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="a61ac053-2140-4167-9733-01b39a7999cb" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="fb85b93c-38b4-40f3-a46f-2b5f21f510f6" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#certId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    </con:testCase>
+  </con:testSuite>
+  <con:properties>
+    <con:property><con:name>orgId</con:name><con:value/></con:property>
+    <con:property><con:name>volunteerId</con:name><con:value/></con:property>
+    <con:property><con:name>projectId</con:name><con:value/></con:property>
+    <con:property><con:name>eventId</con:name><con:value/></con:property>
+    <con:property><con:name>assignmentId</con:name><con:value/></con:property>
+    <con:property><con:name>attendanceId</con:name><con:value/></con:property>
+    <con:property><con:name>feedbackId</con:name><con:value/></con:property>
+    <con:property><con:name>certId</con:name><con:value/></con:property>
+    <con:property><con:name>skillId</con:name><con:value/></con:property>
+  </con:properties>
+</con:soapui-project>

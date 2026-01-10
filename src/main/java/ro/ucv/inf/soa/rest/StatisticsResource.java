@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Path("/statistics")
 @Produces(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Statistics", description = "Analytical operations and statistical reports")
 public class StatisticsResource {
 
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("VolunteerPU");
@@ -28,21 +29,27 @@ public class StatisticsResource {
      */
     @GET
     @Path("/overview")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get general overview", description = "Retrieves counts for all main entities (organizations, volunteers, projects, etc.)")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Overview statistics retrieved successfully")
     public Response getOverview() {
         EntityManager em = getEntityManager();
         try {
             Map<String, Object> stats = new HashMap<>();
-            
+
             // COUNT queries pentru fiecare tabel
-            stats.put("totalOrganizations", em.createQuery("SELECT COUNT(o) FROM Organization o", Long.class).getSingleResult());
-            stats.put("totalVolunteers", em.createQuery("SELECT COUNT(v) FROM Volunteer v", Long.class).getSingleResult());
+            stats.put("totalOrganizations",
+                    em.createQuery("SELECT COUNT(o) FROM Organization o", Long.class).getSingleResult());
+            stats.put("totalVolunteers",
+                    em.createQuery("SELECT COUNT(v) FROM Volunteer v", Long.class).getSingleResult());
             stats.put("totalProjects", em.createQuery("SELECT COUNT(p) FROM Project p", Long.class).getSingleResult());
             stats.put("totalEvents", em.createQuery("SELECT COUNT(e) FROM Event e", Long.class).getSingleResult());
-            stats.put("totalAssignments", em.createQuery("SELECT COUNT(a) FROM Assignment a", Long.class).getSingleResult());
+            stats.put("totalAssignments",
+                    em.createQuery("SELECT COUNT(a) FROM Assignment a", Long.class).getSingleResult());
             stats.put("totalSkills", em.createQuery("SELECT COUNT(s) FROM Skill s", Long.class).getSingleResult());
-            stats.put("totalCertificates", em.createQuery("SELECT COUNT(c) FROM Certificate c", Long.class).getSingleResult());
+            stats.put("totalCertificates",
+                    em.createQuery("SELECT COUNT(c) FROM Certificate c", Long.class).getSingleResult());
             stats.put("totalFeedback", em.createQuery("SELECT COUNT(f) FROM Feedback f", Long.class).getSingleResult());
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -58,6 +65,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/volunteers-per-organization")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Volunteers per organization", description = "Retrieves the count of unique volunteers for each organization")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Statistics retrieved successfully")
     public Response getVolunteersPerOrganization() {
         EntityManager em = getEntityManager();
         try {
@@ -68,9 +77,9 @@ public class StatisticsResource {
                             "LEFT JOIN Project p ON p.organization.id = o.id " +
                             "LEFT JOIN Assignment a ON a.project.id = p.id " +
                             "GROUP BY o.id, o.name " +
-                            "ORDER BY COUNT(DISTINCT a.volunteer.id) DESC"
-            ).getResultList();
-            
+                            "ORDER BY COUNT(DISTINCT a.volunteer.id) DESC")
+                    .getResultList();
+
             List<Map<String, Object>> stats = results.stream()
                     .map(row -> {
                         Map<String, Object> stat = new HashMap<>();
@@ -79,7 +88,7 @@ public class StatisticsResource {
                         return stat;
                     })
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -95,6 +104,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/hours-per-volunteer")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Hours worked per volunteer", description = "Retrieves the total number of hours worked by each volunteer")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Statistics retrieved successfully")
     public Response getHoursPerVolunteer(@QueryParam("limit") @DefaultValue("10") Integer limit) {
         EntityManager em = getEntityManager();
         try {
@@ -105,10 +116,10 @@ public class StatisticsResource {
                             "LEFT JOIN Assignment ass ON ass.volunteer.id = v.id " +
                             "LEFT JOIN Attendance a ON a.assignment.id = ass.id " +
                             "GROUP BY v.id, v.firstName, v.lastName " +
-                            "ORDER BY SUM(a.hoursWorked) DESC"
-            ).setMaxResults(limit)
-            .getResultList();
-            
+                            "ORDER BY SUM(a.hoursWorked) DESC")
+                    .setMaxResults(limit)
+                    .getResultList();
+
             List<Map<String, Object>> stats = results.stream()
                     .map(row -> {
                         Map<String, Object> stat = new HashMap<>();
@@ -117,7 +128,7 @@ public class StatisticsResource {
                         return stat;
                     })
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -133,6 +144,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/average-rating-per-project")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Average rating per project", description = "Calculates the average feedback rating for each project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Statistics retrieved successfully")
     public Response getAverageRatingPerProject() {
         EntityManager em = getEntityManager();
         try {
@@ -144,9 +157,9 @@ public class StatisticsResource {
                             "LEFT JOIN Feedback f ON f.assignment.id = a.id " +
                             "GROUP BY p.id, p.title " +
                             "HAVING COUNT(f.id) > 0 " +
-                            "ORDER BY AVG(f.rating) DESC"
-            ).getResultList();
-            
+                            "ORDER BY AVG(f.rating) DESC")
+                    .getResultList();
+
             List<Map<String, Object>> stats = results.stream()
                     .map(row -> {
                         Map<String, Object> stat = new HashMap<>();
@@ -156,7 +169,7 @@ public class StatisticsResource {
                         return stat;
                     })
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -172,6 +185,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/projects-by-volunteer-count")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Projects by volunteer count", description = "Lists projects ordered by the number of active volunteers")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Statistics retrieved successfully")
     public Response getProjectsByVolunteerCount(@QueryParam("limit") @DefaultValue("10") Integer limit) {
         EntityManager em = getEntityManager();
         try {
@@ -182,10 +197,10 @@ public class StatisticsResource {
                             "JOIN p.organization o " +
                             "LEFT JOIN Assignment a ON a.project.id = p.id AND a.status = 'ACCEPTED' " +
                             "GROUP BY p.id, p.title, o.name, p.maxVolunteers " +
-                            "ORDER BY COUNT(DISTINCT a.volunteer.id) DESC"
-            ).setMaxResults(limit)
-            .getResultList();
-            
+                            "ORDER BY COUNT(DISTINCT a.volunteer.id) DESC")
+                    .setMaxResults(limit)
+                    .getResultList();
+
             List<Map<String, Object>> stats = results.stream()
                     .map(row -> {
                         Map<String, Object> stat = new HashMap<>();
@@ -196,7 +211,7 @@ public class StatisticsResource {
                         return stat;
                     })
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -212,6 +227,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/most-requested-skills")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Most requested skills", description = "Identifies the skills most frequently associated with projects")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Statistics retrieved successfully")
     public Response getMostRequestedSkills(@QueryParam("limit") @DefaultValue("10") Integer limit) {
         EntityManager em = getEntityManager();
         try {
@@ -221,10 +238,10 @@ public class StatisticsResource {
                             "FROM Skill s " +
                             "LEFT JOIN ProjectSkill ps ON ps.skill.id = s.id " +
                             "GROUP BY s.id, s.name, s.category " +
-                            "ORDER BY COUNT(ps.project.id) DESC"
-            ).setMaxResults(limit)
-            .getResultList();
-            
+                            "ORDER BY COUNT(ps.project.id) DESC")
+                    .setMaxResults(limit)
+                    .getResultList();
+
             List<Map<String, Object>> stats = results.stream()
                     .map(row -> {
                         Map<String, Object> stat = new HashMap<>();
@@ -234,7 +251,7 @@ public class StatisticsResource {
                         return stat;
                     })
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(stats)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -250,6 +267,8 @@ public class StatisticsResource {
      */
     @GET
     @Path("/volunteers-paginated")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Paginated volunteers list", description = "Retrieves a paginated and sorted list of volunteers with advanced metadata")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Volunteers retrieved successfully")
     public Response getVolunteersPaginated(
             @QueryParam("page") @DefaultValue("0") Integer page,
             @QueryParam("size") @DefaultValue("10") Integer size,
@@ -258,24 +277,23 @@ public class StatisticsResource {
         EntityManager em = getEntityManager();
         try {
             String orderDirection = order.toUpperCase().equals("DESC") ? "DESC" : "ASC";
-            String sortField = sortBy.equals("firstName") ? "v.firstName" : 
-                              sortBy.equals("email") ? "v.email" : "v.lastName";
-            
+            String sortField = sortBy.equals("firstName") ? "v.firstName"
+                    : sortBy.equals("email") ? "v.email" : "v.lastName";
+
             Query countQuery = em.createQuery("SELECT COUNT(v) FROM Volunteer v");
             Long totalCount = (Long) countQuery.getSingleResult();
-            
+
             @SuppressWarnings("unchecked")
             List<Object[]> results = em.createQuery(
                     "SELECT v.id, v.firstName, v.lastName, v.email, v.status, COUNT(DISTINCT a.id) " +
                             "FROM Volunteer v " +
                             "LEFT JOIN Assignment a ON a.volunteer.id = v.id " +
                             "GROUP BY v.id, v.firstName, v.lastName, v.email, v.status " +
-                            "ORDER BY " + sortField + " " + orderDirection
-            )
-            .setFirstResult(page * size)
-            .setMaxResults(size)
-            .getResultList();
-            
+                            "ORDER BY " + sortField + " " + orderDirection)
+                    .setFirstResult(page * size)
+                    .setMaxResults(size)
+                    .getResultList();
+
             List<Map<String, Object>> volunteers = results.stream()
                     .map(row -> {
                         Map<String, Object> vol = new HashMap<>();
@@ -288,14 +306,14 @@ public class StatisticsResource {
                         return vol;
                     })
                     .toList();
-            
+
             Map<String, Object> response = new HashMap<>();
             response.put("volunteers", volunteers);
             response.put("totalCount", totalCount);
             response.put("page", page);
             response.put("size", size);
             response.put("totalPages", (int) Math.ceil((double) totalCount / size));
-            
+
             return Response.ok(ApiResponse.success(response)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -307,10 +325,13 @@ public class StatisticsResource {
     }
 
     /**
-     * Filtrare complexă - Proiecte active cu locuri disponibile și filtrare după organizație
+     * Filtrare complexă - Proiecte active cu locuri disponibile și filtrare după
+     * organizație
      */
     @GET
     @Path("/available-projects-filtered")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Available projects", description = "Retrieves active projects that have open slots, optionally filtered by organization")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Available projects retrieved successfully")
     public Response getAvailableProjectsFiltered(
             @QueryParam("organizationId") Long organizationId,
             @QueryParam("minSlots") Integer minSlots) {
@@ -318,27 +339,26 @@ public class StatisticsResource {
         try {
             StringBuilder queryBuilder = new StringBuilder(
                     "SELECT p.id, p.title, o.name, p.currentVolunteers, p.maxVolunteers, " +
-                    "(p.maxVolunteers - p.currentVolunteers) as availableSlots " +
-                    "FROM Project p " +
-                    "JOIN p.organization o " +
-                    "WHERE p.status = 'ACTIVE' " +
-                    "AND p.currentVolunteers < p.maxVolunteers "
-            );
-            
+                            "(p.maxVolunteers - p.currentVolunteers) as availableSlots " +
+                            "FROM Project p " +
+                            "JOIN p.organization o " +
+                            "WHERE p.status = 'ACTIVE' " +
+                            "AND p.currentVolunteers < p.maxVolunteers ");
+
             if (organizationId != null) {
                 queryBuilder.append("AND o.id = :orgId ");
             }
-            
+
             queryBuilder.append("ORDER BY (p.maxVolunteers - p.currentVolunteers) DESC");
-            
+
             Query query = em.createQuery(queryBuilder.toString());
             if (organizationId != null) {
                 query.setParameter("orgId", organizationId);
             }
-            
+
             @SuppressWarnings("unchecked")
             List<Object[]> results = query.getResultList();
-            
+
             List<Map<String, Object>> projects = results.stream()
                     .map(row -> {
                         Map<String, Object> proj = new HashMap<>();
@@ -352,7 +372,7 @@ public class StatisticsResource {
                     })
                     .filter(proj -> minSlots == null || ((Number) proj.get("availableSlots")).intValue() >= minSlots)
                     .toList();
-            
+
             return Response.ok(ApiResponse.success(projects)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)

@@ -14,11 +14,15 @@ import java.util.List;
 @Path("/skills")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Skills", description = "Operations for managing skills")
 public class SkillResource {
 
     private final SkillDAO skillDAO = new SkillDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List skills", description = "Retrieves a list of skills, optionally filtered by category or name")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of skills found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllSkills(@QueryParam("category") String category,
             @QueryParam("name") String name) {
         try {
@@ -40,6 +44,9 @@ public class SkillResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get skill by ID", description = "Retrieves a specific skill by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Skill found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Skill not found")
     public Response getSkillById(@PathParam("id") Long id) {
         try {
             return skillDAO.findById(id)
@@ -55,6 +62,10 @@ public class SkillResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Create skill", description = "Creates a new skill")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Skill created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Skill with this name already exists")
     public Response createSkill(Skill skill) {
         try {
             if (skill.getName() == null || skill.getName().trim().isEmpty()) {
@@ -82,6 +93,10 @@ public class SkillResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update skill", description = "Updates an existing skill")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Skill updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Skill not found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Skill name conflict")
     public Response updateSkill(@PathParam("id") Long id, Skill skill) {
         try {
             Skill existing = skillDAO.findById(id).orElse(null);
@@ -118,6 +133,9 @@ public class SkillResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete skill", description = "Removes a skill from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Skill deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Skill not found")
     public Response deleteSkill(@PathParam("id") Long id) {
         try {
             if (!skillDAO.existsById(id)) {
@@ -138,6 +156,9 @@ public class SkillResource {
 
     @GET
     @Path("/category/{category}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "List skills by category", description = "Retrieves skills belonging to a specific category")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of skills found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid category")
     public Response getSkillsByCategory(@PathParam("category") String category) {
         try {
             SkillCategory skillCategory = SkillCategory.valueOf(category.toUpperCase());

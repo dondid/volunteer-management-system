@@ -14,12 +14,16 @@ import java.util.List;
 @Path("/projects")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Projects", description = "Operations for managing projects")
 public class ProjectResource {
 
     private final ProjectDAO projectDAO = new ProjectDAOImpl();
     private final ro.ucv.inf.soa.dao.OrganizationDAO organizationDAO = new ro.ucv.inf.soa.dao.OrganizationDAOImpl();
 
     @GET
+    @io.swagger.v3.oas.annotations.Operation(summary = "List projects", description = "Retrieves a list of projects, optionally filtered by status, organization, or availability")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of projects found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal server error")
     public Response getAllProjects(@QueryParam("status") String status,
             @QueryParam("organizationId") Long organizationId,
             @QueryParam("available") Boolean available) {
@@ -44,6 +48,9 @@ public class ProjectResource {
 
     @GET
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Get project by ID", description = "Retrieves a specific project by its ID")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Project found")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Project not found")
     public Response getProjectById(@PathParam("id") Long id) {
         try {
             return projectDAO.findById(id)
@@ -59,6 +66,9 @@ public class ProjectResource {
     }
 
     @POST
+    @io.swagger.v3.oas.annotations.Operation(summary = "Create a new project", description = "Creates a new project within an organization")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Project created successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid input or dates")
     public Response createProject(Project project) {
         try {
             if (project.getTitle() == null || project.getTitle().trim().isEmpty()) {
@@ -113,6 +123,10 @@ public class ProjectResource {
 
     @PUT
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Update project", description = "Updates details of an existing project")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Project updated successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid dates or input")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Project not found")
     public Response updateProject(@PathParam("id") Long id, Project project) {
         try {
             Project existing = projectDAO.findById(id).orElse(null);
@@ -172,6 +186,9 @@ public class ProjectResource {
 
     @DELETE
     @Path("/{id}")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Delete project", description = "Removes a project from the system")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Project deleted successfully")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Project not found")
     public Response deleteProject(@PathParam("id") Long id) {
         try {
             if (!projectDAO.existsById(id)) {
