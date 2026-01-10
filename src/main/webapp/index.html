@@ -3,133 +3,291 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volunteer Management System API</title>
+    <title>Volunteer Management System - Portal</title>
+    <!-- Bootstrap CSS for quick, modern styling -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --card-hover-transform: translateY(-5px);
       }
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background-color: #f8f9fa;
         min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
       }
-      .container {
-        background: white;
-        padding: 40px;
+      .hero-section {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .feature-card {
+        border: none;
         border-radius: 15px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        max-width: 800px;
-        width: 100%;
+        transition: all 0.3s ease;
+        height: 100%;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
       }
-      h1 {
-        color: #667eea;
-        margin-bottom: 10px;
-        font-size: 2.5em;
+      .feature-card:hover {
+        transform: var(--card-hover-transform);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
-      .subtitle {
-        color: #666;
-        margin-bottom: 30px;
-        font-size: 1.1em;
+      .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: -webkit-linear-gradient(#667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
-      .status {
-        background: #28a745;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        display: inline-block;
-        margin-top: 20px;
+      .status-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        backdrop-filter: blur(5px);
       }
-      .endpoint {
-        background: #f8f9fa;
-        padding: 10px 15px;
-        margin: 5px 0;
-        border-radius: 5px;
-        font-family: "Courier New", monospace;
-      }
-      .method {
-        font-weight: bold;
-        padding: 2px 8px;
-        border-radius: 3px;
-        margin-right: 10px;
-      }
-      .get {
-        background: #28a745;
-        color: white;
-      }
-      .post {
-        background: #007bff;
-        color: white;
-      }
-      .put {
-        background: #ffc107;
-        color: black;
-      }
-      .delete {
-        background: #dc3545;
-        color: white;
-      }
-      h3 {
-        margin-top: 30px;
-      }
-      .info-text {
-        margin-top: 30px;
-        color: #666;
-      }
-      .dashboard-link {
-        margin-top: 30px;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 10px;
+      .footer {
+        margin-top: 5rem;
+        padding: 2rem 0;
+        background: white;
+        border-top: 1px solid #eaeaea;
+        color: #6c757d;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>🤝 Volunteer Management System</h1>
-      <p class="subtitle">RESTful API - SOA Project</p>
-
-      <div class="status">✅ API is running!</div>
-
-      <h3>API Endpoints:</h3>
-
-      <div class="endpoint">
-        <span class="method get">GET</span> /api/organizations
-      </div>
-      <div class="endpoint">
-        <span class="method get">GET</span> /api/organizations/{id}
-      </div>
-      <div class="endpoint">
-        <span class="method post">POST</span> /api/organizations
-      </div>
-      <div class="endpoint">
-        <span class="method put">PUT</span> /api/organizations/{id}
-      </div>
-      <div class="endpoint">
-        <span class="method delete">DELETE</span> /api/organizations/{id}
-      </div>
-
-      <p class="info-text">
-        <strong>Base URL:</strong>
-        http://localhost:8080/volunteer-management-system/api<br />
-        <strong>Test with:</strong> Postman, curl, or browser
-      </p>
-
-      <div class="dashboard-link">
-        <h4>🚀 Dashboard Web Interface</h4>
-        <p>
-          Accesează interfața web completă pentru gestionarea tuturor
-          resurselor:
+    <!-- Hero Section -->
+    <div class="hero-section text-center">
+      <div class="container">
+        <div class="mb-3">
+          <span class="status-badge"
+            ><i class="bi bi-check-circle-fill"></i> System Operational</span
+          >
+        </div>
+        <h1 class="display-4 fw-bold mb-3">Volunteer Management System</h1>
+        <p class="lead mb-4 opacity-75">
+          Platformă Hibridă SOA (REST, SOAP) & Statistics
         </p>
-        <a href="dashboard.html" class="btn btn-primary btn-lg">
-          <i class="bi bi-speedometer2"></i> Deschide Dashboard
-        </a>
       </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <!-- REST API Card -->
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card p-4 text-center">
+            <div class="card-icon">
+              <i class="bi bi-braces"></i>
+            </div>
+            <h4 class="card-title mb-3">REST API</h4>
+            <p class="text-muted small mb-4">
+              Interfață modernă JSON documentată complet prin OpenAPI 3.0.
+            </p>
+            <a
+              href="swagger-ui.html"
+              class="btn btn-outline-primary w-100 stretched-link"
+            >
+              <i class="bi bi-journal-code"></i> Swagger UI
+            </a>
+          </div>
+        </div>
+
+        <!-- SOAP Service Card -->
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card p-4 text-center">
+            <div class="card-icon">
+              <i class="bi bi-box-seam"></i>
+            </div>
+            <h4 class="card-title mb-3">SOAP Services</h4>
+            <p class="text-muted small mb-4">
+              Standard Enterprise XML cu fișiere WSDL generate automat.
+            </p>
+            <a
+              href="ws/organizations"
+              class="btn btn-outline-secondary w-100 stretched-link"
+            >
+              <i class="bi bi-filetype-xml"></i> SOAP Dashboard
+            </a>
+          </div>
+        </div>
+
+        <!-- Dashboard Card -->
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card p-4 text-center">
+            <div class="card-icon">
+              <i class="bi bi-speedometer2"></i>
+            </div>
+            <h4 class="card-title mb-3">Web Dashboard</h4>
+            <p class="text-muted small mb-4">
+              Panou de administrare pentru Organizații, Voluntari și Proiecte.
+            </p>
+            <a
+              href="dashboard.html"
+              class="btn btn-primary w-100 stretched-link text-white"
+            >
+              <i class="bi bi-window-desktop"></i> Open App
+            </a>
+          </div>
+        </div>
+
+        <!-- Statistics Card -->
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card p-4 text-center">
+            <div class="card-icon">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h4 class="card-title mb-3">Statistics</h4>
+            <p class="text-muted small mb-4">
+              Analiză avansată a datelor, rapoarte de performanță și metrici.
+            </p>
+            <a
+              href="statistics.html"
+              class="btn btn-outline-info w-100 stretched-link"
+            >
+              <i class="bi bi-pie-chart"></i> Open Statistics
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links Section -->
+      <div class="row mt-5 justify-content-center">
+        <div class="col-md-10">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3">
+              <h5 class="mb-0 text-muted"><i class="bi bi-lightning-charge"></i> Quick (GET) Endpoints</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <!-- REST Section -->
+                <div class="col-md-6 border-end">
+                  <h6 class="text-uppercase text-muted fw-bold mb-3 small">REST API (JSON)</h6>
+                  <div class="row g-2">
+                    <div class="col-12">
+                      <a href="api/organizations" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/api/organizations</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                    <div class="col-12">
+                      <a href="api/volunteers" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/api/volunteers</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                    <div class="col-12">
+                      <a href="api/projects" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/api/projects</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                    <div class="col-12">
+                      <a href="api/events" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                         <span class="font-monospace small">/api/events</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="api/skills" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/api/skills</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="api/certificates" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/api/certificates</span>
+                        <span class="badge bg-success ms-2">GET</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- SOAP Section -->
+                <div class="col-md-6 ps-md-4">
+                  <h6 class="text-uppercase text-muted fw-bold mb-3 small">SOAP Services (WSDL)</h6>
+                  <div class="row g-2">
+                    <div class="col-12">
+                      <a href="ws/organizations?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                         <span class="font-monospace small">/ws/organizations</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                    <div class="col-12">
+                      <a href="ws/volunteers?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                         <span class="font-monospace small">/ws/volunteers</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="ws/projects?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/ws/projects</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="ws/events?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/ws/events</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="ws/skills?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/ws/skills</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                     <div class="col-12">
+                      <a href="ws/assignments?wsdl" target="_blank" class="text-decoration-none d-block p-2 bg-light rounded text-secondary d-flex justify-content-between align-items-center">
+                        <span class="font-monospace small">/ws/assignments</span>
+                        <span class="badge bg-secondary ms-2">WSDL</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <h5 class="text-muted mb-3">Resources</h5>
+            <div class="d-flex justify-content-center gap-3">
+              <a
+                href="api/openapi.json"
+                class="btn btn-sm btn-light border"
+                target="_blank"
+                ><i class="bi bi-file-code"></i> openapi.json</a
+              >
+              <a href="https://github.com/dondid/volunteer-management-system" class="btn btn-sm btn-light border" target="_blank"
+                ><i class="bi bi-github"></i> Source Code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="mb-0">
+          Developed by <strong>Daniel</strong> | Distributed Services Oriented
+          Architectures Project
+        </p>
+        <small class="text-muted">© 2026 Volunteer Management System</small>
+      </div>
+    </footer>
   </body>
 </html>
