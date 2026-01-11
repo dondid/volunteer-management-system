@@ -63,6 +63,8 @@ Deployați fișierul `.war` pe serverul de aplicații (Tomcat/GlassFish).
 Prezentare completă a funcționalităților Hybrid API (REST & SOAP).
 <video src="foto_video/Hybrid Api (Rest & Soap).mp4" controls="controls" style="max-width: 100%;"></video>
 
+https://github.com/user-attachments/assets/8eb522e2-e112-4367-ac96-095fa9799399
+
 > [!NOTE]
 > Dacă video-ul nu rulează direct, îl puteți descărca de [aici](foto_video/Hybrid Api (Rest & Soap).mp4).
 
