@@ -1,0 +1,1481 @@
+openapi: 3.0.1
+tags:
+- name: Assignments
+  description: Operations for managing assignments
+- name: Attendance
+  description: Operations for managing attendance records
+- name: Certificates
+  description: Operations for managing volunteer certificates
+- name: Events
+  description: Operations for managing events
+- name: Feedback
+  description: Operations for managing feedback from organizations and volunteers
+- name: Organizations
+  description: Operations for managing organizations
+- name: Projects
+  description: Operations for managing projects
+- name: Skills
+  description: Operations for managing skills
+- name: Statistics
+  description: Analytical operations and statistical reports
+- name: Volunteers
+  description: Operations for managing volunteers
+paths:
+  /assignments:
+    get:
+      tags:
+      - Assignments
+      summary: List assignments
+      description: Retrieves a list of assignments with optional filters
+      operationId: getAllAssignments
+      parameters:
+      - name: volunteerId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: projectId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: status
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of assignments found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Assignments
+      summary: Create assignment
+      description: Assigns a volunteer to a project
+      operationId: createAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+      responses:
+        "201":
+          description: Assignment created successfully
+        "400":
+          description: Invalid input or business rule violation
+        "409":
+          description: Duplicate assignment or capacity reached
+  /assignments/{id}:
+    get:
+      tags:
+      - Assignments
+      summary: Get assignment by ID
+      description: Retrieves a specific assignment by its ID
+      operationId: getAssignmentById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Assignment found
+        "404":
+          description: Assignment not found
+    put:
+      tags:
+      - Assignments
+      summary: Update assignment
+      description: Updates details of an existing assignment
+      operationId: updateAssignment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+      responses:
+        "200":
+          description: Assignment updated successfully
+        "404":
+          description: Assignment not found
+    delete:
+      tags:
+      - Assignments
+      summary: Delete assignment
+      description: Removes an assignment from the system
+      operationId: deleteAssignment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Assignment deleted successfully
+        "404":
+          description: Assignment not found
+  /attendance:
+    get:
+      tags:
+      - Attendance
+      summary: List attendance records
+      description: Retrieves attendance records filtered by assignment or volunteer
+      operationId: getAllAttendance
+      parameters:
+      - name: assignmentId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: volunteerId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of attendance records found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Attendance
+      summary: Log attendance
+      description: Records hours worked for an assignment
+      operationId: createAttendance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attendance'
+      responses:
+        "201":
+          description: Attendance recorded successfully
+        "400":
+          description: "Invalid input (future date, negative hours)"
+  /attendance/{id}:
+    get:
+      tags:
+      - Attendance
+      summary: Get attendance by ID
+      description: Retrieves a specific attendance record by its ID
+      operationId: getAttendanceById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Attendance record found
+        "404":
+          description: Attendance record not found
+    put:
+      tags:
+      - Attendance
+      summary: Update attendance
+      description: Updates an existing attendance record
+      operationId: updateAttendance
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attendance'
+      responses:
+        "200":
+          description: Attendance updated successfully
+        "404":
+          description: Attendance record not found
+    delete:
+      tags:
+      - Attendance
+      summary: Delete attendance
+      description: Removes an attendance record
+      operationId: deleteAttendance
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Attendance deleted successfully
+        "404":
+          description: Attendance record not found
+  /attendance/assignment/{assignmentId}:
+    get:
+      tags:
+      - Attendance
+      summary: Get attendance by assignment
+      description: Retrieves all attendance records for a specific assignment
+      operationId: getAttendanceByAssignment
+      parameters:
+      - name: assignmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of attendance records found
+  /certificates:
+    get:
+      tags:
+      - Certificates
+      summary: List certificates
+      description: Retrieves certificates filtered by volunteer or project
+      operationId: getAllCertificates
+      parameters:
+      - name: volunteerId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: projectId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of certificates found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Certificates
+      summary: Issue certificate
+      description: Creates a new certificate for a volunteer
+      operationId: createCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Certificate'
+      responses:
+        "201":
+          description: Certificate created successfully
+        "400":
+          description: Invalid input or missing prerequisites
+        "409":
+          description: Certificate number already exists
+  /certificates/{id}:
+    get:
+      tags:
+      - Certificates
+      summary: Get certificate by ID
+      description: Retrieves a specific certificate by its ID
+      operationId: getCertificateById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Certificate found
+        "404":
+          description: Certificate not found
+    put:
+      tags:
+      - Certificates
+      summary: Update certificate
+      description: Updates an existing certificate
+      operationId: updateCertificate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Certificate'
+      responses:
+        "200":
+          description: Certificate updated successfully
+        "404":
+          description: Certificate not found
+    delete:
+      tags:
+      - Certificates
+      summary: Delete certificate
+      description: Revokes and removes a certificate
+      operationId: deleteCertificate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Certificate deleted successfully
+        "404":
+          description: Certificate not found
+  /certificates/volunteer/{volunteerId}:
+    get:
+      tags:
+      - Certificates
+      summary: Get certificates by volunteer
+      description: Retrieves all certificates issued to a specific volunteer
+      operationId: getCertificatesByVolunteer
+      parameters:
+      - name: volunteerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of certificates found
+  /events:
+    get:
+      tags:
+      - Events
+      summary: List events
+      description: Retrieves a list of events with optional filters
+      operationId: getAllEvents
+      parameters:
+      - name: projectId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: upcoming
+        in: query
+        schema:
+          type: boolean
+      - name: available
+        in: query
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: List of events found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Events
+      summary: Create an event
+      description: Creates a new event for a project
+      operationId: createEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        "201":
+          description: Event created successfully
+        "400":
+          description: Invalid input or missing project
+  /events/{id}:
+    get:
+      tags:
+      - Events
+      summary: Get event by ID
+      description: Retrieves a specific event by its ID
+      operationId: getEventById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Event found
+        "404":
+          description: Event not found
+    put:
+      tags:
+      - Events
+      summary: Update event
+      description: Updates details of an existing event
+      operationId: updateEvent
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        "200":
+          description: Event updated successfully
+        "400":
+          description: Invalid participants count
+        "404":
+          description: Event not found
+    delete:
+      tags:
+      - Events
+      summary: Delete event
+      description: Removes an event from the system
+      operationId: deleteEvent
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Event deleted successfully
+        "404":
+          description: Event not found
+  /events/project/{projectId}:
+    get:
+      tags:
+      - Events
+      summary: List events by project
+      description: Retrieves events associated with a specific project
+      operationId: getEventsByProject
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of events found
+  /feedback:
+    get:
+      tags:
+      - Feedback
+      summary: List feedback
+      description: "Retrieves feedback with optional filters by assignment, type,\
+        \ or rating"
+      operationId: getAllFeedback
+      parameters:
+      - name: assignmentId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: type
+        in: query
+        schema:
+          type: string
+      - name: minRating
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: List of feedback entries found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Feedback
+      summary: Submit feedback
+      description: Creates a new feedback entry for an assignment
+      operationId: createFeedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      responses:
+        "201":
+          description: Feedback submitted successfully
+        "400":
+          description: Invalid input or missing assignment
+  /feedback/{id}:
+    get:
+      tags:
+      - Feedback
+      summary: Get feedback by ID
+      description: Retrieves a specific feedback entry by its ID
+      operationId: getFeedbackById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Feedback found
+        "404":
+          description: Feedback not found
+    put:
+      tags:
+      - Feedback
+      summary: Update feedback
+      description: Updates an existing feedback entry
+      operationId: updateFeedback
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      responses:
+        "200":
+          description: Feedback updated successfully
+        "404":
+          description: Feedback not found
+    delete:
+      tags:
+      - Feedback
+      summary: Delete feedback
+      description: Removes a feedback entry
+      operationId: deleteFeedback
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Feedback deleted successfully
+        "404":
+          description: Feedback not found
+  /feedback/assignment/{assignmentId}:
+    get:
+      tags:
+      - Feedback
+      summary: Get feedback by assignment
+      description: Retrieves all feedback for a specific assignment
+      operationId: getFeedbackByAssignment
+      parameters:
+      - name: assignmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: List of feedback entries found
+  /organizations:
+    get:
+      tags:
+      - Organizations
+      summary: List all organizations
+      description: Retrieves a list of all registered organizations
+      operationId: getAllOrganizations
+      responses:
+        "200":
+          description: List of organizations found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Organizations
+      summary: Create an organization
+      description: Registers a new organization
+      operationId: createOrganization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+      responses:
+        "201":
+          description: Organization created successfully
+        "400":
+          description: Invalid input
+        "409":
+          description: Email already exists
+  /organizations/{id}:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization by ID
+      description: Retrieves a specific organization by its ID
+      operationId: getOrganizationById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Organization found
+        "404":
+          description: Organization not found
+    put:
+      tags:
+      - Organizations
+      summary: Update organization
+      description: Updates details of an existing organization
+      operationId: updateOrganization
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+      responses:
+        "200":
+          description: Organization updated successfully
+        "404":
+          description: Organization not found
+    delete:
+      tags:
+      - Organizations
+      summary: Delete organization
+      description: Deletes an organization from the system
+      operationId: deleteOrganization
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Organization deleted successfully
+        "404":
+          description: Organization not found
+  /projects:
+    get:
+      tags:
+      - Projects
+      summary: List projects
+      description: "Retrieves a list of projects, optionally filtered by status, organization,\
+        \ or availability"
+      operationId: getAllProjects
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: organizationId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: available
+        in: query
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: List of projects found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Projects
+      summary: Create a new project
+      description: Creates a new project within an organization
+      operationId: createProject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        "201":
+          description: Project created successfully
+        "400":
+          description: Invalid input or dates
+  /projects/{id}:
+    get:
+      tags:
+      - Projects
+      summary: Get project by ID
+      description: Retrieves a specific project by its ID
+      operationId: getProjectById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Project found
+        "404":
+          description: Project not found
+    put:
+      tags:
+      - Projects
+      summary: Update project
+      description: Updates details of an existing project
+      operationId: updateProject
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        "200":
+          description: Project updated successfully
+        "400":
+          description: Invalid dates or input
+        "404":
+          description: Project not found
+    delete:
+      tags:
+      - Projects
+      summary: Delete project
+      description: Removes a project from the system
+      operationId: deleteProject
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Project deleted successfully
+        "404":
+          description: Project not found
+  /projects/organization/{organizationId}:
+    get:
+      tags:
+      - Projects
+      operationId: getProjectsByOrganization
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /projects/status/{status}:
+    get:
+      tags:
+      - Projects
+      operationId: getProjectsByStatus
+      parameters:
+      - name: status
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /skills:
+    get:
+      tags:
+      - Skills
+      summary: List skills
+      description: "Retrieves a list of skills, optionally filtered by category or\
+        \ name"
+      operationId: getAllSkills
+      parameters:
+      - name: category
+        in: query
+        schema:
+          type: string
+      - name: name
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of skills found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Skills
+      summary: Create skill
+      description: Creates a new skill
+      operationId: createSkill
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+      responses:
+        "201":
+          description: Skill created successfully
+        "400":
+          description: Invalid input
+        "409":
+          description: Skill with this name already exists
+  /skills/{id}:
+    get:
+      tags:
+      - Skills
+      summary: Get skill by ID
+      description: Retrieves a specific skill by its ID
+      operationId: getSkillById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Skill found
+        "404":
+          description: Skill not found
+    put:
+      tags:
+      - Skills
+      summary: Update skill
+      description: Updates an existing skill
+      operationId: updateSkill
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+      responses:
+        "200":
+          description: Skill updated successfully
+        "404":
+          description: Skill not found
+        "409":
+          description: Skill name conflict
+    delete:
+      tags:
+      - Skills
+      summary: Delete skill
+      description: Removes a skill from the system
+      operationId: deleteSkill
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Skill deleted successfully
+        "404":
+          description: Skill not found
+  /skills/category/{category}:
+    get:
+      tags:
+      - Skills
+      summary: List skills by category
+      description: Retrieves skills belonging to a specific category
+      operationId: getSkillsByCategory
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of skills found
+        "400":
+          description: Invalid category
+  /statistics/available-projects-filtered:
+    get:
+      tags:
+      - Statistics
+      summary: Available projects
+      description: "Retrieves active projects that have open slots, optionally filtered\
+        \ by organization"
+      operationId: getAvailableProjectsFiltered
+      parameters:
+      - name: organizationId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: minSlots
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Available projects retrieved successfully
+  /statistics/average-rating-per-project:
+    get:
+      tags:
+      - Statistics
+      summary: Average rating per project
+      description: Calculates the average feedback rating for each project
+      operationId: getAverageRatingPerProject
+      responses:
+        "200":
+          description: Statistics retrieved successfully
+  /statistics/hours-per-volunteer:
+    get:
+      tags:
+      - Statistics
+      summary: Hours worked per volunteer
+      description: Retrieves the total number of hours worked by each volunteer
+      operationId: getHoursPerVolunteer
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: Statistics retrieved successfully
+  /statistics/most-requested-skills:
+    get:
+      tags:
+      - Statistics
+      summary: Most requested skills
+      description: Identifies the skills most frequently associated with projects
+      operationId: getMostRequestedSkills
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: Statistics retrieved successfully
+  /statistics/overview:
+    get:
+      tags:
+      - Statistics
+      summary: Get general overview
+      description: "Retrieves counts for all main entities (organizations, volunteers,\
+        \ projects, etc.)"
+      operationId: getOverview
+      responses:
+        "200":
+          description: Overview statistics retrieved successfully
+  /statistics/projects-by-volunteer-count:
+    get:
+      tags:
+      - Statistics
+      summary: Projects by volunteer count
+      description: Lists projects ordered by the number of active volunteers
+      operationId: getProjectsByVolunteerCount
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: Statistics retrieved successfully
+  /statistics/volunteers-paginated:
+    get:
+      tags:
+      - Statistics
+      summary: Paginated volunteers list
+      description: Retrieves a paginated and sorted list of volunteers with advanced
+        metadata
+      operationId: getVolunteersPaginated
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          default: lastName
+      - name: order
+        in: query
+        schema:
+          type: string
+          default: ASC
+      responses:
+        "200":
+          description: Volunteers retrieved successfully
+  /statistics/volunteers-per-organization:
+    get:
+      tags:
+      - Statistics
+      summary: Volunteers per organization
+      description: Retrieves the count of unique volunteers for each organization
+      operationId: getVolunteersPerOrganization
+      responses:
+        "200":
+          description: Statistics retrieved successfully
+  /swagger-ui:
+    get:
+      operationId: getSwaggerUI
+      responses:
+        default:
+          description: default response
+          content:
+            text/html: {}
+  /volunteers:
+    get:
+      tags:
+      - Volunteers
+      summary: List all volunteers
+      description: Retrieves a list of all registered volunteers
+      operationId: getAllVolunteers
+      responses:
+        "200":
+          description: List of volunteers found
+        "500":
+          description: Internal server error
+    post:
+      tags:
+      - Volunteers
+      summary: Register a new volunteer
+      description: Creates a new volunteer account
+      operationId: createVolunteer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Volunteer'
+      responses:
+        "201":
+          description: Volunteer created successfully
+        "400":
+          description: Invalid input data
+        "409":
+          description: Email already exists
+  /volunteers/{id}:
+    get:
+      tags:
+      - Volunteers
+      summary: Get volunteer by ID
+      description: Retrieves a specific volunteer by their ID
+      operationId: getVolunteerById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Volunteer found
+        "404":
+          description: Volunteer not found
+    put:
+      tags:
+      - Volunteers
+      summary: Update volunteer
+      description: Updates details of an existing volunteer
+      operationId: updateVolunteer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Volunteer'
+      responses:
+        "200":
+          description: Volunteer updated successfully
+        "404":
+          description: Volunteer not found
+    delete:
+      tags:
+      - Volunteers
+      summary: Delete volunteer
+      description: Removes a volunteer from the system
+      operationId: deleteVolunteer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Volunteer deleted successfully
+        "404":
+          description: Volunteer not found
+components:
+  schemas:
+    Assignment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        assignmentDate:
+          type: string
+          format: date
+        role:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - ACCEPTED
+          - REJECTED
+          - COMPLETED
+          - CANCELLED
+        notes:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        volunteer:
+          $ref: '#/components/schemas/Volunteer'
+        project:
+          $ref: '#/components/schemas/Project'
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        address:
+          type: string
+        website:
+          type: string
+        registrationNumber:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - PENDING
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        location:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        maxVolunteers:
+          type: integer
+          format: int32
+        currentVolunteers:
+          type: integer
+          format: int32
+        imageUrl:
+          type: string
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - COMPLETED
+          - CANCELLED
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        organization:
+          $ref: '#/components/schemas/Organization'
+    Volunteer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        cnp:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        bio:
+          type: string
+        avatarUrl:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - BLOCKED
+        registrationDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        fullName:
+          type: string
+    Attendance:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        assignment:
+          $ref: '#/components/schemas/Assignment'
+        date:
+          type: string
+          format: date
+        hoursWorked:
+          type: number
+        notes:
+          type: string
+        verifiedBy:
+          type: string
+        verifiedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    Certificate:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        volunteer:
+          $ref: '#/components/schemas/Volunteer'
+        project:
+          $ref: '#/components/schemas/Project'
+        certificateNumber:
+          type: string
+        issueDate:
+          type: string
+          format: date
+        totalHours:
+          type: number
+        description:
+          type: string
+        signedBy:
+          type: string
+        fileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        eventDate:
+          type: string
+          format: date-time
+        location:
+          type: string
+        maxParticipants:
+          type: integer
+          format: int32
+        currentParticipants:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+          - SCHEDULED
+          - ONGOING
+          - COMPLETED
+          - CANCELLED
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        project:
+          $ref: '#/components/schemas/Project'
+    Feedback:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        assignment:
+          $ref: '#/components/schemas/Assignment'
+        rating:
+          type: integer
+          format: int32
+        comment:
+          type: string
+        feedbackDate:
+          type: string
+          format: date
+        givenBy:
+          type: string
+        feedbackType:
+          type: string
+          enum:
+          - VOLUNTEER_TO_ORG
+          - ORG_TO_VOLUNTEER
+        createdAt:
+          type: string
+          format: date-time
+    Skill:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+          enum:
+          - TECHNICAL
+          - SOCIAL
+          - MANAGEMENT
+          - CREATIVE
+          - LANGUAGE
+          - OTHER
+        createdAt:
+          type: string
+          format: date-time

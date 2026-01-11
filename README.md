@@ -57,6 +57,44 @@ Deployați fișierul `.war` pe serverul de aplicații (Tomcat/GlassFish).
 
 ---
 
+## 🎥 Galerie & Demo
+ 
+### Video Demonstrativ
+Prezentare completă a funcționalităților Hybrid API (REST & SOAP).
+<video src="foto_video/Hybrid Api (Rest & Soap).mp4" controls="controls" style="max-width: 100%;"></video>
+
+> [!NOTE]
+> Dacă video-ul nu rulează direct, îl puteți descărca de [aici](foto_video/Hybrid Api (Rest & Soap).mp4).
+
+### 📐 Arhitectură & Structură
+Diagrama completă a structurii modulelor și organizarea proiectului.
+![Structura Proiect](foto_video/structura.png)
+![Structura Module](foto_video/structura_module.png) 
+
+### 🖥️ Interfața Grafică (Web Dashboard)
+Dashboard-ul administratorului pentru gestionarea voluntarilor și proiectelor.
+![Dashboard Principal](foto_video/interfata_1.png)
+
+Detaliere funcționalități interfață:
+![Interfață Detaliu 1](foto_video/interfata_2.png)
+![Interfață Detaliu 2](foto_video/interfata_3.png)
+
+### 🛠️ Configurare & Bază de Date
+Setup-ul Docker și configurările sistemului.
+![Docker DB](foto_video/docker_db.png)
+![Config Files](foto_video/config.png)
+
+### ✅ Rezultate Testare
+Validarea completă a API-urilor folosind Postman și SoapUI.
+
+**Postman Collection Runner:**
+![Postman Test Results](foto_video/Postman_test.png)
+
+**SoapUI Test Runner:**
+![SoapUI Test Results](foto_video/SoapUI_test.png)
+
+---
+
 ## 🧪 Testare Automată (Full Coverage)
 
 Proiectul vine cu suite complete de teste automate pentru ambele protocoale.

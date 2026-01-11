@@ -1,0 +1,505 @@
+Microsoft Windows [Version 10.0.26200.7462]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Daniel\IdeaProjects\volunteer-management-system>tree /F /A
+Folder PATH listing
+Volume serial number is FCB8-DF4D
+C:.
+|   .gitignore
+|   docker-compose.yml
+|   generate_soapui_full.py
+|   generate_soapui_rest_full.py
+|   openapi.yaml
+|   payload.json
+|   pom.xml
+|   README.md
+|   response.txt
+|   rest_tests_postman.json
+|   REST_test_SoapUI.xml
+|   soap_tests_postman.json
+|   SOAP_test_SoapUI.xml
+|   Volunteer Management - REST Tests (Full Verification).postman_test_run.json
+|   Volunteer Management - SOAP Tests (Full CRUD + Verified).postman_test_run.json
+|   VolunteerSystem-FULL-soapui-project.xml
+|   VolunteerSystem-REST-FULL-soapui-project.xml
+|
++---.idea
+|       .gitignore
+|       compiler.xml
+|       copilot.data.migration.agent.xml
+|       copilot.data.migration.ask2agent.xml
+|       copilot.data.migration.edit.xml
+|       encodings.xml
+|       jarRepositories.xml
+|       misc.xml
+|       vcs.xml
+|       workspace.xml
+|
++---.mvn
++---.smarttomcat
+|   \---volunteer-management-system
+|       \---conf
+|               catalina.policy
+|               catalina.properties
+|               context.xml
+|               jaspic-providers.xml
+|               jaspic-providers.xsd
+|               logging.properties
+|               server.xml
+|               tomcat-users.xml
+|               tomcat-users.xsd
+|               web.xml
+|
++---.vscode
+|       settings.json
+|
++---docs
+|   \---images
+|           client_console.png
+|           postman_results.png
+|           soapui_results.png
+|           swagger_ui.png
+|           web_dashboard.png
+|
++---init-db
+|       01-schema.sql
+|       02-sample-data.sql
+|       fix_events.sql
+|       populate_manual.sql
+|
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---ro
+|   |   |       \---ucv
+|   |   |           \---inf
+|   |   |               \---soa
+|   |   |                   |   TestConnection.java
+|   |   |                   |   TestDAOLayer.java
+|   |   |                   |
+|   |   |                   +---client
+|   |   |                   |       VolunteerManagementClient.java
+|   |   |                   |
+|   |   |                   +---config
+|   |   |                   |       JacksonConfig.java
+|   |   |                   |       OpenApiConfig.java
+|   |   |                   |
+|   |   |                   +---dao
+|   |   |                   |       AssignmentDAO.java
+|   |   |                   |       AssignmentDAOImpl.java
+|   |   |                   |       AttendanceDAO.java
+|   |   |                   |       AttendanceDAOImpl.java
+|   |   |                   |       CertificateDAO.java
+|   |   |                   |       CertificateDAOImpl.java
+|   |   |                   |       EventDAO.java
+|   |   |                   |       EventDAOImpl.java
+|   |   |                   |       FeedbackDAO.java
+|   |   |                   |       FeedbackDAOImpl.java
+|   |   |                   |       GenericDAO.java
+|   |   |                   |       GenericDAOImpl.java
+|   |   |                   |       OrganizationDAO.java
+|   |   |                   |       OrganizationDAOImpl.java
+|   |   |                   |       ProjectDAO.java
+|   |   |                   |       ProjectDAOImpl.java
+|   |   |                   |       SkillDAO.java
+|   |   |                   |       SkillDAOImpl.java
+|   |   |                   |       VolunteerDAO.java
+|   |   |                   |       VolunteerDAOImpl.java
+|   |   |                   |
+|   |   |                   +---dto
+|   |   |                   |       ApiResponse.java
+|   |   |                   |
+|   |   |                   +---model
+|   |   |                   |       Assignment.java
+|   |   |                   |       AssignmentStatus.java
+|   |   |                   |       Attendance.java
+|   |   |                   |       AttendanceStatus.java
+|   |   |                   |       Certificate.java
+|   |   |                   |       Event.java
+|   |   |                   |       EventParticipant.java
+|   |   |                   |       EventStatus.java
+|   |   |                   |       Feedback.java
+|   |   |                   |       FeedbackType.java
+|   |   |                   |       Organization.java
+|   |   |                   |       OrganizationStatus.java
+|   |   |                   |       ProficiencyLevel.java
+|   |   |                   |       Project.java
+|   |   |                   |       ProjectSkill.java
+|   |   |                   |       ProjectStatus.java
+|   |   |                   |       Skill.java
+|   |   |                   |       SkillCategory.java
+|   |   |                   |       Volunteer.java
+|   |   |                   |       VolunteerSkill.java
+|   |   |                   |       VolunteerStatus.java
+|   |   |                   |
+|   |   |                   +---rest
+|   |   |                   |       AssignmentResource.java
+|   |   |                   |       AttendanceResource.java
+|   |   |                   |       CertificateResource.java
+|   |   |                   |       EventResource.java
+|   |   |                   |       FeedbackResource.java
+|   |   |                   |       GlobalExceptionMapper.java
+|   |   |                   |       OrganizationResource.java
+|   |   |                   |       ProjectResource.java
+|   |   |                   |       SkillResource.java
+|   |   |                   |       StatisticsResource.java
+|   |   |                   |       SwaggerUIResource.java
+|   |   |                   |       VolunteerResource.java
+|   |   |                   |       YamlViewResource.java
+|   |   |                   |
+|   |   |                   \---ws
+|   |   |                       |   AssignmentSoapService.java
+|   |   |                       |   AttendanceSoapService.java
+|   |   |                       |   CertificateSoapService.java
+|   |   |                       |   EventSoapService.java
+|   |   |                       |   FeedbackSoapService.java
+|   |   |                       |   OrganizationSoapService.java
+|   |   |                       |   ProjectSoapService.java
+|   |   |                       |   SkillSoapService.java
+|   |   |                       |   VolunteerSoapService.java
+|   |   |                       |
+|   |   |                       \---adapter
+|   |   |                               LocalDateAdapter.java
+|   |   |                               LocalDateTimeAdapter.java
+|   |   |
+|   |   +---resources
+|   |   |   |   swagger-ui.html
+|   |   |   |
+|   |   |   \---META-INF
+|   |   |       |   persistence.xml
+|   |   |       |
+|   |   |       \---resources
+|   |   |               swagger-ui.html
+|   |   |
+|   |   \---webapp
+|   |       |   api-docs.html
+|   |       |   api.js
+|   |       |   app.js
+|   |       |   dashboard.html
+|   |       |   index.html
+|   |       |   statistics.html
+|   |       |   styles.css
+|   |       |   swagger-ui.html
+|   |       |
+|   |       \---WEB-INF
+|   |               sun-jaxws.xml
+|   |               web.xml
+|   |
+|   \---test
+|       \---java
++---target
+|   |   volunteer-api.war
+|   |
+|   +---classes
+|   |   |   swagger-ui.html
+|   |   |
+|   |   +---META-INF
+|   |   |   |   persistence.xml
+|   |   |   |
+|   |   |   \---resources
+|   |   |           swagger-ui.html
+|   |   |
+|   |   \---ro
+|   |       \---ucv
+|   |           \---inf
+|   |               \---soa
+|   |                   |   TestConnection.class
+|   |                   |   TestDAOLayer.class
+|   |                   |
+|   |                   +---client
+|   |                   |       VolunteerManagementClient.class
+|   |                   |
+|   |                   +---config
+|   |                   |       JacksonConfig.class
+|   |                   |       OpenApiConfig.class
+|   |                   |
+|   |                   +---dao
+|   |                   |       AssignmentDAO.class
+|   |                   |       AssignmentDAOImpl.class
+|   |                   |       AttendanceDAO.class
+|   |                   |       AttendanceDAOImpl.class
+|   |                   |       CertificateDAO.class
+|   |                   |       CertificateDAOImpl.class
+|   |                   |       EventDAO.class
+|   |                   |       EventDAOImpl.class
+|   |                   |       FeedbackDAO.class
+|   |                   |       FeedbackDAOImpl.class
+|   |                   |       GenericDAO.class
+|   |                   |       GenericDAOImpl.class
+|   |                   |       OrganizationDAO.class
+|   |                   |       OrganizationDAOImpl.class
+|   |                   |       ProjectDAO.class
+|   |                   |       ProjectDAOImpl.class
+|   |                   |       SkillDAO.class
+|   |                   |       SkillDAOImpl.class
+|   |                   |       VolunteerDAO.class
+|   |                   |       VolunteerDAOImpl.class
+|   |                   |
+|   |                   +---dto
+|   |                   |       ApiResponse.class
+|   |                   |
+|   |                   +---model
+|   |                   |       Assignment.class
+|   |                   |       AssignmentStatus.class
+|   |                   |       Attendance.class
+|   |                   |       AttendanceStatus.class
+|   |                   |       Certificate.class
+|   |                   |       Event.class
+|   |                   |       EventParticipant.class
+|   |                   |       EventStatus.class
+|   |                   |       Feedback.class
+|   |                   |       FeedbackType.class
+|   |                   |       Organization.class
+|   |                   |       OrganizationStatus.class
+|   |                   |       ProficiencyLevel.class
+|   |                   |       Project.class
+|   |                   |       ProjectSkill.class
+|   |                   |       ProjectStatus.class
+|   |                   |       Skill.class
+|   |                   |       SkillCategory.class
+|   |                   |       Volunteer.class
+|   |                   |       VolunteerSkill.class
+|   |                   |       VolunteerStatus.class
+|   |                   |
+|   |                   +---rest
+|   |                   |       AssignmentResource.class
+|   |                   |       AttendanceResource.class
+|   |                   |       CertificateResource.class
+|   |                   |       EventResource.class
+|   |                   |       FeedbackResource.class
+|   |                   |       GlobalExceptionMapper.class
+|   |                   |       OrganizationResource.class
+|   |                   |       ProjectResource.class
+|   |                   |       SkillResource.class
+|   |                   |       StatisticsResource.class
+|   |                   |       SwaggerUIResource.class
+|   |                   |       VolunteerResource.class
+|   |                   |       YamlViewResource.class
+|   |                   |
+|   |                   \---ws
+|   |                       |   AssignmentSoapService.class
+|   |                       |   AttendanceSoapService.class
+|   |                       |   CertificateSoapService.class
+|   |                       |   EventSoapService.class
+|   |                       |   FeedbackSoapService.class
+|   |                       |   OrganizationSoapService.class
+|   |                       |   ProjectSoapService.class
+|   |                       |   SkillSoapService.class
+|   |                       |   VolunteerSoapService.class
+|   |                       |
+|   |                       \---adapter
+|   |                               LocalDateAdapter.class
+|   |                               LocalDateTimeAdapter.class
+|   |
+|   +---generated-sources
+|   |   \---annotations
+|   +---generated-test-sources
+|   |   \---test-annotations
+|   +---maven-archiver
+|   |       pom.properties
+|   |
+|   +---maven-status
+|   |   \---maven-compiler-plugin
+|   |       +---compile
+|   |       |   \---default-compile
+|   |       |           createdFiles.lst
+|   |       |           inputFiles.lst
+|   |       |
+|   |       \---testCompile
+|   |           \---default-testCompile
+|   |                   createdFiles.lst
+|   |                   inputFiles.lst
+|   |
+|   +---test-classes
+|   \---volunteer-api
+|       |   api-docs.html
+|       |   api.js
+|       |   app.js
+|       |   dashboard.html
+|       |   index.html
+|       |   styles.css
+|       |   swagger-ui.html
+|       |
+|       +---META-INF
+|       \---WEB-INF
+|           |   sun-jaxws.xml
+|           |   web.xml
+|           |
+|           +---classes
+|           |   +---META-INF
+|           |   |   |   persistence.xml
+|           |   |   |
+|           |   |   \---resources
+|           |   |           swagger-ui.html
+|           |   |
+|           |   \---ro
+|           |       \---ucv
+|           |           \---inf
+|           |               \---soa
+|           |                   |   TestConnection.class
+|           |                   |   TestDAOLayer.class
+|           |                   |
+|           |                   +---client
+|           |                   |       VolunteerManagementClient.class
+|           |                   |
+|           |                   +---config
+|           |                   |       JacksonConfig.class
+|           |                   |       OpenApiConfig.class
+|           |                   |
+|           |                   +---dao
+|           |                   |       AssignmentDAO.class
+|           |                   |       AssignmentDAOImpl.class
+|           |                   |       AttendanceDAO.class
+|           |                   |       AttendanceDAOImpl.class
+|           |                   |       CertificateDAO.class
+|           |                   |       CertificateDAOImpl.class
+|           |                   |       EventDAO.class
+|           |                   |       EventDAOImpl.class
+|           |                   |       FeedbackDAO.class
+|           |                   |       FeedbackDAOImpl.class
+|           |                   |       GenericDAO.class
+|           |                   |       GenericDAOImpl.class
+|           |                   |       OrganizationDAO.class
+|           |                   |       OrganizationDAOImpl.class
+|           |                   |       ProjectDAO.class
+|           |                   |       ProjectDAOImpl.class
+|           |                   |       SkillDAO.class
+|           |                   |       SkillDAOImpl.class
+|           |                   |       VolunteerDAO.class
+|           |                   |       VolunteerDAOImpl.class
+|           |                   |
+|           |                   +---dto
+|           |                   |       ApiResponse.class
+|           |                   |
+|           |                   +---model
+|           |                   |       Assignment.class
+|           |                   |       AssignmentStatus.class
+|           |                   |       Attendance.class
+|           |                   |       AttendanceStatus.class
+|           |                   |       Certificate.class
+|           |                   |       Event.class
+|           |                   |       EventParticipant.class
+|           |                   |       EventStatus.class
+|           |                   |       Feedback.class
+|           |                   |       FeedbackType.class
+|           |                   |       Organization.class
+|           |                   |       OrganizationStatus.class
+|           |                   |       ProficiencyLevel.class
+|           |                   |       Project.class
+|           |                   |       ProjectSkill.class
+|           |                   |       ProjectStatus.class
+|           |                   |       Skill.class
+|           |                   |       SkillCategory.class
+|           |                   |       Volunteer.class
+|           |                   |       VolunteerSkill.class
+|           |                   |       VolunteerStatus.class
+|           |                   |
+|           |                   +---rest
+|           |                   |       AssignmentResource.class
+|           |                   |       AttendanceResource.class
+|           |                   |       CertificateResource.class
+|           |                   |       EventResource.class
+|           |                   |       FeedbackResource.class
+|           |                   |       GlobalExceptionMapper.class
+|           |                   |       OrganizationResource.class
+|           |                   |       ProjectResource.class
+|           |                   |       SkillResource.class
+|           |                   |       StatisticsResource.class
+|           |                   |       SwaggerUIResource.class
+|           |                   |       VolunteerResource.class
+|           |                   |
+|           |                   \---ws
+|           |                       |   AssignmentSoapService.class
+|           |                       |   AttendanceSoapService.class
+|           |                       |   CertificateSoapService.class
+|           |                       |   EventSoapService.class
+|           |                       |   FeedbackSoapService.class
+|           |                       |   OrganizationSoapService.class
+|           |                       |   ProjectSoapService.class
+|           |                       |   SkillSoapService.class
+|           |                       |   VolunteerSoapService.class
+|           |                       |
+|           |                       \---adapter
+|           |                               LocalDateAdapter.class
+|           |                               LocalDateTimeAdapter.class
+|           |
+|           \---lib
+|                   angus-activation-2.0.0.jar
+|                   angus-mail-2.0.1.jar
+|                   antlr4-runtime-4.10.1.jar
+|                   aopalliance-repackaged-3.0.4.jar
+|                   byte-buddy-1.12.18.jar
+|                   classgraph-4.8.162.jar
+|                   classmate-1.5.1.jar
+|                   com.sun.xml.bind-jaxb-core-4.0.2.jar
+|                   commons-lang3-3.13.0.jar
+|                   FastInfoset-2.1.0.jar
+|                   gmbal-api-only-4.0.3.jar
+|                   ha-api-3.1.13.jar
+|                   hibernate-commons-annotations-6.0.6.Final.jar
+|                   hibernate-core-6.2.7.Final.jar
+|                   hk2-api-3.0.4.jar
+|                   hk2-locator-3.0.4.jar
+|                   hk2-utils-3.0.4.jar
+|                   istack-commons-runtime-4.1.1.jar
+|                   jackson-annotations-2.14.1.jar
+|                   jackson-core-2.15.2.jar
+|                   jackson-databind-2.14.1.jar
+|                   jackson-dataformat-yaml-2.15.2.jar
+|                   jackson-datatype-jsr310-2.15.2.jar
+|                   jackson-jakarta-rs-base-2.15.2.jar
+|                   jackson-jakarta-rs-json-provider-2.15.2.jar
+|                   jackson-module-jakarta-xmlbind-annotations-2.14.1.jar
+|                   jakarta.activation-api-2.1.1.jar
+|                   jakarta.annotation-api-2.1.1.jar
+|                   jakarta.inject-api-2.0.1.jar
+|                   jakarta.jws-api-3.0.0.jar
+|                   jakarta.mail-api-2.1.1.jar
+|                   jakarta.persistence-api-3.1.0.jar
+|                   jakarta.transaction-api-2.0.1.jar
+|                   jakarta.validation-api-3.0.2.jar
+|                   jakarta.ws.rs-api-3.1.0.jar
+|                   jakarta.xml.bind-api-4.0.0.jar
+|                   jakarta.xml.soap-api-3.0.0.jar
+|                   jakarta.xml.ws-api-4.0.0.jar
+|                   jandex-3.0.5.jar
+|                   javassist-3.29.2-GA.jar
+|                   jaxb-impl-4.0.2.jar
+|                   jaxb-runtime-4.0.2.jar
+|                   jaxws-rt-4.0.1.jar
+|                   jboss-logging-3.5.0.Final.jar
+|                   jersey-client-3.1.3.jar
+|                   jersey-common-3.1.3.jar
+|                   jersey-container-servlet-3.1.3.jar
+|                   jersey-container-servlet-core-3.1.3.jar
+|                   jersey-entity-filtering-3.1.3.jar
+|                   jersey-hk2-3.1.3.jar
+|                   jersey-media-json-jackson-3.1.3.jar
+|                   jersey-server-3.1.3.jar
+|                   management-api-3.2.3.jar
+|                   mimepull-1.10.0.jar
+|                   mysql-connector-j-8.1.0.jar
+|                   org.glassfish.jaxb-jaxb-core-4.0.2.jar
+|                   osgi-resource-locator-1.0.3.jar
+|                   protobuf-java-3.21.9.jar
+|                   saaj-impl-3.0.0.jar
+|                   slf4j-api-2.0.9.jar
+|                   slf4j-simple-2.0.9.jar
+|                   snakeyaml-2.2.jar
+|                   stax-ex-2.1.0.jar
+|                   stax2-api-4.2.1.jar
+|                   streambuffer-2.1.0.jar
+|                   swagger-annotations-jakarta-2.2.19.jar
+|                   swagger-core-jakarta-2.2.19.jar
+|                   swagger-integration-jakarta-2.2.19.jar
+|                   swagger-jaxrs2-jakarta-2.2.19.jar
+|                   swagger-models-jakarta-2.2.19.jar
+|                   swagger-ui-5.10.3.jar
+|                   txw2-4.0.2.jar
+|                   webjars-locator-core-0.52.jar
+|                   woodstox-core-6.5.0.jar
+|
+\---volunteer-management-system
+    \---init-db
+
+C:\Users\Daniel\IdeaProjects\volunteer-management-system>
