@@ -80,9 +80,21 @@ Am generat proiecte SoapUI complete care acoperă fluxuri CRUD cap-coadă (Creat
 4. Priviți cum testele trec pe verde! 🟢
 
 ### B. Postman Collections
-Găsiți în rădăcina proiectului colecțiile pentru import:
-*   `rest_tests_postman.json` (Include teste pentru Statistici noi)
-*   `soap_tests_postman.json`
+Pentru testare rapidă și ușoară, am inclus colecții Postman pre-configurate.
+
+**Fișiere Colecții:**
+*   `rest_tests_postman.json`: Suită completă pentru REST API (Include teste pentru Statistici, CRUD, Validări).
+*   `soap_tests_postman.json`: Suită pentru SOAP Web Services (XML requests).
+
+**Cum se rulează:**
+1.  Deschideți Postman.
+2.  Folosiți butonul **Import** și selectați fișierul `.json` dorit din rădăcina proiectului.
+3.  Deschideți colecția importată din bara laterală.
+4.  Pentru a rula toate testele automat:
+    *   Faceți click dreapta pe numele colecției -> **Run collection**.
+    *   Asigurați-vă că ordinea request-urilor este corectă (Create -> Get -> Update -> Delete).
+    *   Apăsați **Run Volunteer Management...**.
+5.  Verificați tab-ul **Test Results** pentru fiecare request - toate ar trebui să fie "PASS".
 
 ---
 
