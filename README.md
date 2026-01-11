@@ -19,6 +19,7 @@ Acest proiect demonstrează interoperabilitatea între două paradigme majore de
 - **Endpoint**: `/api/*`
 - **Specificație**: OpenAPI 3.0 (Swagger)
 - **Documentație Interactivă**: [Swagger UI](http://localhost:8080/volunteer-management-system/swagger-ui.html)
+- **Specificații Raw**: `openapi.json` / `openapi.yaml` (Disponibile în Portal)
 - **Utilizare**: Aplicații web moderne, mobile apps, integrări ușoare.
 
 ### 2. SOAP Web Services (XML) - Enterprise & Legacy
