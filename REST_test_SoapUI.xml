@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="61ffe02d-958d-4e20-8fcd-299b22f4ec06" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true" xmlns:con="http://eviware.com/soapui/config">
+      <con:settings/>
+
+      <con:testStep type="restrequest" name="Step1_Create" id="252cbc53-631d-400b-8c9f-c0da59f92d08">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step1_Create" id="574db9f9-d667-49f2-9f9b-40c9695aa312" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{"name": "Rest Org ${= (int)(Math.random()*10000) }", "email": "rest_org_${= (int)(Math.random()*10000) }@test.com", "phone": "0711223344", "website": "https://resttest.com", "address": "Rest Lane", "registrationNumber": "REG-${= (int)(Math.random()*10000) }", "status": "ACTIVE"}</con:request>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="961a138b-4e39-4fcb-87fe-cfb95abcc434" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="b946e89e-c0da-471a-8061-ed5b639edca6">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>orgId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>$.data.id</con:sourcePath>
+            <con:targetType>orgId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step2_Get" id="5e42eea4-e849-4aab-b112-f93081514aa8">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="GetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step2_Get" id="1f35d9c6-9eb3-4dd6-b325-fd45f5bcea78" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="26c9e398-1232-4935-a70e-cc123f1b841e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step3_Update" id="1332256e-c7df-4eb0-84bd-7c2e39092488">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step3_Update" id="57c1a5b3-5066-400e-8181-d1d4326ff4d3" mediaType="application/json" postQueryString="false">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{"id": "${#Project#orgId}", "name": "Rest Org Updated", "email": "rest_org_upd_${= (int)(Math.random()*10000) }@test.com", "status": "ACTIVE"}</con:request>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="7199ee21-9fb4-4a14-83de-3f70ed47c802" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+             <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="restrequest" name="Step4_Delete" id="192e4cb9-8c89-48c2-9a65-b8ede70983e2">
+        <con:settings/>
+        <con:config service="RestService" resourcePath="/volunteer-management-system/api/organizations/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Step4_Delete" id="954f9ce2-581f-429b-b62c-5c9ec35f48ae" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/volunteer-management-system/api/organizations/21</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="47e99af6-d247-45b9-bfbe-44898ce3dead" name="Valid HTTP Status Codes"><con:configuration><codes>200,204</codes></con:configuration></con:assertion>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+            <con:parameters>
+              <con:entry key="id" value="${#Project#orgId}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>

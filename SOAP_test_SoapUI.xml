@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="9dbdb6c2-29b0-49f0-9bc4-365cdbeb3071" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CRUD_Flow" searchProperties="true" xmlns:con="http://eviware.com/soapui/config">
+      <con:settings/>
+
+      <con:testStep type="request" name="Step1_Create" id="de3fff13-ba8d-4f98-9adc-61c4e14857de" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>addOrganization</con:operation>
+          <con:request name="Step1_Create" id="e683da9f-e251-4f36-b004-e0f0daae140b">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addOrganization><arg0><name>Soap Org ${= (int)(Math.random()*10000) }</name><address>Test Address</address><email>org_${= (int)(Math.random()*10000) }@soap.com</email></arg0></ws:addOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="transfer" name="Transfer_ID" id="dcd4564b-e2c3-489a-a6d5-e2594a4b74c6" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>orgId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Step1_Create</con:sourceStep>
+            <con:sourcePath>//*:return/*:id</con:sourcePath>
+            <con:targetType>orgId</con:targetType>
+            <con:targetStep>#Project#</con:targetStep>
+          <con:upgraded>true</con:upgraded></con:transfers>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step2_Get" id="7b4078ed-74d8-4d06-ba2a-eaec73402493" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>getOrganizationById</con:operation>
+          <con:request name="Step2_Get" id="1aa5b904-11d3-4928-9258-afe392b4e875">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getOrganizationById>
+         <arg0>${#Project#orgId}</arg0>
+      </ws:getOrganizationById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step3_Update" id="044826eb-b8ea-4b0e-a415-21ea02609624" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>updateOrganization</con:operation>
+          <con:request name="Step3_Update" id="4851d3a6-6223-4c76-8a2e-b2a2424818e3">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:updateOrganization><arg0><id>${#Project#orgId}</id><name>Soap Org Updated</name><address>Updated Address</address><email>org_upd_${= (int)(Math.random()*10000) }@soap.com</email></arg0></ws:updateOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+
+      <con:testStep type="request" name="Step4_Delete" id="b455a4f1-d864-4c60-a3c3-51470f0ff71b" disabled="true">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OrganizationServicePortBinding</con:interface>
+          <con:operation>deleteOrganization</con:operation>
+          <con:request name="Step4_Delete" id="7aa414a3-0e31-47c7-9916-0d72847150a8">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/volunteer-management-system/ws/organizations</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soa.inf.ucv.ro/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:deleteOrganization>
+         <arg0>${#Project#orgId}</arg0>
+      </ws:deleteOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response"/>
+            <con:assertion type="SOAP Fault Assertion"/>
+            <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          </con:request>
+        </con:config>
+      </con:testStep>
+    <con:properties/></con:testCase>
